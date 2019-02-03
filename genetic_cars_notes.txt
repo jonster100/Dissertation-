@@ -1,0 +1,11 @@
+notes - 
+index.js in src file is the main script that runs the genetic algorithm
+it calls the manage-round.js script in cw_newRound function in index.js
+
+generation-config which is passed to the manage-round.js is the config file which contains parent selection, inbreeding selection.
+
+the manage-round.js returns generationState variable which is used a lot.
+
+result/score passed to manage-round.js is the list of cars
+
+	- need to know how new cars are created in the process and how selection is done/scored/ranked.
