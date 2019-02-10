@@ -1,3 +1,10 @@
+Done: -
+Created basic selection
+
+to do:
+Need to create a genetic mutation
+Figure out how i want the classifier to work.
+
 notes - 
 index.js in src file is the main script that runs the genetic algorithm
 it calls the manage-round.js script in cw_newRound function in index.js
@@ -9,6 +16,4 @@ the manage-round.js returns generationState variable which is used a lot.
 createCrossBreed - for a new object it iteracted over all the keys such as "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex", these are gone through choosing one of the two parents data as its value.
 
 result/score passed to manage-round.js is the list of cars, the result/score pass car data, def: which car sizes, score and state, state and score have the same data.
-	- how access this data from the array, and then how take data from the def and car to make new vehicle.
-	- NEED TO FIGURE OUT HOW THE FUNCTION selectFromAllParents works.... in generation-config file.
-	- need to know how new cars are created in the process and how selection is done/scored/ranked.
+	- how take data from the def and car to make new vehicle.
