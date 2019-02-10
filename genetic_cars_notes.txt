@@ -17,3 +17,7 @@ createCrossBreed - for a new object it iteracted over all the keys such as "whee
 
 result/score passed to manage-round.js is the list of cars, the result/score pass car data, def: which car sizes, score and state, state and score have the same data.
 	- how take data from the def and car to make new vehicle.
+	
+
+classifier notes:
+	- A car will be chosen at random or iteratively, choosing a second car-parent is where the classifier will work finding the best parter to make the most optimised children.
