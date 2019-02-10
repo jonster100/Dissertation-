@@ -21,3 +21,8 @@ result/score passed to manage-round.js is the list of cars, the result/score pas
 
 classifier notes:
 	- A car will be chosen at random or iteratively, choosing a second car-parent is where the classifier will work finding the best parter to make the most optimised children.
+	- When a car is given to the clustering it will be returned with a score, after all the cars have been scored the one with the highest will be the parter chosen.
+	- The first car will be first be scored through the clustering, and then the rest of the cars will have there scored compared to the first car.
+	?? - Need to figure out how i want to score the cars via the clustering, i could implement a genetic algorithm which will change the scoring methods.("This can be another point for comparison.")
+	!! - There will be clusters for each of the data points such as chasis_densisty, vertex_list, wheel_density, wheel_radius and wheel_vertex. The cars will be put into each one and then KNN will be used to find the closest neighbors.
+	
