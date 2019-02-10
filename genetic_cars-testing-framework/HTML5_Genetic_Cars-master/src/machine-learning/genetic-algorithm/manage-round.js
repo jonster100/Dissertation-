@@ -1,5 +1,5 @@
 var create = require("../create-instance");
-
+var selection = require("./selection.js/");
 module.exports = {
   generationZero: generationZero,
   nextGeneration: nextGeneration
@@ -30,24 +30,27 @@ function nextGeneration(
   var champion_length = config.championLength,
     generationSize = config.generationSize,
     selectFromAllParents = config.selectFromAllParents;
+	scores.sort(function(a, b){return a.score.s - b.score.s;});
 
   var newGeneration = new Array();
   var newborn;
-  for (var k = 0; k < champion_length; k++) {
-	  if(k==1){
-		  console.log(scores[k].def.id);
-	  }
-    scores[k].def.is_elite = true;
-    scores[k].def.index = k;
-    newGeneration.push(scores[k].def);
+  var arr = [];
+  console.log("Log -- "+previousState.counter);
+  //console.log(scores);
+  for (var k = 0; k < 20; k++) {
+	var selParent = selection.rouleteWheelSel(scores);
+    newGeneration.push(selParent.def);
+	var remCar = scores.findIndex(x=> x.index===selParent.index)
+	scores.splice(remCar,1);
   }
-  }
+	//console.log(newGeneration);
 
   return {
     counter: previousState.counter + 1,
     generation: newGeneration,
   };
 }
+
 
 
 function makeChild(config, parents){
