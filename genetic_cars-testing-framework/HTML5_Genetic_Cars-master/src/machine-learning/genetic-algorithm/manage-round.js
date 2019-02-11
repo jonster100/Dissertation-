@@ -1,5 +1,7 @@
 var create = require("../create-instance");
 var selection = require("./selection.js/");
+var mutation = require("./mutation.js/")
+
 module.exports = {
   generationZero: generationZero,
   nextGeneration: nextGeneration
@@ -31,19 +33,19 @@ function nextGeneration(
     generationSize = config.generationSize,
     selectFromAllParents = config.selectFromAllParents;
 	scores.sort(function(a, b){return a.score.s - b.score.s;});
-
+	var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex"
   var newGeneration = new Array();
   var newborn;
-  var arr = [];
   console.log("Log -- "+previousState.counter);
-  //console.log(scores);
+  console.log(scores);//test data
   for (var k = 0; k < 20; k++) {
 	var selParent = selection.rouleteWheelSel(scores);
-    newGeneration.push(selParent.def);
+	var newCar = mutation.mutate(selParent,schema);
+    newGeneration.push(newCar.def);
 	var remCar = scores.findIndex(x=> x.index===selParent.index)
 	scores.splice(remCar,1);
   }
-	//console.log(newGeneration);
+	console.log(newGeneration);//test data
 
   return {
     counter: previousState.counter + 1,

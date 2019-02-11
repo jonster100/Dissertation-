@@ -26,3 +26,5 @@ classifier notes:
 	?? - Need to figure out how i want to score the cars via the clustering, i could implement a genetic algorithm which will change the scoring methods.("This can be another point for comparison.")
 	!! - There will be clusters for each of the data points such as chasis_densisty, vertex_list, wheel_density, wheel_radius and wheel_vertex. The cars will be put into each one and then KNN will be used to find the closest neighbors.
 	
+	
+	- ??? Some kind of recursive classifier by changing the data set, keeps on classiying all the cars until only one good car is left ("Use bayes theorom - maybe")??? 
