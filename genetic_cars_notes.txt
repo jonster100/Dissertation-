@@ -1,11 +1,39 @@
 Done: -
-Created basic selection
+Created Roulette Selection
+Created Simple Mutation for cars
 
 to do:
-Need to create a genetic mutation
-Figure out how i want the classifier to work.
+Evolutionary algorithm
+	- Crossover
+		- One-Point
+		- Two-Point
+		- Introduce reinforcement learning to optimise crossover.
+	- Mutation = Done/Maybe 
+	- Selection
+		- Roulette Selection = Done/Maybe 
+		- Tournament Selection
+	- Add a overall genetic algorithm to make changes the selection used and crossover.
+	- Allow for the weaker cars to have more mutations where the stronger cars have fewer.
+		
+Baseline Evolutionary algorithm = Done/Maybe
+	- Mutation
 
-notes - 
+Selection Classifier
+	- Clustering back-end
+	- Car scoring
+
+GUI
+	- List of car results from the baseline EA
+	- List of car results from the new EA
+	- Ability to look at performance over time
+	- Look through car performance for past run instances
+
+Documents
+	- Start kanban board
+	- plan testing document
+	- look more into the research section of the project
+
+Notes - 
 index.js in src file is the main script that runs the genetic algorithm
 it calls the manage-round.js script in cw_newRound function in index.js
 
@@ -28,3 +56,4 @@ classifier notes:
 	
 	
 	- ??? Some kind of recursive classifier by changing the data set, keeps on classiying all the cars until only one good car is left ("Use bayes theorom - maybe")??? 
+	
