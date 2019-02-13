@@ -1,26 +1,36 @@
 Done: -
-Created Roulette Selection
-Created Simple Mutation for cars
-
-to do:
+Evolutionary algorithm
+	- Mutation
+		- Random Mutation = (11/02/2019) Done/Maybe
+	- Selection
+		- Roulette Selection = (09/02/2019)Done/Maybe 
+		
+In-Progress
 Evolutionary algorithm
 	- Crossover
-		- One-Point
+		- One-Point = in-progress
+Baseline Evolutionary algorithm = 
+	- Mutation = (11/02/2019)improving
+
+Selection Classifier
+	- Clustering back-end = (12/02/2019)in-progress 
+	
+To Do: - 
+Evolutionary algorithm
+	- Crossover
 		- Two-Point
 		- Introduce reinforcement learning to optimise crossover.
-	- Mutation = Done/Maybe 
-	- Selection
-		- Roulette Selection = Done/Maybe 
-		- Tournament Selection
-	- Add a overall genetic algorithm to make changes the selection used and crossover.
-	- Allow for the weaker cars to have more mutations where the stronger cars have fewer.
-		
-Baseline Evolutionary algorithm = Done/Maybe
 	- Mutation
+		- Exchange mutations
+		
+	- Selection
+		- Tournament Selection
+	- Add a overall genetic algorithm to make changes to the selection used and crossover.
+	- Allow for the weaker cars to have more mutations where the stronger cars have fewer.		
 
 Selection Classifier
 	- Clustering back-end
-	- Car scoring
+	- Car fitness scoring
 
 GUI
 	- List of car results from the baseline EA
@@ -33,7 +43,11 @@ Documents
 	- plan testing document
 	- look more into the research section of the project
 
-Notes - 
+	
+	
+	
+
+Framework Notes - 
 index.js in src file is the main script that runs the genetic algorithm
 it calls the manage-round.js script in cw_newRound function in index.js
 
