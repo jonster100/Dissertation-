@@ -34,9 +34,9 @@ function runEA(scores, config){
 	for (var k = 0; k < 10; k++) {
 		var parents=new Array();
 		parents.push(selection.runSelection(scores,2,true).def);
-		scores.splice(scores.findIndex(x=> x.index===parents[0].index),1);
-		parents.push(selection.runSelection(scores,1,false).def);
-		scores.splice(scores.findIndex(x=> x.index===parents[1].index),1);
+		scores.splice(scores.findIndex(x=> x.def.id===parents[0].id),1);
+		parents.push(selection.runSelection(scores,2,false).def);
+		scores.splice(scores.findIndex(x=> x.def.id===parents[1].id),1);
 		var newCars = crossover.runCrossover(parents,0,config.schema);
 		for(var i=0;i<2;i++){
 			newCars[i].is_elite = false;
@@ -61,7 +61,8 @@ function runBaselineEA(scores, config){
 }	
 
 function nextGeneration(previousState, scores, config){
-  var champion_length = config.championLength,
+	var scoresData = scores;
+	var champion_length = config.championLength,
     generationSize = config.generationSize,
     selectFromAllParents = config.selectFromAllParents;
 	scores.sort(function(a, b){return a.score.s - b.score.s;});
@@ -69,9 +70,9 @@ function nextGeneration(previousState, scores, config){
 	var newGeneration = new Array();
 	var newborn;
 	console.log("Log -- "+previousState.counter);
-	console.log(scores);//test data
+	//console.log(scoresData);//test data
 	newGeneration = runEA(scores,config);
-	console.log(newGeneration);//test data
+	//console.log(newGeneration);//test data
   return {
     counter: previousState.counter + 1,
     generation: newGeneration,
