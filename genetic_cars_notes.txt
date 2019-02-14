@@ -44,7 +44,11 @@ Documents
 	- look more into the research section of the project
 
 	
-	
+Evolutionary algorithm notes:
+using tournament selection to get 2 strong parents is extremely inconsistent
+using tournament selection to get 1 strong and 1 weak parent is more consistent but still have large decline here and there.	
+
+ea v0.1 - does worse than baseline using both tournament selection with roulette selection
 	
 
 Framework Notes - 
@@ -59,7 +63,8 @@ createCrossBreed - for a new object it iteracted over all the keys such as "whee
 
 result/score passed to manage-round.js is the list of cars, the result/score pass car data, def: which car sizes, score and state, state and score have the same data.
 	- how take data from the def and car to make new vehicle.
-	
+
+
 
 classifier notes:
 	- A car will be chosen at random or iteratively, choosing a second car-parent is where the classifier will work finding the best parter to make the most optimised children.

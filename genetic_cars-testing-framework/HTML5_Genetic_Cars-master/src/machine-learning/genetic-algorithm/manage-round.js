@@ -54,10 +54,11 @@ function runBaselineEA(scores, config){
 	
 	console.log(scores);//test data
 	for (var k = 0; k < 20; k++) {
-		newGeneration.push(mutation.mutate(scores[i].def,schema));
-		newGeneration[i].is_elite = false;
-		newGeneration[i].index = k;
+		newGeneration.push(mutation.mutate(scores[k].def,schema));
+		newGeneration[k].is_elite = false;
+		newGeneration[k].index = k;
 	}
+	return newGeneration;
 }	
 
 function nextGeneration(previousState, scores, config){
@@ -71,7 +72,8 @@ function nextGeneration(previousState, scores, config){
 	var newborn;
 	console.log("Log -- "+previousState.counter);
 	//console.log(scoresData);//test data
-	newGeneration = runEA(scores,config);
+	var eaType = 0;
+	newGeneration = (eaType===1)?runEA(scores,config):runBaselineEA(scores, config);
 	//console.log(newGeneration);//test data
   return {
     counter: previousState.counter + 1,
