@@ -20,16 +20,16 @@ function changeArrayValue(originalValue){
 function mutate(car,schema){
 	var randomInt = getRandomInt(1,4);
 	if(randomInt===1){
-		car.def.chassis_density=changeArrayValue(car.def.chassis_density);
+		car.chassis_density=changeArrayValue(car.chassis_density);
 	}
 	else if(randomInt===2){
-		car.def.vertex_list=changeArrayValue(car.def.vertex_list);
+		car.vertex_list=changeArrayValue(car.vertex_list);
 	}
 	else if(randomInt===3){
-		car.def.wheel_density=changeArrayValue(car.def.wheel_density);
+		car.wheel_density=changeArrayValue(car.wheel_density);
 	}
 	else {
-		car.def.wheel_radius=changeArrayValue(car.def.wheel_radius);
+		car.wheel_radius=changeArrayValue(car.wheel_radius);
 	}
 	return car;
 }

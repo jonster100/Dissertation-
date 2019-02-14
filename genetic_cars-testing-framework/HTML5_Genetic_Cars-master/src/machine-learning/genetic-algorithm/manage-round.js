@@ -1,6 +1,7 @@
 var create = require("../create-instance");
 var selection = require("./selection.js/");
 var mutation = require("./mutation.js/")
+var crossover = require("./crossover.js/")
 
 module.exports = {
   generationZero: generationZero,
@@ -38,12 +39,21 @@ function nextGeneration(
   var newborn;
   console.log("Log -- "+previousState.counter);
   console.log(scores);//test data
-  for (var k = 0; k < 20; k++) {
-	var selParent = selection.rouleteWheelSel(scores);
-	var newCar = mutation.mutate(selParent,schema);
-    newGeneration.push(newCar.def);
-	var remCar = scores.findIndex(x=> x.index===selParent.index)
-	scores.splice(remCar,1);
+  for (var k = 0; k < 10; k++) {
+	var parents=new Array();
+	parents.push(selection.rouleteWheelSel(scores).def);
+	scores.splice(scores.findIndex(x=> x.index===parents[0].index),1);
+	parents.push(selection.rouleteWheelSel(scores).def);
+	scores.splice(scores.findIndex(x=> x.index===parents[1].index),1);
+	var newCars = crossover.runCrossover(parents,0,config.schema);
+	for(var i=0;i<2;i++){
+		newCars[i].is_elite = false;
+		newCars[i].index = k;
+		newGeneration.push(mutation.mutate(newCars[i],schema));
+	}
+	//var newCar = mutation.mutate(selParent,schema);
+    //newGeneration.push(newCar.def);
+	
   }
 	console.log(newGeneration);//test data
 
