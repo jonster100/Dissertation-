@@ -4,11 +4,11 @@ Evolutionary algorithm
 		- Random Mutation = (11/02/2019) Done/Maybe
 	- Selection
 		- Roulette Selection = (09/02/2019)Done/Maybe 
+	- Crossover
+		- One-Point = (14/02/2019)Done/Maybe 
 		
 In-Progress
 Evolutionary algorithm
-	- Crossover
-		- One-Point = (null)in-progress
 		
 Baseline Evolutionary algorithm = 
 	- Mutation = (11/02/2019)improving
