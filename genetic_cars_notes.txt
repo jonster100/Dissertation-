@@ -8,7 +8,8 @@ Evolutionary algorithm
 In-Progress
 Evolutionary algorithm
 	- Crossover
-		- One-Point = in-progress
+		- One-Point = (null)in-progress
+		
 Baseline Evolutionary algorithm = 
 	- Mutation = (11/02/2019)improving
 
@@ -29,7 +30,6 @@ Evolutionary algorithm
 	- Allow for the weaker cars to have more mutations where the stronger cars have fewer.		
 
 Selection Classifier
-	- Clustering back-end
 	- Car fitness scoring
 
 GUI

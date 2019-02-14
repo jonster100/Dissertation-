@@ -1,0 +1,12 @@
+Bibliography references - 
+
+https://www.researchgate.net/publication/259461147_Selection_Methods_for_Genetic_Algorithms - analysis on different selection methods
+https://github.com/red42/HTML5_Genetic_Cars
+https://www.tutorialspoint.com/genetic_algorithms/genetic_algorithms_crossover.htm
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects
+https://tcagley.wordpress.com/2013/09/12/kanban-process-improvement-and-bottlenecks/
+https://constellation.uqac.ca/4390/1/algorithms-10-00123.pdf - clustering in selection
+http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.64.158&rep=rep1&type=pdf - more on clustering in EA's
+https://arxiv.org/ftp/arxiv/papers/1602/1602.08313.pdf - reference on multi-mutations
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2871823/ - general mutation not EA based i think
+https://www.researchgate.net/publication/307598841_Enhancing_Genetic_Algorithms_using_Multi_Mutations_Experimental_Results_on_the_Travelling_Salesman_Problem - more on multi-mutations
