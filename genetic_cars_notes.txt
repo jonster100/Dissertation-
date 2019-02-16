@@ -4,6 +4,7 @@ Evolutionary algorithm
 		- Random Mutation = (11/02/2019) Done/Maybe
 	- Selection
 		- Roulette Selection = (09/02/2019)Done/Maybe 
+		- Tournament Selection = (14/02/2019)Done/Maybe 
 	- Crossover
 		- One-Point = (14/02/2019)Done/Maybe 
 		
@@ -12,6 +13,7 @@ Evolutionary algorithm
 		
 Baseline Evolutionary algorithm = 
 	- Mutation = (11/02/2019)improving
+	- Multi-mutations (16/02/2019) improving
 
 Selection Classifier
 	- Clustering back-end = (14/02/2019)in-progress 
@@ -23,10 +25,9 @@ Evolutionary algorithm
 		- Introduce reinforcement learning to optimise crossover.
 	- Mutation
 		- Exchange mutations
-		- Multi-mutations
 		
-	- Selection
-		- Tournament Selection
+	- Selection??????
+	
 	- Add a overall genetic algorithm to make changes to the selection used and crossover.
 	- Allow for the weaker cars to have more mutations where the stronger cars have fewer.		
 

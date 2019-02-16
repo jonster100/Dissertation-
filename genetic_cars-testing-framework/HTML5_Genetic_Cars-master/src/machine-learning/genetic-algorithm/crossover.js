@@ -3,6 +3,11 @@ module.exports = {
 	runCrossover: runCrossover
 }
 
+/*This function creates the acual new car and returned. The function runs a one-point crossover taking data from the parents passed through and adding them to the new car.
+@param parents Data is taken from these cars and added to the new car using crossover.
+@param schema The data objects that car objects have such as "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex" and "wheel_density"
+@param noCrossover range of mutation passed to the new car out of 5 from either car.
+@param carNo whether this car is the first or second child for the parent cars*/
 function combineData(parents, schema, noCrossover, carNo){
 	var id = Math.random().toString(32);
 	var keyIteration = 0;

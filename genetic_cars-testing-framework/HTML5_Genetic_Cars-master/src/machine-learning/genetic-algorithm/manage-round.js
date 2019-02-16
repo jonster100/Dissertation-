@@ -26,10 +26,10 @@ function generationZero(config){
 }
 
 //--------------------------------------------------------------------------- my code job64
-
+/*This function runs a Evolutionary algorithm which uses Selection, Crossover and mutations to create the new populations of cars.*/
 function runEA(scores, config){
 	scores.sort(function(a, b){return a.score.s - b.score.s;});
-	var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex"
+	var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex" and "wheel_density"
 	var newGeneration = new Array();
 	for (var k = 0; k < 10; k++) {
 		var parents=new Array();
@@ -47,6 +47,10 @@ function runEA(scores, config){
 	return newGeneration;
 }
 
+/*This function runs the Baseline Evolutionary algorithm which only runs a mutation or multiMutations over all the cars passed though in the scores parameter.
+@param scores Array This parameter is an array of cars that holds the score statistics and car data such as id and "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex" and "wheel_density"
+@param config This passes a file with functions that can be called.
+@return newGeneration this is the new population that have had mutations applied to them.*/
 function runBaselineEA(scores, config){
 	scores.sort(function(a, b){return a.score.s - b.score.s;});
 	var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex"
@@ -62,6 +66,8 @@ function runBaselineEA(scores, config){
 	return newGeneration;
 }	
 
+/*
+This function handles the choosing of which Evolutionary algorithm to run and returns the new population to the simulation*/
 function nextGeneration(previousState, scores, config){
 	var scoresData = scores;
 	var champion_length = config.championLength,
