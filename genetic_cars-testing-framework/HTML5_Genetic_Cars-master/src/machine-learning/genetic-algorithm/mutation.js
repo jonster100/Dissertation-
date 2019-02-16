@@ -1,12 +1,17 @@
 
 module.exports = {
-	mutate: mutate
+	mutate: mutate,
+	multiMutations: multiMutations
 }
 
-function getRandomInt(min, max) {
+function getRandomInt(min, max, notEqualsArr) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+	var toReturn = Math.floor(Math.random() * (max - min + 1)) + min;
+	var findIfExists = notEqualsArr.find(function(value){
+		return value===toReturn;
+	});
+    return (typeof findIfExists === "undefined")?toReturn:getRandomInt(min, max, notEqualsArr);
 }
 
 function changeArrayValue(originalValue){
@@ -17,8 +22,12 @@ function changeArrayValue(originalValue){
 	return originalValue;
 }
 
-function mutate(car,schema){
-	var randomInt = getRandomInt(1,4);
+function mutate(car){
+	return changeData(car,new Array(),1);
+}
+
+function changeData(car, multiMutations, noMutations){
+	var randomInt = getRandomInt(1,4, multiMutations);
 	if(randomInt===1){
 		car.chassis_density=changeArrayValue(car.chassis_density);
 	}
@@ -31,5 +40,12 @@ function mutate(car,schema){
 	else {
 		car.wheel_radius=changeArrayValue(car.wheel_radius);
 	}
-	return car;
+	multiMutations.push(randomInt);
+	noMutations--;
+	return (noMutations===0)?car:changeData(car, multiMutations, noMutations);
+}
+
+function multiMutations(car, arrPosition, arrSize){
+	var noMutations = (arrPosition<(arrSize/2))?2:1;
+	return changeData(car, new Array(),noMutations);
 }

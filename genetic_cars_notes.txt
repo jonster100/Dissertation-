@@ -1,4 +1,4 @@
-Done: -
+Testing: -
 Evolutionary algorithm
 	- Mutation
 		- Random Mutation = (11/02/2019) Done/Maybe
@@ -14,7 +14,7 @@ Baseline Evolutionary algorithm =
 	- Mutation = (11/02/2019)improving
 
 Selection Classifier
-	- Clustering back-end = (12/02/2019)in-progress 
+	- Clustering back-end = (14/02/2019)in-progress 
 	
 To Do: - 
 Evolutionary algorithm
@@ -23,6 +23,7 @@ Evolutionary algorithm
 		- Introduce reinforcement learning to optimise crossover.
 	- Mutation
 		- Exchange mutations
+		- Multi-mutations
 		
 	- Selection
 		- Tournament Selection
@@ -43,13 +44,12 @@ Documents
 	- plan testing document
 	- look more into the research section of the project
 
-	
-Evolutionary algorithm notes:
-using tournament selection to get 2 strong parents is extremely inconsistent
-using tournament selection to get 1 strong and 1 weak parent is more consistent but still have large decline here and there.	
-
-ea v0.1 - does worse than baseline using both tournament selection with roulette selection
-	
+Design Iterations:
+	EA(v0.1) - does worse than baseline using both tournament selection with roulette selection
+		using tournament selection to get 2 strong parents has extremely inconsistent performance per instance
+		using tournament selection to get 1 strong and 1 weak parent is more consistent in performance but still have large decline here and there.
+		using one point crossover
+		using roulette selection
 
 Framework Notes - 
 index.js in src file is the main script that runs the genetic algorithm

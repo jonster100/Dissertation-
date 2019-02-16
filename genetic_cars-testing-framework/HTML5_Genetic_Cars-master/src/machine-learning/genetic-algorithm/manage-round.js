@@ -41,7 +41,7 @@ function runEA(scores, config){
 		for(var i=0;i<2;i++){
 			newCars[i].is_elite = false;
 			newCars[i].index = k;
-			newGeneration.push(mutation.mutate(newCars[i],schema));
+			newGeneration.push(mutation.mutate(newCars[i]));
 		}
 	}	
 	return newGeneration;
@@ -54,7 +54,8 @@ function runBaselineEA(scores, config){
 	
 	console.log(scores);//test data
 	for (var k = 0; k < 20; k++) {
-		newGeneration.push(mutation.mutate(scores[k].def,schema));
+		//newGeneration.push(mutation.mutate(scores[k].def));
+		newGeneration.push(mutation.multiMutations(scores[k].def,scores.findIndex(x=> x.def.id===scores[k].def.id),20));
 		newGeneration[k].is_elite = false;
 		newGeneration[k].index = k;
 	}
