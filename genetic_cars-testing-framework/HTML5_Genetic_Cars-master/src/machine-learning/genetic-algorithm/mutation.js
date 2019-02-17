@@ -37,8 +37,11 @@ function changeData(car, multiMutations, noMutations){
 	else if(randomInt===3){
 		car.wheel_density=changeArrayValue(car.wheel_density);
 	}
-	else {
+	else if(randomInt===4){
 		car.wheel_radius=changeArrayValue(car.wheel_radius);
+	}
+	else {
+		car.wheel_vertex=changeArrayValue(car.wheel_vertex);
 	}
 	multiMutations.push(randomInt);
 	noMutations--;
@@ -46,6 +49,6 @@ function changeData(car, multiMutations, noMutations){
 }
 
 function multiMutations(car, arrPosition, arrSize){
-	var noMutations = (arrPosition<(arrSize/2))?2:1;
+	var noMutations = (arrPosition<(arrSize/2))?(arrPosition<(arrSize/4))?4:3:(arrPosition>arrSize-(arrSize/4))?1:2;
 	return changeData(car, new Array(),noMutations);
 }

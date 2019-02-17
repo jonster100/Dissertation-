@@ -33,17 +33,26 @@ function runEA(scores, config){
 	var newGeneration = new Array();
 	for (var k = 0; k < 10; k++) {
 		var parents=new Array();
-		parents.push(selection.runSelection(scores,2,true).def);
+		var parent1 = selection.runSelection(scores,2,true);
+		parents.push(parent1.def);
 		scores.splice(scores.findIndex(x=> x.def.id===parents[0].id),1);
-		parents.push(selection.runSelection(scores,2,false).def);
+		var parent2 = selection.runSelection(scores,2,false);
+		parents.push(parent2.def);
 		scores.splice(scores.findIndex(x=> x.def.id===parents[1].id),1);
-		var newCars = crossover.runCrossover(parents,0,config.schema);
+		var parentsScore = (parent1.score.s + parent2.score.s)/2;
+		var newCars = crossover.runCrossover(parents,0,config.schema, parentsScore);
 		for(var i=0;i<2;i++){
 			newCars[i].is_elite = false;
 			newCars[i].index = k;
-			newGeneration.push(mutation.mutate(newCars[i]));
+			newGeneration.push(newCars[i]);
 		}
 	}	
+	newGeneration.sort(function(a, b){return a.parentsScore - b.parentsScore;});
+	for(var x = 0;x<newGeneration.length;x++){
+			var currentID = newGeneration[x].id;
+			newGeneration[x] = mutation.multiMutations(newGeneration[x],newGeneration.findIndex(x=> x.id===currentID),20);
+			//newGeneration[x] = mutation.mutate();
+		}
 	return newGeneration;
 }
 
@@ -79,7 +88,7 @@ function nextGeneration(previousState, scores, config){
 	var newborn;
 	console.log("Log -- "+previousState.counter);
 	//console.log(scoresData);//test data
-	var eaType = 0;
+	var eaType = 1;
 	newGeneration = (eaType===1)?runEA(scores,config):runBaselineEA(scores, config);
 	//console.log(newGeneration);//test data
   return {
