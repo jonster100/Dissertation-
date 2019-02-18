@@ -9,9 +9,10 @@ function setup(cars, extCluster, clusterPrecreated){
 	var clust = (clusterPrecreated===false)?setupDataClusters(cluster.createClusterInterface("newCluster")): extCluster;
 	for(var i =0;i<cars.length;i++){
 		addCarsToCluster(cars[i], clust);
+		clust.carsArray.push(cars[i].def);
 	}
 	console.log(clust);//test
-	clust
+	getClusterNeighbor(cars[10].def, clust);
 	return clust;
 }
 
@@ -46,4 +47,10 @@ function addDataToCluster(id, carData, score, clust){
 			clust.dataArray.push(newClust);
 		}
 	}
+}
+
+function getClusterNeighbor(car, clust){
+	//testing getting neighbors
+	var neighbors = cluster.findOjectNeighbors(car.id,clust.arrayOfClusters[0].dataArray[0].dataArray,6);
+	console.log(neighbors);
 }
