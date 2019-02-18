@@ -7,7 +7,9 @@ Evolutionary algorithm
 		- Tournament Selection = (14/02/2019)Done/Maybe 
 	- Crossover
 		- One-Point = (14/02/2019)Done/Maybe 
-		
+Selection Classifier
+	- Clustering back-end = (14/02/2019)-(18/02/2019)Done/Maybe 
+	
 In-Progress
 Evolutionary algorithm
 		
@@ -16,7 +18,7 @@ Baseline Evolutionary algorithm =
 	- Multi-mutations (16/02/2019) improving
 
 Selection Classifier
-	- Clustering back-end = (14/02/2019)in-progress 
+	
 	
 To Do: - 
 Evolutionary algorithm
