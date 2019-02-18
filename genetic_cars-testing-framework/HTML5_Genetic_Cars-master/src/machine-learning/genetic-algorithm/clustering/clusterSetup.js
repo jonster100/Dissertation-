@@ -11,6 +11,7 @@ function setup(cars, extCluster, clusterPrecreated){
 		addCarsToCluster(cars[i], clust);
 	}
 	console.log(clust);//test
+	clust
 	return clust;
 }
 
@@ -24,9 +25,25 @@ function setupDataClusters(mainCluster){
 }
 
 function addCarsToCluster(car, clust){
-	cluster.findDataPointCluster("wheel_radius", clust).dataArray.push(cluster.createDataPoint(car.id, "wheel_radius",car.wheel_radius));
-	cluster.findDataPointCluster("chassis_density", clust).dataArray.push(cluster.createDataPoint(car.id, "chassis_density",car.chassis_density));
-	cluster.findDataPointCluster("vertex_list", clust).dataArray.push(cluster.createDataPoint(car.id, "vertex_list",car.vertex_list));
-	cluster.findDataPointCluster("wheel_vertex", clust).dataArray.push(cluster.createDataPoint(car.id, "wheel_vertex",car.wheel_vertex));
-	cluster.findDataPointCluster("wheel_density", clust).dataArray.push(cluster.createDataPoint(car.id, "wheel_density",car.wheel_density));
+	addDataToCluster(car.def.id, car.def.wheel_radius,car.score.s, cluster.findDataPointCluster("wheel_radius", clust));
+    addDataToCluster(car.def.id, car.def.chassis_density,car.score.s, cluster.findDataPointCluster("chassis_density", clust));
+	addDataToCluster(car.def.id, car.def.vertex_list,car.score.s, cluster.findDataPointCluster("vertex_list", clust));
+	addDataToCluster(car.def.id, car.def.wheel_vertex,car.score.s, cluster.findDataPointCluster("wheel_vertex", clust));
+	addDataToCluster(car.def.id, car.def.wheel_density,car.score.s, cluster.findDataPointCluster("wheel_density", clust));
+}
+
+function addDataToCluster(id, carData, score, clust){
+	if(clust.dataArray.length===carData.length){
+		for(var x=0;x<carData.length;x++){
+			clust.dataArray[x].dataArray.push(cluster.createDataPoint(id, "", carData[x], score));
+			cluster.sortCluster(clust.dataArray[x].dataArray);
+		}
+	}
+	else {
+		for(var i=0;i<carData.length;i++){
+			var newClust = cluster.createDataPointCluster("");
+			newClust.dataArray.push(cluster.createDataPoint(id, "", carData[i], score));
+			clust.dataArray.push(newClust);
+		}
+	}
 }

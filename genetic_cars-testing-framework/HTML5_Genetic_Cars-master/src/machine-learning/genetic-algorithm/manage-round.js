@@ -93,7 +93,7 @@ function nextGeneration(previousState, scores, config){
 	var eaType = 0;
 	newGeneration = (eaType===1)?runEA(scores,config):runBaselineEA(scores, config);
 	//console.log(newGeneration);//test data
-	var clust = cluster.setup(newGeneration,null,false);
+	var clust = cluster.setup(scores,null,false);
   return {
     counter: previousState.counter + 1,
     generation: newGeneration,

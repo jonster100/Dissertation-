@@ -53,6 +53,8 @@ Design Iterations:
 		using tournament selection to get 1 strong and 1 weak parent is more consistent in performance but still have large decline here and there.
 		using one point crossover
 		using roulette selection
+	
+	EA(v0.2) - An improvement using multi-mutations. No notable difference in performance other than a larger set of car being able to move further at the start, but this does go up and down.
 
 Framework Notes - 
 index.js in src file is the main script that runs the genetic algorithm

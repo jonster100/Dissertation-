@@ -3,7 +3,8 @@ module.exports = {
 	createDataPoint: createDataPoint,
 	createClusterInterface: createClusterInterface,
 	findDataPointCluster: findDataPointCluster,
-	findDataPoint: findDataPoint
+	findDataPoint: findDataPoint,
+	sortCluster: sortCluster
 	
 }
 
@@ -15,11 +16,12 @@ function createDataPointCluster(carDataPointType){
 	return cluster;
 }
 
-function createDataPoint(dataId, dataPointType, d){
+function createDataPoint(dataId, dataPointType, d, s){
 	var dataPoint = {
 		id: dataId,
 		type: dataPointType,
-		data: d
+		data: d,
+		score: s
 	};
 	return dataPoint;
 }
@@ -33,7 +35,7 @@ function createClusterInterface(id){
 }
 
 function sortCluster(cluster){
-	return cluster.sort(function(a, b){return a.score - b.score});
+	cluster.sort(function(a, b){return a.score - b.score});
 }
 
 function findOjectNeighbors(id, cluster, range) {
