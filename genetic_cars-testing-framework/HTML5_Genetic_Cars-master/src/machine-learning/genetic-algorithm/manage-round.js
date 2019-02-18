@@ -1,7 +1,8 @@
 var create = require("../create-instance");
 var selection = require("./selection.js/");
-var mutation = require("./mutation.js/")
-var crossover = require("./crossover.js/")
+var mutation = require("./mutation.js/");
+var crossover = require("./crossover.js/");
+var cluster = require("./clustering/clusterSetup.js/");
 
 module.exports = {
   generationZero: generationZero,
@@ -72,6 +73,7 @@ function runBaselineEA(scores, config){
 		newGeneration[k].is_elite = false;
 		newGeneration[k].index = k;
 	}
+	
 	return newGeneration;
 }	
 
@@ -88,9 +90,10 @@ function nextGeneration(previousState, scores, config){
 	var newborn;
 	console.log("Log -- "+previousState.counter);
 	//console.log(scoresData);//test data
-	var eaType = 1;
+	var eaType = 0;
 	newGeneration = (eaType===1)?runEA(scores,config):runBaselineEA(scores, config);
 	//console.log(newGeneration);//test data
+	var clust = cluster.setup(newGeneration,null,false);
   return {
     counter: previousState.counter + 1,
     generation: newGeneration,
