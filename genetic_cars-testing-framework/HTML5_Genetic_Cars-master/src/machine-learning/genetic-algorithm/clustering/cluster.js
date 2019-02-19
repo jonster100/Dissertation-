@@ -37,7 +37,7 @@ function createClusterInterface(id){
 }
 
 function sortCluster(cluster){
-	cluster.sort(function(a, b){return a.score - b.score});
+	cluster.sort(function(a, b){return a.data - b.data});
 }
 
 function findOjectNeighbors(dataId, cluster, range) {
