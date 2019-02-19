@@ -64,7 +64,10 @@ Design Iterations:
 current problems:
 	(19/02/2019) - The weaker cars are not improving over time there are spikes in improvement but it goes back down due to the mutation.
 	(19/02/2019) - I do not know how i'm going to make the EA's run side by side.
-
+	(19/02/2019) - Optimising a scoring system for how multi-mutations can work better so that the weaker cars can be improved faster.
+	
+Design considerations:
+	(19/02/2019) - using the current clustering system to target the best car crossover points
 	
 Framework Notes - 
 	index.js in src file is the main script that runs the genetic algorithm
