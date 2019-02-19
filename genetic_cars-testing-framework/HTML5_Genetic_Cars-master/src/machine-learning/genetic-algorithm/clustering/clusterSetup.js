@@ -1,7 +1,8 @@
 var cluster = require("./cluster.js/");
 
 module.exports = {
-	setup: setup
+	setup: setup,
+	reScoreCars: reScoreCars
 }
 
 //"wheel_radius", "chassis_density", "vertex_list", "wheel_vertex" and "wheel_density"/
@@ -12,7 +13,6 @@ function setup(cars, extCluster, clusterPrecreated){
 		clust.carsArray.push(cars[i].def);
 	}
 	console.log(clust);//test
-	getClusterNeighbor(cars[10].def, clust);
 	return clust;
 }
 
@@ -49,8 +49,14 @@ function addDataToCluster(id, carData, score, clust){
 	}
 }
 
-function getClusterNeighbor(car, clust){
-	//testing getting neighbors
-	var neighbors = cluster.findOjectNeighbors(car.id,clust.arrayOfClusters[0].dataArray[0].dataArray,6);
-	console.log(neighbors);
+function reScoreCars(cars, clust){
+	for(var i=0;i<cars.length;i++){
+		var score = 0;
+		for(var x=0;x<clust.arrayOfClusters.length;x++){
+			for(var y=0;y<clust.arrayOfClusters[x].dataArray.length;y++){
+				score += cluster.scoreObject(cars[i].def.id, clust.arrayOfClusters[x].dataArray[y].dataArray);
+			}
+		}
+		cars[i].score = score;
+	}
 }

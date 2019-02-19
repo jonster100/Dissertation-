@@ -80,6 +80,8 @@ function runBaselineEA(scores, config){
 /*
 This function handles the choosing of which Evolutionary algorithm to run and returns the new population to the simulation*/
 function nextGeneration(previousState, scores, config){
+	var clusterInt = (previousState.counter===0)?cluster.setup(scores,null,false):cluster.setup(scores,previousState.clust,true);
+	cluster.reScoreCars(scores ,clusterInt);
 	var scoresData = scores;
 	var champion_length = config.championLength,
     generationSize = config.generationSize,
@@ -93,10 +95,11 @@ function nextGeneration(previousState, scores, config){
 	var eaType = 0;
 	newGeneration = (eaType===1)?runEA(scores,config):runBaselineEA(scores, config);
 	//console.log(newGeneration);//test data
-	var clust = cluster.setup(scores,null,false);
+	
   return {
     counter: previousState.counter + 1,
     generation: newGeneration,
+	clust: clusterInt
   };
 }
 

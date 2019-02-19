@@ -5,7 +5,8 @@ module.exports = {
 	findDataPointCluster: findDataPointCluster,
 	findDataPoint: findDataPoint,
 	sortCluster: sortCluster,
-	findOjectNeighbors: findOjectNeighbors
+	findOjectNeighbors: findOjectNeighbors,
+	scoreObject: scoreObject
 	
 }
 
@@ -44,14 +45,15 @@ function findOjectNeighbors(dataId, cluster, range) {
 	var neighbors = new Array();
 	var index = cluster.findIndex(x=> x.id===dataId);
 	var gonePastId = false;
+	var clusterLength = cluster.length;
 	for(var i=0;i<range;i++){
 		if((index-range)<0){
 			if(cluster[i].id===dataId){gonePastId=true;}
-			neighbors.push((gonePastId===false)?cluster[i]:cluster[i]+1);
+			neighbors.push((gonePastId===false)?cluster[i]:cluster[i+1]);
 		}
-		else if((index+range)>cluster.length){
-			if(cluster[cluster.length-i].id===dataId){gonePastId=true;}
-			neighbors.push((gonePastId===false)?cluster[cluster.length-i]:cluster[cluster.length-(i+1)]);
+		else if((index+range)>clusterLength){
+			if(cluster[(clusterLength-1)-i].id===dataId){gonePastId=true;}
+			neighbors.push((gonePastId===false)?cluster[(clusterLength-1)-i]:cluster[(clusterLength-1)-(i+1)]);
 		}
 		else {
 			if(cluster[index-(range/2)+i].id===dataId){gonePastId=true;}
@@ -73,5 +75,10 @@ function findDataPoint(dataId, cluster){
 }
 
 function scoreObject(id, cluster){
-
+	var neighbors = findOjectNeighbors(id, cluster, 6);
+	var newScore = 0;
+	for(var i=0;i<neighbors.length;i++){
+		newScore+=neighbors[i].score;
+	}
+	return newScore/neighbors.length;
 }
