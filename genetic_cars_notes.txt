@@ -20,6 +20,8 @@ Baseline Evolutionary algorithm =
 
 Selection Classifier
 	- Car fitness scoring (19/02/2019) improving
+			The clustering data should be able to be outputted into a file or txt file.
+			
 	
 To Do: - 
 Evolutionary algorithm
@@ -34,13 +36,13 @@ Evolutionary algorithm
 	- Add a overall genetic algorithm to make changes to the selection used and crossover.
 	- Allow for the weaker cars to have more mutations where the stronger cars have fewer.		
 
-
-
 GUI
 	- List of car results from the baseline EA
 	- List of car results from the new EA
 	- Ability to look at performance over time
 	- Look through car performance for past run instances
+
+Performance results of each run instance should be outputted into a file so that the data can be analysed and compared with the different running EA's
 
 Documents
 	- Start kanban board
@@ -48,26 +50,34 @@ Documents
 	- look more into the research section of the project
 
 Design Iterations:
-	EA(v0.1) - does worse than baseline using both tournament selection with roulette selection
+	14/02/2019 EA(v0.1) - does worse than baseline using both tournament selection with roulette selection
 		using tournament selection to get 2 strong parents has extremely inconsistent performance per instance
 		using tournament selection to get 1 strong and 1 weak parent is more consistent in performance but still have large decline here and there.
 		using one point crossover
 		using roulette selection
 	
-	EA(v0.2) - An improvement using multi-mutations. No notable difference in performance other than a larger set of car being able to move further at the start, but this does go up and down.
+	16/02/2019 EA(v0.2) - An improvement using multi-mutations. No notable difference in performance other than a larger set of car being able to move further at the start, but this does go up and down.
 
+	19/02/2019 EA(v0.3) - This iteration of the algorithm uses a clustering selection where a car is scored based on the surrounding neighbors data points. 
+		The only problems i found with the clustering was syntax missing or undefined being passed back due to the nearest neighbors going out of bounds
+	
+current problems:
+	(19/02/2019) - The weaker cars are not improving over time there are spikes in improvement but it goes back down due to the mutation.
+	(19/02/2019) - I do not know how i'm going to make the EA's run side by side.
+
+	
 Framework Notes - 
-index.js in src file is the main script that runs the genetic algorithm
-it calls the manage-round.js script in cw_newRound function in index.js
+	index.js in src file is the main script that runs the genetic algorithm
+	it calls the manage-round.js script in cw_newRound function in index.js
 
-generation-config which is passed to the manage-round.js is the config file which contains parent selection, inbreeding selection.
+	generation-config which is passed to the manage-round.js is the config file which contains parent selection, inbreeding selection.
+	
+	the manage-round.js returns generationState variable which is used a lot.
 
-the manage-round.js returns generationState variable which is used a lot.
+	createCrossBreed - for a new object it iteracted over all the keys such as "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex", these are gone through choosing one of the two parents data as its value.
 
-createCrossBreed - for a new object it iteracted over all the keys such as "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex", these are gone through choosing one of the two parents data as its value.
-
-result/score passed to manage-round.js is the list of cars, the result/score pass car data, def: which car sizes, score and state, state and score have the same data.
-	- how take data from the def and car to make new vehicle.
+	result/score passed to manage-round.js is the list of cars, the result/score pass car data, def: which car sizes, score and state, state and score have the same data.
+		- how take data from the def and car to make new vehicle.
 
 
 
