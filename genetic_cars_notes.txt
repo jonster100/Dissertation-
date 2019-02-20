@@ -13,7 +13,8 @@ Selection Classifier
 In-Progress
 Evolutionary algorithm
 	- Multi-mutations (16/02/2019) improving
-	
+		I also need to change the range of the multi mutations and experiment to find the best one
+		The clustering selection might need to be adapted to be used alongside multi-mutations
 Baseline Evolutionary algorithm = 
 	- Mutation = (11/02/2019)improving
 	- Multi-mutations (16/02/2019) improving

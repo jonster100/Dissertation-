@@ -10,3 +10,8 @@ http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.64.158&rep=rep1&type=pd
 https://arxiv.org/ftp/arxiv/papers/1602/1602.08313.pdf - reference on multi-mutations
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2871823/ - general mutation not EA based i think
 https://www.researchgate.net/publication/307598841_Enhancing_Genetic_Algorithms_using_Multi_Mutations_Experimental_Results_on_the_Travelling_Salesman_Problem - more on multi-mutations
+
+https://www.researchgate.net/publication/221700557_A_Comparative_Study_of_Adaptive_Crossover_Operators_for_GeneticAlgorithms_to_Resolve_the_Traveling_Salesman_Problem - crossover
+https://pdfs.semanticscholar.org/3bda/cac99759ca1c71e241b815ea50226b05af70.pdf - crossover
+
+https://link.springer.com/book/10.1007/3-540-61723-X  - check out
