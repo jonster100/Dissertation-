@@ -57,6 +57,6 @@ function reScoreCars(cars, clust){
 				score += cluster.scoreObject(cars[i].def.id, clust.arrayOfClusters[x].dataArray[y].dataArray);
 			}
 		}
-		cars[i].score = score;
+		cars[i].score.s = score;
 	}
 }

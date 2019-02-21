@@ -7,7 +7,7 @@ Evolutionary algorithm
 		- Tournament Selection = (14/02/2019)Done/Maybe 
 	- Crossover
 		- One-Point = (14/02/2019)Done/Maybe 
-Selection Classifier
+Selection Clustering
 	- Clustering back-end = (14/02/2019)-(18/02/2019)Done/Maybe 
 	
 In-Progress
@@ -18,11 +18,8 @@ Evolutionary algorithm
 Baseline Evolutionary algorithm = 
 	- Mutation = (11/02/2019)improving
 	- Multi-mutations (16/02/2019) improving
-
-Selection Classifier
+Selection Clustering
 	- Car fitness scoring (19/02/2019) improving
-			The clustering data should be able to be outputted into a file or txt file.
-			
 	
 To Do: - 
 Evolutionary algorithm
@@ -35,7 +32,15 @@ Evolutionary algorithm
 	- Selection??????
 	
 	- Add a overall genetic algorithm to make changes to the selection used and crossover.
-	- Allow for the weaker cars to have more mutations where the stronger cars have fewer.		
+	- Allow for the weaker cars to have more mutations where the stronger cars have fewer.
+
+	- look into possibly passing cars from 1 generation to another without being removed
+
+Selection Clustering
+	- look into balancing the clustering data
+	- The clustering data should be able to be outputted into a file or txt file.
+	- possibly change the scoring to be strong the closer the neighbor and weaker the further away it is
+	- look into whether 1 data point has too strong of a score compared to others
 
 GUI
 	- List of car results from the baseline EA
@@ -66,6 +71,7 @@ current problems:
 	(19/02/2019) - The weaker cars are not improving over time there are spikes in improvement but it goes back down due to the mutation.
 	(19/02/2019) - I do not know how i'm going to make the EA's run side by side.
 	(19/02/2019) - Optimising a scoring system for how multi-mutations can work better so that the weaker cars can be improved faster.
+	(21/02/2019) - Using the clustering makes the cars performance go up and down a lot and not continuous 
 	
 Design considerations:
 	(19/02/2019) - using the current clustering system to target the best car crossover points
