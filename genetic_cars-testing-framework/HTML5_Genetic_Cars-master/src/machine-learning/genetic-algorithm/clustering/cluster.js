@@ -75,7 +75,7 @@ function findDataPoint(dataId, cluster){
 }
 
 function scoreObject(id, cluster){
-	var neighbors = findOjectNeighbors(id, cluster, 6);
+	var neighbors = findOjectNeighbors(id, cluster, ((cluster.length/4)<40)?6:40);
 	var newScore = 0;
 	for(var i=0;i<neighbors.length;i++){
 		newScore+=neighbors[i].score;

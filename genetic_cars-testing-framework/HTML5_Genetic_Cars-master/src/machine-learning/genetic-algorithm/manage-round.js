@@ -51,8 +51,8 @@ function runEA(scores, config){
 	newGeneration.sort(function(a, b){return a.parentsScore - b.parentsScore;});
 	for(var x = 0;x<newGeneration.length;x++){
 			var currentID = newGeneration[x].id;
-			//newGeneration[x] = mutation.multiMutations(newGeneration[x],newGeneration.findIndex(x=> x.id===currentID),20);
-			newGeneration[x] = mutation.mutate(newGeneration[x]);
+			newGeneration[x] = mutation.multiMutations(newGeneration[x],newGeneration.findIndex(x=> x.id===currentID),20);
+			//newGeneration[x] = mutation.mutate(newGeneration[x]);
 		}
 	return newGeneration;
 }
@@ -81,15 +81,14 @@ function runBaselineEA(scores, config){
 This function handles the choosing of which Evolutionary algorithm to run and returns the new population to the simulation*/
 function nextGeneration(previousState, scores, config){
 	var clusterInt = (previousState.counter===0)?cluster.setup(scores,null,false):cluster.setup(scores,previousState.clust,true);
-	cluster.reScoreCars(scores ,clusterInt);
-	var scoresData = scores;
-	var champion_length = config.championLength,
-    generationSize = config.generationSize,
-    selectFromAllParents = config.selectFromAllParents;
+	//cluster.reScoreCars(scores ,clusterInt);
 	scores.sort(function(a, b){return a.score.s - b.score.s;});
 	var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex"
 	var newGeneration = new Array();
-	var newborn;
+	var stateAverage = (previousState.counter===0)?new Array():previousState.stateAveragesArr;
+	var averageScore = 0;
+	for(var i=0;i<scores.length;i++){averageScore+=scores[i].score.s;}
+	stateAverage.push(averageScore/scores.length);
 	console.log("Log -- "+previousState.counter);
 	//console.log(scoresData);//test data
 	var eaType = 1;
@@ -99,7 +98,8 @@ function nextGeneration(previousState, scores, config){
   return {
     counter: previousState.counter + 1,
     generation: newGeneration,
-	clust: clusterInt
+	clust: clusterInt,
+	stateAveragesArr: stateAverage
   };
 }
 
