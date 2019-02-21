@@ -7,6 +7,7 @@ Evolutionary algorithm
 		- Tournament Selection = (14/02/2019)Done/Maybe 
 	- Crossover
 		- One-Point = (14/02/2019)Done/Maybe 
+	- Two-Point = (21/02/2019)Done/Maybe 
 Selection Clustering
 	- Clustering back-end = (14/02/2019)-(18/02/2019)Done/Maybe 
 	
@@ -24,7 +25,6 @@ Selection Clustering
 To Do: - 
 Evolutionary algorithm
 	- Crossover
-		- Two-Point
 		- Introduce reinforcement learning to optimise crossover.
 	- Mutation
 		- Exchange mutations
