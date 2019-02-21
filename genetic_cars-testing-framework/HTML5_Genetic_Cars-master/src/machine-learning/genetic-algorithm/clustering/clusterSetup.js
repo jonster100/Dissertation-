@@ -51,7 +51,7 @@ function addDataToCluster(id, carData, score, clust){
 
 function reScoreCars(cars, clust){
 	for(var i=0;i<cars.length;i++){
-		var score = 0;
+		var score = cars[i].score.s;
 		for(var x=0;x<clust.arrayOfClusters.length;x++){
 			for(var y=0;y<clust.arrayOfClusters[x].dataArray.length;y++){
 				score += cluster.scoreObject(cars[i].def.id, clust.arrayOfClusters[x].dataArray[y].dataArray);

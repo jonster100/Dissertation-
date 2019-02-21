@@ -81,7 +81,7 @@ function runBaselineEA(scores, config){
 This function handles the choosing of which Evolutionary algorithm to run and returns the new population to the simulation*/
 function nextGeneration(previousState, scores, config){
 	var clusterInt = (previousState.counter===0)?cluster.setup(scores,null,false):cluster.setup(scores,previousState.clust,true);
-	//cluster.reScoreCars(scores ,clusterInt);
+	cluster.reScoreCars(scores ,clusterInt);
 	scores.sort(function(a, b){return a.score.s - b.score.s;});
 	var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex"
 	var newGeneration = new Array();
