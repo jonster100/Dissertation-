@@ -5,22 +5,26 @@ Evolutionary algorithm
 	- Selection
 		- Roulette Selection = (09/02/2019)Done/Maybe 
 		- Tournament Selection = (14/02/2019)Done/Maybe 
+			!! - I need to change this selection to not use the entire population only a fraction which is to be determined
 	- Crossover
 		- One-Point = (14/02/2019)Done/Maybe 
-	- Two-Point = (21/02/2019)Done/Maybe 
+		- Two-Point = (21/02/2019)Done/Maybe 
+	
+Baseline Evolutionary algorithm = 
+	- Mutation = (11/02/2019)optimizing
+	
 Selection Clustering
-	- Clustering back-end = (14/02/2019)-(18/02/2019)Done/Maybe 
+	- Clustering back-end = (14/02/2019)-(18/02/2019)optimizing 
 	
 In-Progress
 Evolutionary algorithm
 	- Multi-mutations (16/02/2019) improving
-		I also need to change the range of the multi mutations and experiment to find the best one
-		The clustering selection might need to be adapted to be used alongside multi-mutations
-Baseline Evolutionary algorithm = 
-	- Mutation = (11/02/2019)improving
-	- Multi-mutations (16/02/2019) improving
+		!! - I also need to change the range of the multi mutations and experiment to find the best one
+		!! - The clustering selection might need to be adapted to be used alongside multi-mutations
+		
 Selection Clustering
 	- Car fitness scoring (19/02/2019) improving
+		!! - I will test reducing the influence this scoring method has on the final score.
 	
 To Do: - 
 Evolutionary algorithm
