@@ -23,7 +23,7 @@ Evolutionary algorithm
 		!! - The clustering selection might need to be adapted to be used alongside multi-mutations
 		
 Selection Clustering
-	- Car fitness scoring (19/02/2019) improving
+	- Car fitness scoring (19/02/2019) - (21/02/2019) improving
 		!! - I will test reducing the influence this scoring method has on the final score.
 	
 To Do: - 
@@ -70,12 +70,15 @@ Design Iterations:
 
 	19/02/2019 EA(v0.3) - This iteration of the algorithm uses a clustering selection where a car is scored based on the surrounding neighbors data points. 
 		The only problems i found with the clustering was syntax missing or undefined being passed back due to the nearest neighbors going out of bounds
+		
+	24/02/2019 EA(v0.4) - This iteration has a working clustering scoring system in combination with two selection operators, two mutation operators and two cross-over operators
+		at this point i will mostly be fine tuning the different operators so they work better at improving car performance and may further include dynamic changing of operators using the previous average scores of the run rounds
 	
 current problems:
 	(19/02/2019) - The weaker cars are not improving over time there are spikes in improvement but it goes back down due to the mutation.
 	(19/02/2019) - I do not know how i'm going to make the EA's run side by side.
 	(19/02/2019) - Optimising a scoring system for how multi-mutations can work better so that the weaker cars can be improved faster.
-	(21/02/2019) - Using the clustering makes the cars performance go up and down a lot and not continuous 
+	(21/02/2019) - Using the clustering makes the cars performance go up and down a lot and not continuous (21/02/2019) - this has been fixed by adding including the cars own score not just neighboring car scores
 	
 Design considerations:
 	(19/02/2019) - using the current clustering system to target the best car crossover points
