@@ -8,8 +8,8 @@ module.exports = {
 @param schema The data objects that car objects have such as "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex" and "wheel_density"
 @param noCrossover range of mutation passed to the new car out of 5 from either car.
 @param carNo whether this car is the first or second child for the parent cars*/
-function combineData(parents, schema, noCrossoverPoint, noCrossoverPointTwo, carNo, parentScore){
-	var id = Math.random().toString(32);
+function combineData(parents, schema, noCrossoverPoint, noCrossoverPointTwo, carNo, parentScore,noCarsCreated){
+	var id = noCarsCreated+carNo;
 	var keyIteration = 0;
 	return Object.keys(schema).reduce(function(crossDef, key){
       var schemaDef = schema[key];
@@ -36,10 +36,10 @@ function crossover(carNo,noCrossoverPoint,keyIteration,crossoverType){
 	}
 }
 
-function runCrossover(parents,crossoveType,schema, parentsScore){
+function runCrossover(parents,crossoveType,schema, parentsScore,noCarsCreated){
 	var newCars = new Array();
 	for(var i=0;i<2;i++){
-		newCars.push(combineData(parents,schema, 2 ,4 , i, parentsScore));
+		newCars.push(combineData(parents,schema, 2 ,4 , i, parentsScore,noCarsCreated));
 	}
 	return newCars;
 }

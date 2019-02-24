@@ -79,6 +79,7 @@ current problems:
 	(19/02/2019) - I do not know how i'm going to make the EA's run side by side.
 	(19/02/2019) - Optimising a scoring system for how multi-mutations can work better so that the weaker cars can be improved faster.
 	(21/02/2019) - Using the clustering makes the cars performance go up and down a lot and not continuous (21/02/2019) - this has been fixed by adding including the cars own score not just neighboring car scores
+	(24/02/2019) - The "Math.random().toString(32);" in the crossover that gives the cars unique id repeats ones already created/used in past cars, there is no evidence of this coursing problems but it could have unforseen consequences int he clustering. fixed it by changing the id system to a int or no of creation so duplication will not exist
 	
 Design considerations:
 	(19/02/2019) - using the current clustering system to target the best car crossover points

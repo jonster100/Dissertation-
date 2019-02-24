@@ -28,7 +28,7 @@ function generationZero(config){
 
 //--------------------------------------------------------------------------- my code job64
 /*This function runs a Evolutionary algorithm which uses Selection, Crossover and mutations to create the new populations of cars.*/
-function runEA(scores, config){
+function runEA(scores, config, noCarsCreated){
 	scores.sort(function(a, b){return a.score.s - b.score.s;});
 	var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex" and "wheel_density"
 	var newGeneration = new Array();
@@ -41,11 +41,12 @@ function runEA(scores, config){
 		parents.push(parent2.def);
 		scores.splice(scores.findIndex(x=> x.def.id===parents[1].id),1);
 		var parentsScore = (parent1.score.s + parent2.score.s)/2;
-		var newCars = crossover.runCrossover(parents,0,config.schema, parentsScore);
+		var newCars = crossover.runCrossover(parents,0,config.schema, parentsScore, noCarsCreated);
 		for(var i=0;i<2;i++){
 			newCars[i].is_elite = false;
 			newCars[i].index = k;
 			newGeneration.push(newCars[i]);
+			noCarsCreated++;// used in car id creation
 		}
 	}	
 	newGeneration.sort(function(a, b){return a.parentsScore - b.parentsScore;});
@@ -92,7 +93,7 @@ function nextGeneration(previousState, scores, config){
 	console.log("Log -- "+previousState.counter);
 	//console.log(scoresData);//test data
 	var eaType = 1;
-	newGeneration = (eaType===1)?runEA(scores,config):runBaselineEA(scores, config);
+	newGeneration = (eaType===1)?runEA(scores, config, clusterInt.carsArray.length):runBaselineEA(scores, config);
 	//console.log(newGeneration);//test data
 	
   return {
