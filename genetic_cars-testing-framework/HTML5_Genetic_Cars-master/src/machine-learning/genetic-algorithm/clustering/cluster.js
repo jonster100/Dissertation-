@@ -6,11 +6,20 @@ module.exports = {
 	findDataPoint: findDataPoint,
 	sortCluster: sortCluster,
 	findOjectNeighbors: findOjectNeighbors,
-	scoreObject: scoreObject
+	scoreObject: scoreObject,
+	createSubDataPointCluster:createSubDataPointCluster
 	
 }
 
 function createDataPointCluster(carDataPointType){
+	var cluster = {
+		id: carDataPointType,
+		dataArray: new Array()
+	};
+	return cluster;
+}
+
+function createSubDataPointCluster(carDataPointType){
 	var cluster = {
 		id: carDataPointType,
 		dataArray: new Array()

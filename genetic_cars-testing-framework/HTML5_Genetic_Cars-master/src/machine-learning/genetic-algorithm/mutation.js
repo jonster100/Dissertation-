@@ -50,6 +50,6 @@ function changeData(car, multiMutations, noMutations){
 
 function multiMutations(car, arrPosition, arrSize){
 	//var noMutations = (arrPosition<(arrSize/2))?(arrPosition<(arrSize/4))?4:3:(arrPosition>arrSize-(arrSize/4))?1:2;
-	var noMutations = (arrPosition<(arrSize/2))?3:1;
+	var noMutations = (arrPosition<10)?3:1;
 	return changeData(car, new Array(),noMutations);
 }

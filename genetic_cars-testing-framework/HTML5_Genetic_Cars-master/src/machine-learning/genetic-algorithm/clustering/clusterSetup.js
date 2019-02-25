@@ -1,4 +1,5 @@
 var cluster = require("./cluster.js/");
+//var carObjects = require("./car-objects.json");
 
 module.exports = {
 	setup: setup,
@@ -10,9 +11,10 @@ function setup(cars, extCluster, clusterPrecreated){
 	var clust = (clusterPrecreated===false)?setupDataClusters(cluster.createClusterInterface("newCluster")): extCluster;
 	for(var i =0;i<cars.length;i++){
 		addCarsToCluster(cars[i], clust);
-		clust.carsArray.push(cars[i].def);
+		clust.carsArray.push(cars[i]);
 	}
 	console.log(clust);//test
+	writeCarsToFile(cars);
 	return clust;
 }
 
@@ -42,7 +44,7 @@ function addDataToCluster(id, carData, score, clust){
 	}
 	else {
 		for(var i=0;i<carData.length;i++){
-			var newClust = cluster.createDataPointCluster("");
+			var newClust = cluster.createSubDataPointCluster("");
 			newClust.dataArray.push(cluster.createDataPoint(id, "", carData[i], score));
 			clust.dataArray.push(newClust);
 		}
@@ -60,3 +62,4 @@ function reScoreCars(cars, clust){
 		cars[i].score.s = score;
 	}
 }
+

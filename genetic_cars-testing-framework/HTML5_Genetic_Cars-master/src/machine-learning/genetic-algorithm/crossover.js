@@ -27,12 +27,23 @@ function combineData(parents, schema, noCrossoverPoint, noCrossoverPointTwo, car
 	});
 }
 
-function crossover(carNo,noCrossoverPoint,keyIteration,crossoverType){
+function crossover(carNo, noCrossoverPoint, noCrossoverPointTwo,keyIteration,crossoverType){
 	if(crossoverType===1){ //run one-point crossover
 		return (carNo===1)?(keyIteration>=noCrossoverPoint)?0:1:(keyIteration>=noCrossoverPoint)?1:0;// handles the fixed one-point switch over
 	}
 	else { //run two-point crossover
-		return 	(carNo===1)?((keyIteration>=noCrossoverPoint)||(keyIteration<=noCrossoverPoint))?0:1:((keyIteration>=noCrossoverPoint)||(keyIteration<=noCrossoverPoint))?1:0;// handles the fixed one-point switch over
+		if(carNo===1){
+			if(((keyIteration>noCrossoverPoint)&&(keyIteration<noCrossoverPointTwo))||((keyIteration>noCrossoverPointTwo)&&(keyIteration<noCrossoverPoint))){
+				return 0;
+			}
+			else { return 1;}
+		}
+		else{
+			if(((keyIteration>noCrossoverPoint)&&(keyIteration<noCrossoverPointTwo))||((keyIteration>noCrossoverPointTwo)&&(keyIteration<noCrossoverPoint))){
+				return 1;
+			}
+			else { return 0;}
+		}
 	}
 }
 
@@ -48,8 +59,8 @@ function getRandomInt(min, max, notEqualsArr) {
 
 function runCrossover(parents,crossoveType,schema, parentsScore,noCarsCreated){
 	var newCars = new Array();
-	var crossoverPointOne=getRandomInt(1,5, new Array());
-	var crossoverPointTwo=getRandomInt(1,5, [crossoverPointOne]);
+	var crossoverPointOne=getRandomInt(0,4, new Array());
+	var crossoverPointTwo=getRandomInt(0,4, [crossoverPointOne]);
 	for(var i=0;i<2;i++){
 		newCars.push(combineData(parents,schema, crossoverPointOne, crossoverPointTwo, i, parentsScore,noCarsCreated));
 	}
