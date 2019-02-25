@@ -14,7 +14,6 @@ function setup(cars, extCluster, clusterPrecreated){
 		clust.carsArray.push(cars[i]);
 	}
 	console.log(clust);//test
-	writeCarsToFile(cars);
 	return clust;
 }
 
@@ -53,13 +52,13 @@ function addDataToCluster(id, carData, score, clust){
 
 function reScoreCars(cars, clust){
 	for(var i=0;i<cars.length;i++){
-		var score = cars[i].score.s;
+		var score = 0;
 		for(var x=0;x<clust.arrayOfClusters.length;x++){
 			for(var y=0;y<clust.arrayOfClusters[x].dataArray.length;y++){
 				score += cluster.scoreObject(cars[i].def.id, clust.arrayOfClusters[x].dataArray[y].dataArray);
 			}
 		}
-		cars[i].score.s = score;
+		cars[i].score.s += score;
 	}
 }
 

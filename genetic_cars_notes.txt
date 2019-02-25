@@ -6,9 +6,10 @@ Evolutionary algorithm
 		- Roulette Selection = (09/02/2019)Done/Maybe 
 		- Tournament Selection = (14/02/2019)Done/Maybe 
 			!! - I need to change this selection to not use the entire population only a fraction which is to be determined
+		- I have added elitism in the selection process where the top performing car can mate twice
 	- Crossover
 		- One-Point = (14/02/2019)Done/Maybe 
-		- Two-Point = (21/02/2019)Done/Maybe - (24/02/2019)changed the crossover point to random from pre-fixed the performance has sky rocketed
+		- Two-Point = (21/02/2019)Done/Maybe - (24/02/2019)changed the crossover point to random from pre-fixed
 	
 Baseline Evolutionary algorithm = 
 	- Mutation = (11/02/2019)optimizing

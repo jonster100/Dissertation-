@@ -27,21 +27,51 @@ function generationZero(config){
 }
 
 //--------------------------------------------------------------------------- my code job64
+
+function checkGenerationAverages(generationAverageArr){
+	if((typeof generationAverageArr === "undefined")){
+		return 2;
+	}
+	else{
+		if(generationAverageArr.length<7){
+			var sumAverage = 0;
+			for(var i=0;i<7;i++){
+				sumAverage+=generationAverageArr[(generationAverageArr.length-1)-i];
+			}
+			var av =sumAverage/7;
+			return (av<generationAverageArr[(generationAverageArr.length-1)])?1:2;
+		}
+	}
+	return 2;
+}
+
+function selectParents(scores, elite){
+	var parents=new Array();
+	var parent1 = selection.runSelection(scores,2,true);
+	parents.push(parent1.def);
+	if(elite===false){
+		scores.splice(scores.findIndex(x=> x.def.id===parents[0].id),1);
+	}
+	var parent2 = selection.runSelection(scores,(elite===false)?2:1,true);
+	parents.push(parent2.def);
+	scores.splice(scores.findIndex(x=> x.def.id===parents[1].id),1);
+	var score = (parent1.score.s + parent2.score.s)/2;
+	
+	return {
+		chosenParents: parents,
+		parentsScore: score
+	}
+}
+
 /*This function runs a Evolutionary algorithm which uses Selection, Crossover and mutations to create the new populations of cars.*/
-function runEA(scores, config, noCarsCreated){
+function runEA(scores, config, noCarsCreated, generationAverageArr){
 	scores.sort(function(a, b){return a.score.s - b.score.s;});
 	var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex" and "wheel_density"
 	var newGeneration = new Array();
+	//var check = checkGenerationAverages(generationAverageArr);
 	for (var k = 0; k < 10; k++) {
-		var parents=new Array();
-		var parent1 = selection.runSelection(scores,2,true);
-		parents.push(parent1.def);
-		scores.splice(scores.findIndex(x=> x.def.id===parents[0].id),1);
-		var parent2 = selection.runSelection(scores,2,true);
-		parents.push(parent2.def);
-		scores.splice(scores.findIndex(x=> x.def.id===parents[1].id),1);
-		var parentsScore = (parent1.score.s + parent2.score.s)/2;
-		var newCars = crossover.runCrossover(parents,0,config.schema, parentsScore, noCarsCreated);
+		var parents=selectParents(scores, (k===0)?true:false);
+		var newCars = crossover.runCrossover(parents.chosenParents,0,config.schema, parents.parentsScore, noCarsCreated);
 		for(var i=0;i<2;i++){
 			newCars[i].is_elite = false;
 			newCars[i].index = k;
@@ -93,7 +123,7 @@ function nextGeneration(previousState, scores, config){
 	console.log("Log -- "+previousState.counter);
 	//console.log(scoresData);//test data
 	var eaType = 1;
-	newGeneration = (eaType===1)?runEA(scores, config, clusterInt.carsArray.length):runBaselineEA(scores, config);
+	newGeneration = (eaType===1)?runEA(scores, config, clusterInt.carsArray.length, previousState.stateAveragesArr):runBaselineEA(scores, config);
 	//console.log(newGeneration);//test data
 	
   return {
