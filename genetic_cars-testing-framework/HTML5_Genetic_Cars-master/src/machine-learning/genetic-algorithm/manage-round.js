@@ -27,6 +27,15 @@ function generationZero(config){
 }
 
 //--------------------------------------------------------------------------- my code job64
+function getRandomInt(min, max, notEqualsArr) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+	var toReturn = Math.floor(Math.random() * (max - min + 1)) + min;
+	var findIfExists = notEqualsArr.find(function(value){
+		return value===toReturn;
+	});
+    return (typeof findIfExists === "undefined")?toReturn:getRandomInt(min, max, notEqualsArr);
+}
 
 function checkGenerationAverages(generationAverageArr){
 	if((typeof generationAverageArr === "undefined")){
@@ -66,11 +75,13 @@ function selectParents(scores, elite){
 /*This function runs a Evolutionary algorithm which uses Selection, Crossover and mutations to create the new populations of cars.*/
 function runEA(scores, config, noCarsCreated, generationAverageArr){
 	scores.sort(function(a, b){return a.score.s - b.score.s;});
+	var generationSize=scores.length;
 	var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex" and "wheel_density"
 	var newGeneration = new Array();
 	//var check = checkGenerationAverages(generationAverageArr);
-	for (var k = 0; k < 10; k++) {
-		var parents=selectParents(scores, (k===0)?true:false);
+	var randomElite = getRandomInt(0,1, new Array());
+	for (var k = 0; k < generationSize/2; k++) {
+		var parents=selectParents(scores, (k===randomElite)?true:false);
 		var newCars = crossover.runCrossover(parents.chosenParents,0,config.schema, parents.parentsScore, noCarsCreated);
 		for(var i=0;i<2;i++){
 			newCars[i].is_elite = false;
@@ -96,9 +107,9 @@ function runBaselineEA(scores, config){
 	scores.sort(function(a, b){return a.score.s - b.score.s;});
 	var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex"
 	var newGeneration = new Array();
-	
+	var generationSize=scores.length;
 	console.log(scores);//test data
-	for (var k = 0; k < 20; k++) {
+	for (var k = 0; k < generationSize; k++) {
 		//newGeneration.push(mutation.mutate(scores[k].def));
 		newGeneration.push(mutation.multiMutations(scores[k].def,scores.findIndex(x=> x.def.id===scores[k].def.id),20));
 		newGeneration[k].is_elite = false;
@@ -112,7 +123,7 @@ function runBaselineEA(scores, config){
 This function handles the choosing of which Evolutionary algorithm to run and returns the new population to the simulation*/
 function nextGeneration(previousState, scores, config){
 	var clusterInt = (previousState.counter===0)?cluster.setup(scores,null,false):cluster.setup(scores,previousState.clust,true);
-	cluster.reScoreCars(scores ,clusterInt);
+	//cluster.reScoreCars(scores ,clusterInt);
 	scores.sort(function(a, b){return a.score.s - b.score.s;});
 	var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex"
 	var newGeneration = new Array();
