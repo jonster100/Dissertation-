@@ -61,7 +61,7 @@ function selectParents(scores, elite){
 	if(elite===false){
 		scores.splice(scores.findIndex(x=> x.def.id===parents[0].id),1);
 	}
-	var parent2 = selection.runSelection(scores,(elite===false)?1:1,true);
+	var parent2 = selection.runSelection(scores,(elite===false)?2:1,true);
 	parents.push(parent2.def);
 	scores.splice(scores.findIndex(x=> x.def.id===parents[1].id),1);
 	var score = (parent1.score.s + parent2.score.s)/2;
@@ -145,6 +145,14 @@ function nextGeneration(previousState, scores, config){
   };
 }
 
+function printToFile(data){
+	fs.writeFile ("initialCars.json", JSON.stringify(data), function(err) {
+    if (err) throw err;
+		console.log('complete');
+    });
+}
+
+
 //------------------------------------------------------------------------------ end of my code job64
 
 
@@ -153,6 +161,7 @@ function makeChild(config, parents){
     pickParent = config.pickParent;
   return create.createCrossBreed(schema, parents, pickParent)
 }
+
 
 
 function mutate(config, parent){

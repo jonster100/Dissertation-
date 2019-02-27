@@ -96,6 +96,9 @@ var world_def = {
 }
 
 var cw_deadCars;
+
+var arrOfGraphStates = [];
+
 var graphState = {
   cw_topScores: [],
   cw_graphAverage: [],

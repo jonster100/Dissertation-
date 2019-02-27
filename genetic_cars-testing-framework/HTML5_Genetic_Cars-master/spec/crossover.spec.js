@@ -1,7 +1,8 @@
 var crossover = require("../src/machine-learning/genetic-algorithm/crossover.js");
 var generationConfig = require("../src/generation-config");
 var create = require("../src/machine-learning/create-instance");
-//var manage = require("../src/machine-learning/genetic-algorithm/manage-round.js");
+var fs = require('fs');
+
 function generationZero(config){
   var generationSize = config.generationSize,
   schema = config.schema;
@@ -12,11 +13,19 @@ function generationZero(config){
     });
     def.index = k;
     cw_carGeneration.push(def);
+	printToFile(def);
   }
   return {
     counter: 0,
     generation: cw_carGeneration,
   };
+}
+
+function printToFile(data){
+	fs.appendFile("initialCars.json", JSON.stringify(data), function(err) {
+    if (err) throw err;
+		console.log('complete');
+    });
 }
 
 function check(runSel, generation){
