@@ -56,12 +56,12 @@ function checkGenerationAverages(generationAverageArr){
 
 function selectParents(scores, elite){
 	var parents=new Array();
-	var parent1 = selection.runSelection(scores,2,true);
+	var parent1 = selection.runSelection(scores,(elite===false)?1:2,true);
 	parents.push(parent1.def);
 	if(elite===false){
 		scores.splice(scores.findIndex(x=> x.def.id===parents[0].id),1);
 	}
-	var parent2 = selection.runSelection(scores,(elite===false)?2:1,true);
+	var parent2 = selection.runSelection(scores,(elite===false)?1:1,true);
 	parents.push(parent2.def);
 	scores.splice(scores.findIndex(x=> x.def.id===parents[1].id),1);
 	var score = (parent1.score.s + parent2.score.s)/2;

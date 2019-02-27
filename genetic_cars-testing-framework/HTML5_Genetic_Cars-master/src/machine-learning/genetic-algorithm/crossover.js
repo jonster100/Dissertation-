@@ -8,14 +8,14 @@ module.exports = {
 @param schema The data objects that car objects have such as "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex" and "wheel_density"
 @param noCrossover range of mutation passed to the new car out of 5 from either car.
 @param carNo whether this car is the first or second child for the parent cars*/
-function combineData(parents, schema, noCrossoverPoint, noCrossoverPointTwo, carNo, parentScore,noCarsCreated){
+function combineData(parents, schema, noCrossoverPoint, noCrossoverPointTwo, carNo, parentScore,noCarsCreated, crossoverType){
 	var id = noCarsCreated+carNo;
 	var keyIteration = 0;
 	return Object.keys(schema).reduce(function(crossDef, key){
       var schemaDef = schema[key];
       var values = [];
       for(var i = 0, l = schemaDef.length; i < l; i++){
-        var p = crossover(carNo, noCrossoverPoint, noCrossoverPointTwo, keyIteration,2);
+        var p = crossover(carNo, noCrossoverPoint, noCrossoverPointTwo, keyIteration,crossoverType);
         values.push(parents[p][key][i]);
       }
       crossDef[key] = values;
@@ -57,12 +57,12 @@ function getRandomInt(min, max, notEqualsArr) {
     return (typeof findIfExists === "undefined")?toReturn:getRandomInt(min, max, notEqualsArr);
 }
 
-function runCrossover(parents,crossoveType,schema, parentsScore,noCarsCreated){
+function runCrossover(parents,crossoverType,schema, parentsScore,noCarsCreated){
 	var newCars = new Array();
 	var crossoverPointOne=getRandomInt(0,4, new Array());
 	var crossoverPointTwo=getRandomInt(0,4, [crossoverPointOne]);
 	for(var i=0;i<2;i++){
-		newCars.push(combineData(parents,schema, crossoverPointOne, crossoverPointTwo, i, parentsScore,noCarsCreated));
+		newCars.push(combineData(parents,schema, crossoverPointOne, crossoverPointTwo, i, parentsScore,noCarsCreated,crossoverType));
 	}
 	return newCars;
 }
