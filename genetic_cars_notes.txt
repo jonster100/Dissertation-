@@ -2,11 +2,13 @@ Testing: -
 Evolutionary algorithm
 	- Mutation
 		- Random Mutation = (11/02/2019) Done/Maybe
+		- Multi-mutations (16/02/2019) improving
+			!! - I also need to change the range of the multi mutations and experiment to find the best one
 	- Selection
 		- Roulette Selection = (09/02/2019)Done/Maybe 
 		- Tournament Selection = (14/02/2019)Done/Maybe 
 			!! - I need to change this selection to not use the entire population only a fraction which is to be determined
-		- I have added elitism in the selection process where the top performing car can mate twice
+		- Elitism in the selection process where the top performing car can mate twice (25/02/2019) Done/Maybe
 	- Crossover
 		- One-Point = (14/02/2019)Done/Maybe 
 		- Two-Point = (21/02/2019)Done/Maybe - (24/02/2019)changed the crossover point to random from pre-fixed
@@ -15,35 +17,31 @@ Baseline Evolutionary algorithm =
 	- Mutation = (11/02/2019)optimizing
 	
 Selection Clustering
-	- Clustering back-end = (14/02/2019)-(18/02/2019)optimizing 
-	
-In-Progress
-Evolutionary algorithm
-	- Multi-mutations (16/02/2019) improving
-		!! - I also need to change the range of the multi mutations and experiment to find the best one
-		!! - The clustering selection might need to be adapted to be used alongside multi-mutations
-		
-Selection Clustering
-	- Car fitness scoring (19/02/2019) - (21/02/2019) improving
+	- Clustering back-end = (14/02/2019)-(18/02/2019) Done/Maybe 
+	- Car fitness scoring (19/02/2019) - (21/02/2019) Testing
 		!! - I will test reducing the influence this scoring method has on the final score.
 	
+In-Progress
+
+Initial population that can be read from a .json file and reused for different EA's
+
+Allow for the weaker cars to have more mutations where the stronger cars have fewer. = (16/02/2019) improving
+		
 To Do: - 
 Evolutionary algorithm
 	- Crossover
 		- Introduce reinforcement learning to optimise crossover.
 	- Mutation
 		- Exchange mutations
-		
-	- Selection??????
+	
 	
 	- Add a overall genetic algorithm to make changes to the selection used and crossover.
-	- Allow for the weaker cars to have more mutations where the stronger cars have fewer.
 
 	- look into possibly passing cars from 1 generation to another without being removed
 
 Selection Clustering
 	- look into balancing the clustering data
-	- The clustering data should be able to be outputted into a file or txt file.
+	- The clustering data should be able to be outputted into a file or txt file. (cannot do through the browser)
 	- possibly change the scoring to be strong the closer the neighbor and weaker the further away it is
 	- look into whether 1 data point has too strong of a score compared to others
 
@@ -55,10 +53,6 @@ GUI
 
 Performance results of each run instance should be outputted into a file so that the data can be analysed and compared with the different running EA's
 
-Documents
-	- Start kanban board
-	- plan testing document
-	- look more into the research section of the project
 
 Design Iterations:
 	14/02/2019 EA(v0.1) - does worse than baseline using both tournament selection with roulette selection
