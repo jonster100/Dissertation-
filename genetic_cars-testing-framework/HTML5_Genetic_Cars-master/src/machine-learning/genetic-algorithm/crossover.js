@@ -67,6 +67,7 @@ function crossover(carNo, noCrossoverPoint, noCrossoverPointTwo,keyIteration,cro
 @param schema - Car object data template used for car creation
 @param parentScore int - Average number of the parents score
 @param noCarsCreated int - number of cars created for the simulation
+@param noCarsToCreate int - the number of new cars that should be created via crossover
 @return car ObjectArray - An array of newly created cars from the crossover are returned*/
 function runCrossover(parents,crossoverType,schema, parentsScore,noCarsCreated, noCarsToCreate){
 	var newCars = new Array();

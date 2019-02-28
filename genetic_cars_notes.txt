@@ -7,8 +7,9 @@ Evolutionary algorithm
 	- Selection
 		- Roulette Selection = (09/02/2019)Done/Maybe 
 		- Tournament Selection = (14/02/2019)Done/Maybe 
-			!! - I need to change this selection to not use the entire population only a fraction which is to be determined
+			!! - I need to change this selection to not use the entire population only a fraction which is to be determined (28/02/2019) Done
 		- Increase population pressure mechanism in the selection process where the top performing car can mate twice (25/02/2019) Done/Maybe
+		- Elitism has been added where the top ranked car is passed to the next generation (28/02/2019)
 	- Crossover
 		- One-Point = (14/02/2019)Done/Maybe 
 		- Two-Point = (21/02/2019)Done/Maybe - (24/02/2019)changed the crossover point to random from pre-fixed
@@ -23,7 +24,7 @@ Selection Clustering
 	
 In-Progress
 
-Initial population that can be read from a .json file and reused for different EA's
+Initial population that can be read from a .json file and reused for different EA's (27/02/2019)
 
 Allow for the weaker cars to have more mutations where the stronger cars have fewer. = (16/02/2019) improving
 		
@@ -36,9 +37,7 @@ Evolutionary algorithm
 	
 	
 	- Add a overall genetic algorithm to make changes to the selection used and crossover.
-
-	- look into possibly passing cars from 1 generation to another without being removed
-
+	
 Selection Clustering
 	- look into balancing the clustering data
 	- The clustering data should be able to be outputted into a file or txt file. (cannot do through the browser)

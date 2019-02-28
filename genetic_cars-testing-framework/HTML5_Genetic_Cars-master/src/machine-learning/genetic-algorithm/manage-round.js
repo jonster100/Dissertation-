@@ -31,10 +31,11 @@ function generationZero(config){
 //--------------------------------------------------------------------------- my code job64
 
 /*This function Chooses which selection operator to use in the selection of two parents for two new cars such as either Tournament or Roulette-wheel selection
+@param parents ObjectArray - Adding the selected object into this array
 @param scores ObjectArray - An array of cars where the parents will be selected from
-@param elite Boolean - Whether the current selection will include an elite where if true it wont be deleted from the Object array allowing it to be used again
-@return parents/parentsScore Object - Includes the chosen two parents and the average score of the two parents*/
-function selectParents(noCar, parents, scores, increaseMate){
+@param increaseMate Boolean - Whether the current selection will include an elite where if true it wont be deleted from the Object array allowing it to be used again
+@return parentsScore int - returns the average score of the parents*/
+function selectParents(parents, scores, increaseMate){
 	var parent1 = selection.runSelection(scores,(increaseMate===false)?2:2,true, true);
 	parents.push(parent1.def);
 	if(increaseMate===false){
@@ -44,20 +45,6 @@ function selectParents(noCar, parents, scores, increaseMate){
 	parents.push(parent2.def);
 	scores.splice(scores.findIndex(x=> x.def.id===parents[1].id),1);
 	return (parent1.score.s + parent2.score.s)/2;
-	/*if(noCar===0){
-		var parent1 = selection.runSelection(scores,(increaseMate===false)?2:2,true, true);
-		parents.push(parent1.def);
-		if(increaseMate===false){
-			scores.splice(scores.findIndex(x=> x.def.id===parent1.id),1);
-		}
-		return parent1.score.s;
-	}else if(noCar===1){
-		var parent2 = selection.runSelection(scores,(increaseMate===false)?2:1,true, true);
-		parents.push(parent2.def);
-		scores.splice(scores.findIndex(x=> x.def.id===parent2.id),1);
-		return parent2.score.s;
-	}*/
-	
 }
 
 /*This function runs a Evolutionary algorithm which uses Selection, Crossover and mutations to create the new populations of cars.
@@ -77,10 +64,9 @@ function runEA(scores, config, noCarsCreated){
 		newElite.elite = true;
 		newGeneration.push(newElite);
 	}
-	var noCars = 0;
 	for(var k = 0;k<generationSize/2;k++){
 		var pickedParents = [];
-		var parentsScore = selectParents(noCars, pickedParents, scores, ((k===randomMateIncrease)&&(mateIncrease===true))?true:false); 
+		var parentsScore = selectParents(pickedParents, scores, ((k===randomMateIncrease)&&(mateIncrease===true))?true:false); 
 			var newCars = crossover.runCrossover(pickedParents,0,config.schema, parentsScore, noCarsCreated, (newGeneration.length===39)?1:2);
 			for(var i=0;i<newCars.length;i++){
 				newCars[i].elite = false;
