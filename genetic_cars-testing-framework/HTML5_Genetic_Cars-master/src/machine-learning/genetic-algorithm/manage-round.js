@@ -27,6 +27,12 @@ function generationZero(config){
 }
 
 //--------------------------------------------------------------------------- my code job64
+
+/*This is a recursive function which returns whole ints between a minimum and maximum
+@param min int - The minimum int that can be returned
+@param max int - The maximum int that can be returned
+@param notEqualsArr intArray - An array of the ints that the function should not return
+@return int - The int within the specified parameter bounds is returned.*/
 function getRandomInt(min, max, notEqualsArr) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -37,23 +43,10 @@ function getRandomInt(min, max, notEqualsArr) {
     return (typeof findIfExists === "undefined")?toReturn:getRandomInt(min, max, notEqualsArr);
 }
 
-function checkGenerationAverages(generationAverageArr){
-	if((typeof generationAverageArr === "undefined")){
-		return 2;
-	}
-	else{
-		if(generationAverageArr.length<7){
-			var sumAverage = 0;
-			for(var i=0;i<7;i++){
-				sumAverage+=generationAverageArr[(generationAverageArr.length-1)-i];
-			}
-			var av =sumAverage/7;
-			return (av<generationAverageArr[(generationAverageArr.length-1)])?1:2;
-		}
-	}
-	return 2;
-}
-
+/*This function Chooses which selection operator to use in the selection of two parents for two new cars such as either Tournament or Roulette-wheel selection
+@param scores ObjectArray - An array of cars where the parents will be selected from
+@param elite Boolean - Whether the current selection will include an elite where if true it wont be deleted from the Object array allowing it to be used again
+@return parents/parentsScore Object - Includes the chosen two parents and the average score of the two parents*/
 function selectParents(scores, elite){
 	var parents=new Array();
 	var parent1 = selection.runSelection(scores,(elite===false)?1:2,true);
@@ -72,13 +65,16 @@ function selectParents(scores, elite){
 	}
 }
 
-/*This function runs a Evolutionary algorithm which uses Selection, Crossover and mutations to create the new populations of cars.*/
-function runEA(scores, config, noCarsCreated, generationAverageArr){
+/*This function runs a Evolutionary algorithm which uses Selection, Crossover and mutations to create the new populations of cars.
+@param scores ObjectArray - An array which holds the car objects and there performance scores
+@param config - This is the generationConfig file passed through which gives the cars template/blueprint for creation
+@param noCarsCreated int - The number of cars there currently exist used for creating the id of new cars
+@return newGeneration ObjectArray - is returned with all the newly created cars that will be in the simulation*/
+function runEA(scores, config, noCarsCreated){
 	scores.sort(function(a, b){return a.score.s - b.score.s;});
 	var generationSize=scores.length;
 	var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex" and "wheel_density"
 	var newGeneration = new Array();
-	//var check = checkGenerationAverages(generationAverageArr);
 	var randomElite = getRandomInt(0,1, new Array());
 	for (var k = 0; k < generationSize/2; k++) {
 		var parents=selectParents(scores, (k===randomElite)?true:false);
@@ -100,9 +96,9 @@ function runEA(scores, config, noCarsCreated, generationAverageArr){
 }
 
 /*This function runs the Baseline Evolutionary algorithm which only runs a mutation or multiMutations over all the cars passed though in the scores parameter.
-@param scores Array This parameter is an array of cars that holds the score statistics and car data such as id and "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex" and "wheel_density"
-@param config This passes a file with functions that can be called.
-@return newGeneration this is the new population that have had mutations applied to them.*/
+@param scores Array - This parameter is an array of cars that holds the score statistics and car data such as id and "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex" and "wheel_density"
+@param config - This passes a file with functions that can be called.
+@return newGeneration - this is the new population that have had mutations applied to them.*/
 function runBaselineEA(scores, config){
 	scores.sort(function(a, b){return a.score.s - b.score.s;});
 	var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex"
@@ -144,14 +140,6 @@ function nextGeneration(previousState, scores, config){
 	stateAveragesArr: stateAverage
   };
 }
-
-function printToFile(data){
-	fs.writeFile ("initialCars.json", JSON.stringify(data), function(err) {
-    if (err) throw err;
-		console.log('complete');
-    });
-}
-
 
 //------------------------------------------------------------------------------ end of my code job64
 

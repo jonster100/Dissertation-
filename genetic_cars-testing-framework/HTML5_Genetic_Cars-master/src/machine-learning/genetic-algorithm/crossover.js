@@ -4,10 +4,15 @@ module.exports = {
 }
 
 /*This function creates the acual new car and returned. The function runs a one-point crossover taking data from the parents passed through and adding them to the new car.
-@param parents Data is taken from these cars and added to the new car using crossover.
-@param schema The data objects that car objects have such as "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex" and "wheel_density"
-@param noCrossover range of mutation passed to the new car out of 5 from either car.
-@param carNo whether this car is the first or second child for the parent cars*/
+@param parents ObjectArray - Data is taken from these cars and added to the new car using crossover.
+@param schema - The data objects that car objects have such as "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex" and "wheel_density"
+@param noCrossoverPoint int - The first crossover point randomly generated
+@param noCrossoverPointTwo int - The second crossover point randomly generated 
+@param carNo int - whether this car is the first or second child for the parent cars
+@param parentScore int - The average score of the two parents
+@param noCarsCreated int - The number of cars created so far, used for the new cars id
+@param crossoverType int - The type of crossover to use such as 1 for One point crossover any other Two point crossover
+@return car Object - A car object is created and returned*/
 function combineData(parents, schema, noCrossoverPoint, noCrossoverPointTwo, carNo, parentScore,noCarsCreated, crossoverType){
 	var id = noCarsCreated+carNo;
 	var keyIteration = 0;
@@ -15,7 +20,7 @@ function combineData(parents, schema, noCrossoverPoint, noCrossoverPointTwo, car
       var schemaDef = schema[key];
       var values = [];
       for(var i = 0, l = schemaDef.length; i < l; i++){
-        var p = crossover(carNo, noCrossoverPoint, noCrossoverPointTwo, keyIteration,crossoverType);
+        var p = crossover(carNo, noCrossoverPoint, noCrossoverPointTwo, keyIteration, crossoverType);
         values.push(parents[p][key][i]);
       }
       crossDef[key] = values;
@@ -27,6 +32,13 @@ function combineData(parents, schema, noCrossoverPoint, noCrossoverPointTwo, car
 	});
 }
 
+/*This function chooses which car the data is taken from based on the parameters given to the function
+@param carNo int - This is the number of the car being created between 1-2, filters cars data is being taken
+@param noCrossoverPoint int - The first crossover point where data before or after the point is taken
+@param noCrossoverPointTwo int - The second crossover point where data is before or after the point is taken
+@param keyIteration int - This is the point at which the crossover is currently at which help specifies which cars data is relavent to take comparing this point to the one/two crossove points
+@param crossoveType int - This specifies if one point(1) or two point crossover(any int) is used
+@return int - Which parent data should be taken from is returned either 0 or 1*/
 function crossover(carNo, noCrossoverPoint, noCrossoverPointTwo,keyIteration,crossoverType){
 	if(crossoverType===1){ //run one-point crossover
 		return (carNo===1)?(keyIteration>=noCrossoverPoint)?0:1:(keyIteration>=noCrossoverPoint)?1:0;// handles the fixed one-point switch over
@@ -47,6 +59,11 @@ function crossover(carNo, noCrossoverPoint, noCrossoverPointTwo,keyIteration,cro
 	}
 }
 
+/*This is a recursive function which returns whole ints between a minimum and maximum
+@param min int - The minimum int that can be returned
+@param max int - The maximum int that can be returned
+@param notEqualsArr intArray - An array of the ints that the function should not return
+@return int - The int within the specified parameter bounds is returned.*/
 function getRandomInt(min, max, notEqualsArr) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -57,6 +74,13 @@ function getRandomInt(min, max, notEqualsArr) {
     return (typeof findIfExists === "undefined")?toReturn:getRandomInt(min, max, notEqualsArr);
 }
 
+/*This function randomly generates two crossover points and passes them to the crossover function
+@param parents ObjectArray - An array of the parents objects
+@param crossoverTpye int - Specified which crossover should be used
+@param schema - Car object data template used for car creation
+@param parentScore int - Average number of the parents score
+@param noCarsCreated int - number of cars created for the simulation
+@return car ObjectArray - An array of newly created cars from the crossover are returned*/
 function runCrossover(parents,crossoverType,schema, parentsScore,noCarsCreated){
 	var newCars = new Array();
 	var crossoverPointOne=getRandomInt(0,4, new Array());
