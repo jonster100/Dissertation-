@@ -1,17 +1,9 @@
+var randomInt = require("./randomInt.js/");
+var getRandomInt = randomInt.getRandomInt;
 
 module.exports = {
 	mutate: mutate,
 	multiMutations: multiMutations
-}
-
-function getRandomInt(min, max, notEqualsArr) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-	var toReturn = Math.floor(Math.random() * (max - min + 1)) + min;
-	var findIfExists = notEqualsArr.find(function(value){
-		return value===toReturn;
-	});
-    return (typeof findIfExists === "undefined")?toReturn:getRandomInt(min, max, notEqualsArr);
 }
 
 function changeArrayValue(originalValue){

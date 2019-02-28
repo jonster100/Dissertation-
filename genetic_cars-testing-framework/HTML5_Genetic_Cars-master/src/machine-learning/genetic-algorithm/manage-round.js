@@ -3,6 +3,8 @@ var selection = require("./selection.js/");
 var mutation = require("./mutation.js/");
 var crossover = require("./crossover.js/");
 var cluster = require("./clustering/clusterSetup.js/");
+var randomInt = require("./randomInt.js/");
+var getRandomInt = randomInt.getRandomInt;
 
 module.exports = {
   generationZero: generationZero,
@@ -28,33 +30,18 @@ function generationZero(config){
 
 //--------------------------------------------------------------------------- my code job64
 
-/*This is a recursive function which returns whole ints between a minimum and maximum
-@param min int - The minimum int that can be returned
-@param max int - The maximum int that can be returned
-@param notEqualsArr intArray - An array of the ints that the function should not return
-@return int - The int within the specified parameter bounds is returned.*/
-function getRandomInt(min, max, notEqualsArr) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-	var toReturn = Math.floor(Math.random() * (max - min + 1)) + min;
-	var findIfExists = notEqualsArr.find(function(value){
-		return value===toReturn;
-	});
-    return (typeof findIfExists === "undefined")?toReturn:getRandomInt(min, max, notEqualsArr);
-}
-
 /*This function Chooses which selection operator to use in the selection of two parents for two new cars such as either Tournament or Roulette-wheel selection
 @param scores ObjectArray - An array of cars where the parents will be selected from
 @param elite Boolean - Whether the current selection will include an elite where if true it wont be deleted from the Object array allowing it to be used again
 @return parents/parentsScore Object - Includes the chosen two parents and the average score of the two parents*/
-function selectParents(scores, elite){
+function selectParents(scores, increaseMate){
 	var parents=new Array();
-	var parent1 = selection.runSelection(scores,(elite===false)?1:2,true);
+	var parent1 = selection.runSelection(scores,(increaseMate===false)?2:2,true, true);
 	parents.push(parent1.def);
-	if(elite===false){
+	if(increaseMate===false){
 		scores.splice(scores.findIndex(x=> x.def.id===parents[0].id),1);
 	}
-	var parent2 = selection.runSelection(scores,(elite===false)?2:1,true);
+	var parent2 = selection.runSelection(scores,(increaseMate===false)?2:1,true, true);
 	parents.push(parent2.def);
 	scores.splice(scores.findIndex(x=> x.def.id===parents[1].id),1);
 	var score = (parent1.score.s + parent2.score.s)/2;

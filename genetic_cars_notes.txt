@@ -8,7 +8,7 @@ Evolutionary algorithm
 		- Roulette Selection = (09/02/2019)Done/Maybe 
 		- Tournament Selection = (14/02/2019)Done/Maybe 
 			!! - I need to change this selection to not use the entire population only a fraction which is to be determined
-		- Elitism in the selection process where the top performing car can mate twice (25/02/2019) Done/Maybe
+		- Increase population pressure mechanism in the selection process where the top performing car can mate twice (25/02/2019) Done/Maybe
 	- Crossover
 		- One-Point = (14/02/2019)Done/Maybe 
 		- Two-Point = (21/02/2019)Done/Maybe - (24/02/2019)changed the crossover point to random from pre-fixed

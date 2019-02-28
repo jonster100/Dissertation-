@@ -1,3 +1,5 @@
+var randomInt = require("./randomInt.js/");
+var getRandomInt = randomInt.getRandomInt;
 
 module.exports = {
 	runCrossover: runCrossover
@@ -57,21 +59,6 @@ function crossover(carNo, noCrossoverPoint, noCrossoverPointTwo,keyIteration,cro
 			else { return 0;}
 		}
 	}
-}
-
-/*This is a recursive function which returns whole ints between a minimum and maximum
-@param min int - The minimum int that can be returned
-@param max int - The maximum int that can be returned
-@param notEqualsArr intArray - An array of the ints that the function should not return
-@return int - The int within the specified parameter bounds is returned.*/
-function getRandomInt(min, max, notEqualsArr) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-	var toReturn = Math.floor(Math.random() * (max - min + 1)) + min;
-	var findIfExists = notEqualsArr.find(function(value){
-		return value===toReturn;
-	});
-    return (typeof findIfExists === "undefined")?toReturn:getRandomInt(min, max, notEqualsArr);
 }
 
 /*This function randomly generates two crossover points and passes them to the crossover function
