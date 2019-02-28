@@ -10,8 +10,10 @@ module.exports = {
 function setup(cars, extCluster, clusterPrecreated){
 	var clust = (clusterPrecreated===false)?setupDataClusters(cluster.createClusterInterface("newCluster")): extCluster;
 	for(var i =0;i<cars.length;i++){
-		addCarsToCluster(cars[i], clust);
-		clust.carsArray.push(cars[i]);
+		if(cars[i].def.elite===false){
+			addCarsToCluster(cars[i], clust);
+			clust.carsArray.push(cars[i]);
+		}
 	}
 	console.log(clust);//test
 	return clust;

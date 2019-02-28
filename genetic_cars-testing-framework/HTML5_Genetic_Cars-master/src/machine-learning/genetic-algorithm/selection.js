@@ -9,6 +9,7 @@ This function changes the type of selection used depending on the parameter numb
 @param strongest boolean  - this parameter is passed through to the tournamentSelection function where true is return the strongest and false get weakest
 @param selectType int - this parameter determines the type of selection used.
 @param carsArr Array - this parameter is the population which the selection functions are used on.
+@param useSubSet boolean - true if you want tournamentSelection to use sub sets not the global population
 @return ObjectArray - the parents array of two is returned from either tournament or roullete wheel selection*/
 function runSelection(carsArr, selectType, strongest, useSubSet){
 	if(selectType===1){
@@ -58,14 +59,13 @@ function tournamentSelection(carsArr, strongest, subSetRange, useSubSet){
 	var subSet = [];
 	if(useSubSet===true){
 	var chosenInts = [];
-	var subSetPosition = getRandomInt(0,carsArr.length,[]);
 	for(var i =0;i<subSetRange;i++){
-		var chosenNo = getRandomInt(0,carsArr.length,chosenInts);
+		var chosenNo = getRandomInt(0,carsArr.length-1,chosenInts);
 		chosenInts.push(chosenNo);
 		subSet.push(carsArr[chosenNo]);
 	}
+	}
 	(useSubSet===true)?subSet:carsArr.sort(function(a,b){return (strongest===true)?b.score.s - a.score.s:a.score.s - a.score.b;});
-	
 	return (useSubSet===true)?subSet[0]:carsArr[0];
 }
 

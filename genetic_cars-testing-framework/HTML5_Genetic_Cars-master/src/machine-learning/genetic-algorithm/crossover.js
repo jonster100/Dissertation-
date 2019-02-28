@@ -68,11 +68,11 @@ function crossover(carNo, noCrossoverPoint, noCrossoverPointTwo,keyIteration,cro
 @param parentScore int - Average number of the parents score
 @param noCarsCreated int - number of cars created for the simulation
 @return car ObjectArray - An array of newly created cars from the crossover are returned*/
-function runCrossover(parents,crossoverType,schema, parentsScore,noCarsCreated){
+function runCrossover(parents,crossoverType,schema, parentsScore,noCarsCreated, noCarsToCreate){
 	var newCars = new Array();
 	var crossoverPointOne=getRandomInt(0,4, new Array());
 	var crossoverPointTwo=getRandomInt(0,4, [crossoverPointOne]);
-	for(var i=0;i<2;i++){
+	for(var i=0;i<noCarsToCreate;i++){
 		newCars.push(combineData(parents,schema, crossoverPointOne, crossoverPointTwo, i, parentsScore,noCarsCreated,crossoverType));
 	}
 	return newCars;

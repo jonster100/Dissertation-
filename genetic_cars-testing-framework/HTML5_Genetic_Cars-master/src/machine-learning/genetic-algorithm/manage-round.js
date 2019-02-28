@@ -34,8 +34,7 @@ function generationZero(config){
 @param scores ObjectArray - An array of cars where the parents will be selected from
 @param elite Boolean - Whether the current selection will include an elite where if true it wont be deleted from the Object array allowing it to be used again
 @return parents/parentsScore Object - Includes the chosen two parents and the average score of the two parents*/
-function selectParents(scores, increaseMate){
-	var parents=new Array();
+function selectParents(noCar, parents, scores, increaseMate){
 	var parent1 = selection.runSelection(scores,(increaseMate===false)?2:2,true, true);
 	parents.push(parent1.def);
 	if(increaseMate===false){
@@ -44,12 +43,21 @@ function selectParents(scores, increaseMate){
 	var parent2 = selection.runSelection(scores,(increaseMate===false)?2:1,true, true);
 	parents.push(parent2.def);
 	scores.splice(scores.findIndex(x=> x.def.id===parents[1].id),1);
-	var score = (parent1.score.s + parent2.score.s)/2;
+	return (parent1.score.s + parent2.score.s)/2;
+	/*if(noCar===0){
+		var parent1 = selection.runSelection(scores,(increaseMate===false)?2:2,true, true);
+		parents.push(parent1.def);
+		if(increaseMate===false){
+			scores.splice(scores.findIndex(x=> x.def.id===parent1.id),1);
+		}
+		return parent1.score.s;
+	}else if(noCar===1){
+		var parent2 = selection.runSelection(scores,(increaseMate===false)?2:1,true, true);
+		parents.push(parent2.def);
+		scores.splice(scores.findIndex(x=> x.def.id===parent2.id),1);
+		return parent2.score.s;
+	}*/
 	
-	return {
-		chosenParents: parents,
-		parentsScore: score
-	}
 }
 
 /*This function runs a Evolutionary algorithm which uses Selection, Crossover and mutations to create the new populations of cars.
@@ -58,27 +66,38 @@ function selectParents(scores, increaseMate){
 @param noCarsCreated int - The number of cars there currently exist used for creating the id of new cars
 @return newGeneration ObjectArray - is returned with all the newly created cars that will be in the simulation*/
 function runEA(scores, config, noCarsCreated){
-	scores.sort(function(a, b){return a.score.s - b.score.s;});
+	scores.sort(function(a, b){return b.score.s - a.score.s;});
 	var generationSize=scores.length;
-	var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex" and "wheel_density"
 	var newGeneration = new Array();
-	var randomElite = getRandomInt(0,1, new Array());
-	for (var k = 0; k < generationSize/2; k++) {
-		var parents=selectParents(scores, (k===randomElite)?true:false);
-		var newCars = crossover.runCrossover(parents.chosenParents,0,config.schema, parents.parentsScore, noCarsCreated);
-		for(var i=0;i<2;i++){
-			newCars[i].is_elite = false;
-			newCars[i].index = k;
-			newGeneration.push(newCars[i]);
-			noCarsCreated++;// used in car id creation
-		}
+	var randomMateIncrease = getRandomInt(1,2, new Array());
+	var mateIncrease = false;
+	var noElites=1;
+	for(var i=0;i<noElites;i++){//add new elites to newGeneration
+		var newElite = scores[0].def;
+		newElite.elite = true;
+		newGeneration.push(newElite);
+	}
+	var noCars = 0;
+	for(var k = 0;k<generationSize/2;k++){
+		var pickedParents = [];
+		var parentsScore = selectParents(noCars, pickedParents, scores, ((k===randomMateIncrease)&&(mateIncrease===true))?true:false); 
+			var newCars = crossover.runCrossover(pickedParents,0,config.schema, parentsScore, noCarsCreated, (newGeneration.length===39)?1:2);
+			for(var i=0;i<newCars.length;i++){
+				newCars[i].elite = false;
+				newCars[i].index = k;
+				newGeneration.push(newCars[i]);
+				noCarsCreated++;// used in car id creation
+			}
 	}	
 	newGeneration.sort(function(a, b){return a.parentsScore - b.parentsScore;});
 	for(var x = 0;x<newGeneration.length;x++){
 			var currentID = newGeneration[x].id;
-			newGeneration[x] = mutation.multiMutations(newGeneration[x],newGeneration.findIndex(x=> x.id===currentID),20);
+			if(newGeneration[x].elite===false){
+				newGeneration[x] = mutation.multiMutations(newGeneration[x],newGeneration.findIndex(x=> x.id===currentID),20);
+			}
 			//newGeneration[x] = mutation.mutate(newGeneration[x]);
 		}
+		console.log(newGeneration);
 	return newGeneration;
 }
 
@@ -88,7 +107,7 @@ function runEA(scores, config, noCarsCreated){
 @return newGeneration - this is the new population that have had mutations applied to them.*/
 function runBaselineEA(scores, config){
 	scores.sort(function(a, b){return a.score.s - b.score.s;});
-	var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex"
+	var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex" and "wheel_density"
 	var newGeneration = new Array();
 	var generationSize=scores.length;
 	console.log(scores);//test data
