@@ -13,8 +13,12 @@ function generationZero(config){
     });
     def.index = k;
     cw_carGeneration.push(def);
-	printToFile(def);
   }
+	/*var obj = {
+		name: "objects",
+		array: cw_carGeneration 
+	}
+	printToFile(obj);*/
   return {
     counter: 0,
     generation: cw_carGeneration,
@@ -66,7 +70,7 @@ describe("Crossover test suite", function(){
 		var arr = [];
 		arr.push(generation[0]);
 		arr.push(generation[1]);
-		var runSel = crossover.runCrossover(arr, 1, schema, 0, generation.length);
+		var runSel = crossover.runCrossover(arr, 1, schema, 0, generation.length,2);
 		
 		expect(check(runSel, generation)).toBe(true);
 	});
@@ -74,7 +78,7 @@ describe("Crossover test suite", function(){
 		var arr = [];
 		arr.push(generation[0]);
 		arr.push(generation[1]);
-		var runSel = crossover.runCrossover(arr, 2, schema, 0, generation.length);
+		var runSel = crossover.runCrossover(arr, 2, schema, 0, generation.length,2);
 		
 		expect(check(runSel, generation)).toBe(true);
 	});

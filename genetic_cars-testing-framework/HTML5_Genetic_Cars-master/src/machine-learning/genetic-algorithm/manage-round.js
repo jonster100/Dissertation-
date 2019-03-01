@@ -14,13 +14,19 @@ module.exports = {
 function generationZero(config){
   var generationSize = config.generationSize,
   schema = config.schema;
+  var useFile = true;
   var cw_carGeneration = [];
-  for (var k = 0; k < generationSize; k++) {
-    var def = create.createGenerationZero(schema, function(){
-      return Math.random()
-    });
-    def.index = k;
-    cw_carGeneration.push(def);
+  if(useFile===true){
+	  cw_carGeneration= readFile();
+  }
+  else {
+	  for (var k = 0; k < generationSize; k++) {
+		var def = create.createGenerationZero(schema, function(){
+		return Math.random()
+		});
+		def.index = k;
+		cw_carGeneration.push(def);
+	}
   }
   return {
     counter: 0,
@@ -29,6 +35,16 @@ function generationZero(config){
 }
 
 //--------------------------------------------------------------------------- my code job64
+/*This function loads an initial car population from a .json file*/
+function readFile(){
+	var fs = require('fs');
+	var array = [];
+	var file = require("./initialCars.json/");
+	for(var i = 0;i<file.array.length;i++){
+		array.push(file.array[i]);
+	}
+	return array;
+}
 
 /*This function Chooses which selection operator to use in the selection of two parents for two new cars such as either Tournament or Roulette-wheel selection
 @param parents ObjectArray - Adding the selected object into this array
