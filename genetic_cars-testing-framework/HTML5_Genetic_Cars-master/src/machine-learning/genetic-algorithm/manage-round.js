@@ -73,16 +73,19 @@ function runEA(scores, config, noCarsCreated){
 	var generationSize=scores.length;
 	var newGeneration = new Array();
 	var randomMateIncrease = getRandomInt(1,2, new Array());
-	var mateIncrease = false;
-	var noElites=1;
+	var maxNoMatesIncreases = 0;
+	var currentNoMateIncreases = 1;
+	var noElites=3;
 	for(var i=0;i<noElites;i++){//add new elites to newGeneration
 		var newElite = scores[0].def;
 		newElite.elite = true;
 		newGeneration.push(newElite);
 	}
 	for(var k = 0;k<generationSize/2;k++){
+		if(newGeneration.length!==40){
 		var pickedParents = [];
-		var parentsScore = selectParents(pickedParents, scores, ((k===randomMateIncrease)&&(mateIncrease===true))?true:false); 
+		var parentsScore = selectParents(pickedParents, scores, ((k===randomMateIncrease)&&(currentNoMateIncreases<maxNoMatesIncreases))?true:false); 
+		currentNoMateIncreases += (currentNoMateIncreases<maxNoMatesIncreases)1:0;
 			var newCars = crossover.runCrossover(pickedParents,0,config.schema, parentsScore, noCarsCreated, (newGeneration.length===39)?1:2);
 			for(var i=0;i<newCars.length;i++){
 				newCars[i].elite = false;
@@ -90,6 +93,7 @@ function runEA(scores, config, noCarsCreated){
 				newGeneration.push(newCars[i]);
 				noCarsCreated++;// used in car id creation
 			}
+		}
 	}	
 	newGeneration.sort(function(a, b){return a.parentsScore - b.parentsScore;});
 	for(var x = 0;x<newGeneration.length;x++){
