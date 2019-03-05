@@ -22,9 +22,11 @@ Selection Clustering
 	- Car fitness scoring (19/02/2019) - (21/02/2019) Testing
 		!! - I will test reducing the influence this scoring method has on the final score.
 	
-In-Progress
 
-Initial population that can be read from a .json file and reused for different EA's (27/02/2019)
+Initial population that can be read from a .json file and reused for different EA's (27/02/2019) - (01/03/2019)
+
+In-Progress
+	- Unit testing = (01/03/2019)
 
 Allow for the weaker cars to have more mutations where the stronger cars have fewer. = (16/02/2019) improving
 		
@@ -37,14 +39,20 @@ Evolutionary algorithm
 	
 	
 	- Add a overall genetic algorithm to make changes to the selection used and crossover.
+
+Testing Performance - (07/03/2019) - (21/03/2019)  
+	- Elitism - 3 days
+	- Clustering - 3 days
+	- Mutation - 3 days
+	- MatingIncrease - 3 days
 	
-Selection Clustering
+Selection Clustering - optional
 	- look into balancing the clustering data
 	- The clustering data should be able to be outputted into a file or txt file. (cannot do through the browser)
 	- possibly change the scoring to be strong the closer the neighbor and weaker the further away it is
 	- look into whether 1 data point has too strong of a score compared to others
 
-GUI
+GUI - not doing because of the limited framework
 	- List of car results from the baseline EA
 	- List of car results from the new EA
 	- Ability to look at performance over time
@@ -67,6 +75,7 @@ Design Iterations:
 		
 	24/02/2019 EA(v0.4) - This iteration has a working clustering scoring system in combination with two selection operators, two mutation operators and two cross-over operators
 		at this point i will mostly be fine tuning the different operators so they work better at improving car performance and may further include dynamic changing of operators using the previous average scores of the run rounds
+	
 	
 current problems:
 	(19/02/2019) - The weaker cars are not improving over time there are spikes in improvement but it goes back down due to the mutation.
