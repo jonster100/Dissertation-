@@ -14,7 +14,7 @@ module.exports = {
 function generationZero(config){
   var generationSize = config.generationSize,
   schema = config.schema;
-  var useFile = true;
+  var useFile = false;
   var cw_carGeneration = [];
   if(useFile===true){
 	  cw_carGeneration= readFile();
@@ -52,12 +52,12 @@ function readFile(){
 @param increaseMate Boolean - Whether the current selection will include an elite where if true it wont be deleted from the Object array allowing it to be used again
 @return parentsScore int - returns the average score of the parents*/
 function selectParents(parents, scores, increaseMate){
-	var parent1 = selection.runSelection(scores,(increaseMate===false)?2:2,true, true);
+	var parent1 = selection.runSelection(scores,(increaseMate===false)?2:2,true, true, true);
 	parents.push(parent1.def);
 	if(increaseMate===false){
 		scores.splice(scores.findIndex(x=> x.def.id===parents[0].id),1);
 	}
-	var parent2 = selection.runSelection(scores,(increaseMate===false)?2:1,true, true);
+	var parent2 = selection.runSelection(scores,(increaseMate===false)?2:2,true, true, true);
 	parents.push(parent2.def);
 	scores.splice(scores.findIndex(x=> x.def.id===parents[1].id),1);
 	return (parent1.score.s + parent2.score.s)/2;
@@ -72,7 +72,7 @@ function runEA(scores, config, noCarsCreated){
 	scores.sort(function(a, b){return b.score.s - a.score.s;});
 	var generationSize=scores.length;
 	var newGeneration = new Array();
-	var randomMateIncrease = getRandomInt(1,2, new Array());
+	var randomMateIncrease = getRandomInt(0,maxNoMatesIncreases, new Array());
 	var maxNoMatesIncreases = 0;
 	var currentNoMateIncreases = 1;
 	var noElites=3;
@@ -85,7 +85,7 @@ function runEA(scores, config, noCarsCreated){
 		if(newGeneration.length!==40){
 		var pickedParents = [];
 		var parentsScore = selectParents(pickedParents, scores, ((k===randomMateIncrease)&&(currentNoMateIncreases<maxNoMatesIncreases))?true:false); 
-		currentNoMateIncreases += (currentNoMateIncreases<maxNoMatesIncreases)1:0;
+		//currentNoMateIncreases += (currentNoMateIncreases<maxNoMatesIncreases)1:0;
 			var newCars = crossover.runCrossover(pickedParents,0,config.schema, parentsScore, noCarsCreated, (newGeneration.length===39)?1:2);
 			for(var i=0;i<newCars.length;i++){
 				newCars[i].elite = false;
@@ -99,9 +99,9 @@ function runEA(scores, config, noCarsCreated){
 	for(var x = 0;x<newGeneration.length;x++){
 			var currentID = newGeneration[x].id;
 			if(newGeneration[x].elite===false){
-				newGeneration[x] = mutation.multiMutations(newGeneration[x],newGeneration.findIndex(x=> x.id===currentID),20);
+				//newGeneration[x] = mutation.multiMutations(newGeneration[x],newGeneration.findIndex(x=> x.id===currentID),20);
+				newGeneration[x] = mutation.mutate(newGeneration[x]);
 			}
-			//newGeneration[x] = mutation.mutate(newGeneration[x]);
 		}
 		console.log(newGeneration);
 	return newGeneration;
@@ -130,26 +130,22 @@ function runBaselineEA(scores, config){
 /*
 This function handles the choosing of which Evolutionary algorithm to run and returns the new population to the simulation*/
 function nextGeneration(previousState, scores, config){
-	var clusterInt = (previousState.counter===0)?cluster.setup(scores,null,false):cluster.setup(scores,previousState.clust,true);
+	//var clusterInt = (previousState.counter===0)?cluster.setup(scores,null,false):cluster.setup(scores,previousState.clust,true);
 	//cluster.reScoreCars(scores ,clusterInt);
 	scores.sort(function(a, b){return a.score.s - b.score.s;});
+	var numberOfCars = (previousState.counter===0)?40:previousState.noCars+40;
 	var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex"
 	var newGeneration = new Array();
-	var stateAverage = (previousState.counter===0)?new Array():previousState.stateAveragesArr;
-	var averageScore = 0;
-	for(var i=0;i<scores.length;i++){averageScore+=scores[i].score.s;}
-	stateAverage.push(averageScore/scores.length);
 	console.log("Log -- "+previousState.counter);
 	//console.log(scoresData);//test data
 	var eaType = 1;
-	newGeneration = (eaType===1)?runEA(scores, config, clusterInt.carsArray.length, previousState.stateAveragesArr):runBaselineEA(scores, config);
+	newGeneration = (eaType===1)?runEA(scores, config, numberOfCars, previousState.stateAveragesArr):runBaselineEA(scores, config);
 	//console.log(newGeneration);//test data
-	
   return {
     counter: previousState.counter + 1,
     generation: newGeneration,
-	clust: clusterInt,
-	stateAveragesArr: stateAverage
+	//clust: clusterInt,
+	noCars: numberOfCars
   };
 }
 
