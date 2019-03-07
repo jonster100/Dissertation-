@@ -11,7 +11,7 @@ This function changes the type of selection used depending on the parameter numb
 @param carsArr Array - this parameter is the population which the selection functions are used on.
 @param useSubSet boolean - true if you want tournamentSelection to use sub sets not the global population
 @return ObjectArray - the parents array of two is returned from either tournament or roullete wheel selection*/
-function runSelection(carsArr, selectType, strongest, useSubSet){
+function runSelection(carsArr, selectType, strongest, useSubSet, uniform){
 	if(selectType===1){
 		return rouleteWheelSel(carsArr, false);
 	} 
@@ -25,6 +25,7 @@ function runSelection(carsArr, selectType, strongest, useSubSet){
 @param uniform boolean - whether the selection should be uniform
 @return car Object - A car object is returned after selection*/
 function rouleteWheelSel(carsArr, uniform){
+	if(uniform ===false){
 		var sumCarScore = 0;
 		for(var i =0;i<carsArr.length;i++){
 			sumCarScore += carsArr[i].score.s;
@@ -47,7 +48,11 @@ function rouleteWheelSel(carsArr, uniform){
 		else{
 			return carsArr[0];
 		}
+	} else {
+		var randNo = getRandomInt(0, carsArr.length-1,[]);
+		return carsArr[randNo];
 	}
+}
 
 /*This function uses tournamentSelection where a array is sorted and the strongest or weakest is returned
 @param carsArr ObjectArray - The array of cars where the parents are chosen from
