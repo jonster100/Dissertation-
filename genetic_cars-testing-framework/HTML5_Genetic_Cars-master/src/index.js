@@ -400,6 +400,7 @@ function cw_newRound(results) {
     generationState, results, generationConfig());
 	if(generationState.counter>150){
 		localStorage.setItem("EA1", JSON.stringify(graphState.cw_graphAverage));
+		graphState.cw_graphAverage = new Array();
 	}
 	
 	

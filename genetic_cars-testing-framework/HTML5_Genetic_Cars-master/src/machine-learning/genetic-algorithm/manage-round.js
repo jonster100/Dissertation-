@@ -130,19 +130,29 @@ function runBaselineEA(scores, config){
 /*
 This function handles the choosing of which Evolutionary algorithm to run and returns the new population to the simulation*/
 function nextGeneration(previousState, scores, config){
-	//var clusterInt = (previousState.counter===0)?cluster.setup(scores,null,false):cluster.setup(scores,previousState.clust,true);
-	//cluster.reScoreCars(scores ,clusterInt);
-	scores.sort(function(a, b){return a.score.s - b.score.s;});
-	var numberOfCars = (previousState.counter===0)?40:previousState.noCars+40;
-	var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex"
 	var newGeneration = new Array();
-	console.log("Log -- "+previousState.counter);
-	//console.log(scoresData);//test data
-	var eaType = 1;
-	newGeneration = (eaType===1)?runEA(scores, config, numberOfCars, previousState.stateAveragesArr):runBaselineEA(scores, config);
-	//console.log(newGeneration);//test data
+	var count;
+	if(previousState.counter>3){
+		count=0;
+		newGeneration=generationZero(config).generation;
+		
+	} else {
+		count = previousState.counter + 1;
+		//var clusterInt = (previousState.counter===0)?cluster.setup(scores,null,false):cluster.setup(scores,previousState.clust,true);
+		//cluster.reScoreCars(scores ,clusterInt);
+		scores.sort(function(a, b){return a.score.s - b.score.s;});
+		var numberOfCars = (previousState.counter===0)?40:previousState.noCars+40;
+		var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex"
+	
+		console.log("Log -- "+previousState.counter);
+		//console.log(scoresData);//test data
+		var eaType = 1;
+		newGeneration = (eaType===1)?runEA(scores, config, numberOfCars, previousState.stateAveragesArr):runBaselineEA(scores, config);
+		//console.log(newGeneration);//test data
+	}
+	
   return {
-    counter: previousState.counter + 1,
+    counter: count,
     generation: newGeneration,
 	//clust: clusterInt,
 	noCars: numberOfCars
