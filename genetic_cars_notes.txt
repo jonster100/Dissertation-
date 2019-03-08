@@ -26,6 +26,8 @@ Selection Clustering
 
 Initial population that can be read from a .json file and reused for different EA's (27/02/2019) - (01/03/2019)
 
+average generation performance can be added to local storage and then copied to excel
+
 In-Progress
 	- Unit testing = (01/03/2019)
 
@@ -116,12 +118,14 @@ classifier notes:
 	
 	- ??? Some kind of recursive classifier by changing the data set, keeps on classiying all the cars until only one good car is left ("Use bayes theorom - maybe")??? 
 	
-	
-testing
-	i can test 24 per day
-	
-	box-plot 
+setting up npm
+	download npm from: https://www.npmjs.com/get-npm
+	install browserify by typing in the command prompt "npm install browserify"
+	to run the compile the source code to a bundle.js type "npm run-script build" in the directory of "index.html" :Dissertation-\genetic_cars-testing-framework\HTML5_Genetic_Cars-master
 	
 statistical  analysis -
 	wilcoxon 
+	box-plot 
+	
+
 	
