@@ -403,7 +403,7 @@ function cw_newRound(results) {
 		var rounds = localStorage.getItem("round");
 		var newRounds = generationState.round+rounds;
 		localStorage.setItem("EA"+newRounds, JSON.stringify(graphState.cw_graphAverage));
-		localStorage.setItem(round, newRounds);
+		localStorage.setItem(rounds, newRounds);
 		//graphState.cw_graphAverage = new Array();
 		//resetGraphState();
 		location.reload();
