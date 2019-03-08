@@ -13,7 +13,7 @@ This function changes the type of selection used depending on the parameter numb
 @return ObjectArray - the parents array of two is returned from either tournament or roullete wheel selection*/
 function runSelection(carsArr, selectType, strongest, useSubSet, uniform){
 	if(selectType===1){
-		return rouleteWheelSel(carsArr, false);
+		return rouleteWheelSel(carsArr, uniform);
 	} 
 	else if(selectType===2){
 		return tournamentSelection(carsArr,strongest,carsArr.length/4, useSubSet);
