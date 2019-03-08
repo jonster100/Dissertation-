@@ -16,7 +16,7 @@ function runSelection(carsArr, selectType, strongest, useSubSet, uniform){
 		return rouleteWheelSel(carsArr, false);
 	} 
 	else if(selectType===2){
-		return tournamentSelection(carsArr,strongest,7, useSubSet);
+		return tournamentSelection(carsArr,strongest,carsArr.length/4, useSubSet);
 	}
 }
 
