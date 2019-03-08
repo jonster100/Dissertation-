@@ -133,12 +133,7 @@ function nextGeneration(previousState, scores, config){
 	var newGeneration = new Array();
 	var count;
 	var tempRound=0;
-	if(previousState.counter>150){
-		count=0;
-		tempRound++;
-		newGeneration=generationZero(config).generation;
-		
-	} else {
+	
 		tempRound=(typeof previousState.round ==="undefined")?0:previousState.round;
 		count = previousState.counter + 1;
 		//var clusterInt = (previousState.counter===0)?cluster.setup(scores,null,false):cluster.setup(scores,previousState.clust,true);
@@ -152,6 +147,11 @@ function nextGeneration(previousState, scores, config){
 		var eaType = 1;
 		newGeneration = (eaType===1)?runEA(scores, config, numberOfCars, previousState.stateAveragesArr):runBaselineEA(scores, config);
 		//console.log(newGeneration);//test data
+	if(previousState.counter>150){
+		count=0;
+		tempRound++;
+		//newGeneration=generationZero(config).generation;
+		
 	}
 	
   return {
