@@ -85,7 +85,7 @@ function runEA(scores, config, noCarsCreated){
 		if(newGeneration.length!==40){
 		var pickedParents = [];
 		var parentsScore = selectParents(pickedParents, scores, ((k===randomMateIncrease)&&(currentNoMateIncreases<maxNoMatesIncreases))?true:false); 
-		//currentNoMateIncreases += (currentNoMateIncreases<maxNoMatesIncreases)1:0;
+		currentNoMateIncreases += (currentNoMateIncreases<maxNoMatesIncreases)1:0;
 			var newCars = crossover.runCrossover(pickedParents,0,config.schema, parentsScore, noCarsCreated, (newGeneration.length===39)?1:2);
 			for(var i=0;i<newCars.length;i++){
 				newCars[i].elite = false;
