@@ -132,11 +132,14 @@ This function handles the choosing of which Evolutionary algorithm to run and re
 function nextGeneration(previousState, scores, config){
 	var newGeneration = new Array();
 	var count;
-	if(previousState.counter>3){
+	var tempRound=0;
+	if(previousState.counter>150){
 		count=0;
+		tempRound++;
 		newGeneration=generationZero(config).generation;
 		
 	} else {
+		tempRound=(typeof previousState.round ==="undefined")?0:previousState.round;
 		count = previousState.counter + 1;
 		//var clusterInt = (previousState.counter===0)?cluster.setup(scores,null,false):cluster.setup(scores,previousState.clust,true);
 		//cluster.reScoreCars(scores ,clusterInt);
@@ -155,7 +158,8 @@ function nextGeneration(previousState, scores, config){
     counter: count,
     generation: newGeneration,
 	//clust: clusterInt,
-	noCars: numberOfCars
+	noCars: numberOfCars,
+	round: tempRound
   };
 }
 

@@ -398,9 +398,10 @@ function cw_newRound(results) {
  
   generationState =manageRound.nextGeneration(
     generationState, results, generationConfig());
-	if(generationState.counter>150){
-		localStorage.setItem("EA1", JSON.stringify(graphState.cw_graphAverage));
-		graphState.cw_graphAverage = new Array();
+	if(generationState.counter===0){
+		localStorage.setItem("EA"+generationState.round, JSON.stringify(graphState.cw_graphAverage));
+		//graphState.cw_graphAverage = new Array();
+		resetGraphState();
 	}
 	
 	
