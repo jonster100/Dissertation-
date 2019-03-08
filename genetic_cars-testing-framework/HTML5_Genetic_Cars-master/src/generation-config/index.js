@@ -6,7 +6,7 @@ var schema = carConstruct.generateSchema(carConstants);
 var pickParent = require("./pickParent");
 var selectFromAllParents = require("./selectFromAllParents");
 const constants = {
-  generationSize: 40,
+  generationSize: 20,
   schema: schema,
   championLength: 1,
   mutation_range: 1,
