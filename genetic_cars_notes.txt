@@ -82,6 +82,8 @@ Design Iterations:
 testing iterations - 
 	EA1 - Roulette-wheel selection, 3 elites, Two-point crossover, 1 Mutation (40 cars)
 	EA2	- Tournament selection, 3 elites, Two-point crossover, 1 Mutation (40 cars)
+	EA1-1 - Roulette-wheel selection, 3 elites, Two-point crossover, 1 Mutation (20 cars)
+	EA2-2	- Tournament selection, 3 elites, Two-point crossover, 1 Mutation (20 cars)
 	
 current problems:
 	(19/02/2019) - The weaker cars are not improving over time there are spikes in improvement but it goes back down due to the mutation.
