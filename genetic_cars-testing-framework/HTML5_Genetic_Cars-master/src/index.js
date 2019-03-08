@@ -395,10 +395,14 @@ function cleanupRound(results){
 function cw_newRound(results) {
   camera.pos.x = camera.pos.y = 0;
   cw_setCameraTarget(-1);
-
-  generationState = manageRound.nextGeneration(
-    generationState, results, generationConfig()
-  );
+ 
+  generationState =manageRound.nextGeneration(
+    generationState, results, generationConfig());
+	if(generationState.counter>150){
+		localStorage.setItem("EA1", JSON.stringify(graphState.cw_graphAverage));
+	}
+	
+	
   if (world_def.mutable_floor) {
     // GHOST DISABLED
     ghost = null;

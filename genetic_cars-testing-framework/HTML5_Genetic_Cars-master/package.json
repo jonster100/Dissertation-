@@ -29,6 +29,7 @@
     "npm-watch": "^0.3.0"
   },
   "dependencies": {
+    "express": "^4.16.4",
     "mersenne-twister": "^1.1.0"
   }
 }

@@ -52,12 +52,12 @@ function readFile(){
 @param increaseMate Boolean - Whether the current selection will include an elite where if true it wont be deleted from the Object array allowing it to be used again
 @return parentsScore int - returns the average score of the parents*/
 function selectParents(parents, scores, increaseMate){
-	var parent1 = selection.runSelection(scores,(increaseMate===false)?2:2,true, true, true);
+	var parent1 = selection.runSelection(scores,(increaseMate===false)?1:2,true, true, true);
 	parents.push(parent1.def);
 	if(increaseMate===false){
 		scores.splice(scores.findIndex(x=> x.def.id===parents[0].id),1);
 	}
-	var parent2 = selection.runSelection(scores,(increaseMate===false)?2:2,true, true, true);
+	var parent2 = selection.runSelection(scores,(increaseMate===false)?1:2,true, true, true);
 	parents.push(parent2.def);
 	scores.splice(scores.findIndex(x=> x.def.id===parents[1].id),1);
 	return (parent1.score.s + parent2.score.s)/2;
@@ -148,6 +148,7 @@ function nextGeneration(previousState, scores, config){
 	noCars: numberOfCars
   };
 }
+
 
 //------------------------------------------------------------------------------ end of my code job64
 

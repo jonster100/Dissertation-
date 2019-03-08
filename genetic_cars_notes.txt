@@ -6,6 +6,7 @@ Evolutionary algorithm
 			!! - I also need to change the range of the multi mutations and experiment to find the best one
 	- Selection
 		- Roulette Selection = (09/02/2019)Done/Maybe 
+		- Uniform Random Selection (01/03/2019)
 		- Tournament Selection = (14/02/2019)Done/Maybe 
 			!! - I need to change this selection to not use the entire population only a fraction which is to be determined (28/02/2019) Done
 		- Increase population pressure mechanism in the selection process where the top performing car can mate twice (25/02/2019) Done/Maybe
@@ -111,4 +112,13 @@ classifier notes:
 	
 	
 	- ??? Some kind of recursive classifier by changing the data set, keeps on classiying all the cars until only one good car is left ("Use bayes theorom - maybe")??? 
+	
+	
+testing
+	i can test 24 per day
+	
+	box-plot 
+	
+statistical  analysis -
+	wilcoxon 
 	
