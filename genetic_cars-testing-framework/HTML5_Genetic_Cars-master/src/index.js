@@ -326,14 +326,15 @@ function simulationStep() {
 }
 
 function gameLoop() {
-  loops = 0;
+  /*loops = 0;
   while (!cw_paused && (new Date).getTime() > nextGameTick && loops < maxFrameSkip) {   
     nextGameTick += skipTicks;
     loops++;
   }
   simulationStep();
   cw_drawScreen();
-
+	*/
+	fastForward();//used for testing data
   if(!cw_paused) window.requestAnimationFrame(gameLoop);
 }
 
@@ -395,7 +396,6 @@ function cleanupRound(results){
 function cw_newRound(results) {
   camera.pos.x = camera.pos.y = 0;
   cw_setCameraTarget(-1);
- 
   generationState =manageRound.nextGeneration(
     generationState, results, generationConfig());
 	
