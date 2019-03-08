@@ -82,11 +82,11 @@ function runEA(scores, config, noCarsCreated){
 		newGeneration.push(newElite);
 	}
 	for(var k = 0;k<generationSize/2;k++){
-		if(newGeneration.length!==40){
+		if(newGeneration.length!==generationSize){
 		var pickedParents = [];
 		var parentsScore = selectParents(pickedParents, scores, ((k===randomMateIncrease)&&(currentNoMateIncreases<maxNoMatesIncreases))?true:false); 
 		if(currentNoMateIncreases<maxNoMatesIncreases){currentNoMateIncreases++;}
-			var newCars = crossover.runCrossover(pickedParents,0,config.schema, parentsScore, noCarsCreated, (newGeneration.length===39)?1:2);
+			var newCars = crossover.runCrossover(pickedParents,0,config.schema, parentsScore, noCarsCreated, (newGeneration.length===generationSize-1)?1:2);
 			for(var i=0;i<newCars.length;i++){
 				newCars[i].elite = false;
 				newCars[i].index = k;
@@ -130,6 +130,7 @@ function runBaselineEA(scores, config){
 /*
 This function handles the choosing of which Evolutionary algorithm to run and returns the new population to the simulation*/
 function nextGeneration(previousState, scores, config){
+	var generationSize=scores.length;
 	var newGeneration = new Array();
 	var count;
 	var tempRound=0;
@@ -139,7 +140,7 @@ function nextGeneration(previousState, scores, config){
 		//var clusterInt = (previousState.counter===0)?cluster.setup(scores,null,false):cluster.setup(scores,previousState.clust,true);
 		//cluster.reScoreCars(scores ,clusterInt);
 		scores.sort(function(a, b){return a.score.s - b.score.s;});
-		var numberOfCars = (previousState.counter===0)?40:previousState.noCars+40;
+		var numberOfCars = (previousState.counter===0)?generationSize:previousState.noCars+generationSize;
 		var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex"
 	
 		console.log("Log -- "+previousState.counter);
