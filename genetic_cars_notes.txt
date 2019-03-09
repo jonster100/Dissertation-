@@ -80,12 +80,12 @@ Design Iterations:
 		at this point i will mostly be fine tuning the different operators so they work better at improving car performance and may further include dynamic changing of operators using the previous average scores of the run rounds
 
 testing iterations - 
-	EA1 - Roulette-wheel selection, 3 elites, Two-point crossover, 1 Mutation (40 cars)
-	EA2	- Tournament selection, 3 elites, Two-point crossover, 1 Mutation (40 cars)
-	EA1-1 - Roulette-wheel selection, 3 elites, Two-point crossover, 1 Mutation (20 cars)
-	EA2-2 - Tournament selection, 3 elites, Two-point crossover, 1 Mutation (20 cars)
-	EA3 - Uniform random selection, 3 elites, Two-point crossover, 1 Mutation (40 cars)
-	EA3-3 - Uniform random selection, 3 elites, Two-point crossover, 1 Mutation (20 cars)
+	EA1 - Roulette-wheel selection, 3 elites, Two-point crossover, 1 Mutation (40 cars) - (90/03/2019)
+	EA2	- Tournament selection, 3 elites, Two-point crossover, 1 Mutation (40 cars) - (90/03/2019)
+	EA1-1 - Roulette-wheel selection, 3 elites, Two-point crossover, 1 Mutation (20 cars) - (90/03/2019)
+	EA2-2 - Tournament selection, 3 elites, Two-point crossover, 1 Mutation (20 cars) - (90/03/2019)
+	EA3 - Uniform random selection, 3 elites, Two-point crossover, 1 Mutation (40 cars) - (90/03/2019)
+	EA3-3 - Uniform random selection, 3 elites, Two-point crossover, 1 Mutation (20 cars) - (90/03/2019)
 	
 current problems:
 	(19/02/2019) - The weaker cars are not improving over time there are spikes in improvement but it goes back down due to the mutation.
