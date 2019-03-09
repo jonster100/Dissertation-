@@ -83,7 +83,7 @@ testing iterations -
 	EA1 - Roulette-wheel selection, 3 elites, Two-point crossover, 1 Mutation (40 cars)
 	EA2	- Tournament selection, 3 elites, Two-point crossover, 1 Mutation (40 cars)
 	EA1-1 - Roulette-wheel selection, 3 elites, Two-point crossover, 1 Mutation (20 cars)
-	EA2-2	- Tournament selection, 3 elites, Two-point crossover, 1 Mutation (20 cars)
+	EA2-2 - Tournament selection, 3 elites, Two-point crossover, 1 Mutation (20 cars)
 	EA3 - Uniform random selection, 3 elites, Two-point crossover, 1 Mutation (40 cars)
 	EA3-3 - Uniform random selection, 3 elites, Two-point crossover, 1 Mutation (20 cars)
 	
