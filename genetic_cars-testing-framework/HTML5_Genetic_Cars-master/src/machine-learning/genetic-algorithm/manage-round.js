@@ -52,12 +52,12 @@ function readFile(){
 @param increaseMate Boolean - Whether the current selection will include an elite where if true it wont be deleted from the Object array allowing it to be used again
 @return parentsScore int - returns the average score of the parents*/
 function selectParents(parents, scores, increaseMate, selectionTypeOne, selectionTypeTwo){
-	var parent1 = selection.runSelection(scores,(increaseMate===false)?selectionTypeOne:2);
+	var parent1 = selection.runSelection(scores,(increaseMate===false)?selectionTypeOne:1);
 	parents.push(parent1.def);
 	if(increaseMate===false){
 		scores.splice(scores.findIndex(x=> x.def.id===parents[0].id),1);
 	}
-	var parent2 = selection.runSelection(scores,(increaseMate===false)?selectionTypeTwo:2);
+	var parent2 = selection.runSelection(scores,(increaseMate===false)?selectionTypeTwo:1);
 	parents.push(parent2.def);
 	scores.splice(scores.findIndex(x=> x.def.id===parents[1].id),1);
 	return (parent1.score.s + parent2.score.s)/2;
@@ -85,7 +85,7 @@ function runEA(scores, config, noCarsCreated, noElites, crossoverType, noMateInc
 		if(newGeneration.length!==generationSize){
 		var pickedParents = [];
 		var parentsScore = selectParents(pickedParents, scores, ((k===randomMateIncrease)&&(currentNoMateIncreases<maxNoMatesIncreases))?true:false, selectionTypeOne, selectionTypeTwo); 
-		if(currentNoMateIncreases<maxNoMatesIncreases){currentNoMateIncreases++;}
+		if((k===randomMateIncrease)&&(currentNoMateIncreases<maxNoMatesIncreases)){currentNoMateIncreases++;}
 			var newCars = crossover.runCrossover(pickedParents, crossoverType,config.schema, parentsScore, noCarsCreated, (newGeneration.length===generationSize-1)?1:2);
 			for(var i=0;i<newCars.length;i++){
 				newCars[i].elite = false;
@@ -130,7 +130,7 @@ function runBaselineEA(scores, config){
 This function handles the choosing of which Evolutionary algorithm to run and returns the new population to the simulation*/
 function nextGeneration(previousState, scores, config){
 	//--------------------------------------------------------- SET EVOLUTIONARY ALGORITHM OPERATORS HERE <---------------
-	var noElites = 3;//type the number of elites for the program to use
+	var noElites = 1;//type the number of elites for the program to use
 	var crossoverType=0;//write 1 for one-point crossover anyother for two-point crossover
 	var noMateIncrease=1;//The number of cars that can mate twice producing 4 kids not 2
 	// selectionType for selection the two parents selectionTypeOne for the first slection, selectionTypeTwo for the second parent
