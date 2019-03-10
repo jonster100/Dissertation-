@@ -6,16 +6,18 @@ module.exports = {
 }
 /*
 This function changes the type of selection used depending on the parameter number "selectType" = (rouleteWheelSel - 1, tournamentSelection - 2)
-@param strongest boolean  - this parameter is passed through to the tournamentSelection function where true is return the strongest and false get weakest
-@param selectType int - this parameter determines the type of selection used.
+@param selectType int - this parameter determines the type of selection used - 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection.
 @param carsArr Array - this parameter is the population which the selection functions are used on.
-@param useSubSet boolean - true if you want tournamentSelection to use sub sets not the global population
 @return ObjectArray - the parents array of two is returned from either tournament or roullete wheel selection*/
-function runSelection(carsArr, selectType, strongest, useSubSet, uniform){
-	if(selectType===1){
+function runSelection(carsArr, selectType){
+	// SelectType - 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
+	var strongest = (selectType===1)?true:false;
+	var useSubSet = ((selectType===1)||(selectType===2))?true:false;
+	var uniform = (selectType===4)?true:false;
+	if((selectType===3)||(selectType===4)){
 		return rouleteWheelSel(carsArr, uniform);
 	} 
-	else if(selectType===2){
+	else if((selectType===1)||selectType===2){
 		return tournamentSelection(carsArr,strongest,carsArr.length/4, useSubSet);
 	}
 }

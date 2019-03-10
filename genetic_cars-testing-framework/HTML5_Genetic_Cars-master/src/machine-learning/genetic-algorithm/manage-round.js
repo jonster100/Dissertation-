@@ -51,13 +51,13 @@ function readFile(){
 @param scores ObjectArray - An array of cars where the parents will be selected from
 @param increaseMate Boolean - Whether the current selection will include an elite where if true it wont be deleted from the Object array allowing it to be used again
 @return parentsScore int - returns the average score of the parents*/
-function selectParents(parents, scores, increaseMate){
-	var parent1 = selection.runSelection(scores,(increaseMate===false)?1:2,true, true, false);
+function selectParents(parents, scores, increaseMate, selectionTypeOne, selectionTypeTwo){
+	var parent1 = selection.runSelection(scores,(increaseMate===false)?()?selectionTypeOne:2);
 	parents.push(parent1.def);
 	if(increaseMate===false){
 		scores.splice(scores.findIndex(x=> x.def.id===parents[0].id),1);
 	}
-	var parent2 = selection.runSelection(scores,(increaseMate===false)?1:2,true, true, false);
+	var parent2 = selection.runSelection(scores,(increaseMate===false)?selectionTypeTwo:2);
 	parents.push(parent2.def);
 	scores.splice(scores.findIndex(x=> x.def.id===parents[1].id),1);
 	return (parent1.score.s + parent2.score.s)/2;
@@ -68,14 +68,14 @@ function selectParents(parents, scores, increaseMate){
 @param config - This is the generationConfig file passed through which gives the cars template/blueprint for creation
 @param noCarsCreated int - The number of cars there currently exist used for creating the id of new cars
 @return newGeneration ObjectArray - is returned with all the newly created cars that will be in the simulation*/
-function runEA(scores, config, noCarsCreated){
+function runEA(scores, config, noCarsCreated, noElites, crossoverType, noMateIncrease, selectionTypeOne, selectionTypeTwo, mutationType){
 	scores.sort(function(a, b){return b.score.s - a.score.s;});
 	var generationSize=scores.length;
 	var newGeneration = new Array();
 	var randomMateIncrease = getRandomInt(0,maxNoMatesIncreases, new Array());
-	var maxNoMatesIncreases = 0;
-	var currentNoMateIncreases = 1;
-	var noElites=3;
+	var maxNoMatesIncreases = noMateIncrease;
+	var currentNoMateIncreases = 0;
+	var noElites=noElites;
 	for(var i=0;i<noElites;i++){//add new elites to newGeneration
 		var newElite = scores[0].def;
 		newElite.elite = true;
@@ -84,9 +84,9 @@ function runEA(scores, config, noCarsCreated){
 	for(var k = 0;k<generationSize/2;k++){
 		if(newGeneration.length!==generationSize){
 		var pickedParents = [];
-		var parentsScore = selectParents(pickedParents, scores, ((k===randomMateIncrease)&&(currentNoMateIncreases<maxNoMatesIncreases))?true:false); 
+		var parentsScore = selectParents(pickedParents, scores, ((k===randomMateIncrease)&&(currentNoMateIncreases<maxNoMatesIncreases))?true:false, selectionTypeOne, selectionTypeTwo); 
 		if(currentNoMateIncreases<maxNoMatesIncreases){currentNoMateIncreases++;}
-			var newCars = crossover.runCrossover(pickedParents,0,config.schema, parentsScore, noCarsCreated, (newGeneration.length===generationSize-1)?1:2);
+			var newCars = crossover.runCrossover(pickedParents, crossoverType,config.schema, parentsScore, noCarsCreated, (newGeneration.length===generationSize-1)?1:2);
 			for(var i=0;i<newCars.length;i++){
 				newCars[i].elite = false;
 				newCars[i].index = k;
@@ -99,8 +99,7 @@ function runEA(scores, config, noCarsCreated){
 	for(var x = 0;x<newGeneration.length;x++){
 			var currentID = newGeneration[x].id;
 			if(newGeneration[x].elite===false){
-				//newGeneration[x] = mutation.multiMutations(newGeneration[x],newGeneration.findIndex(x=> x.id===currentID),20);
-				newGeneration[x] = mutation.mutate(newGeneration[x]);
+				newGeneration[x] = (mutationType===0)?mutation.mutate(newGeneration[x]):mutation.multiMutations(newGeneration[x],newGeneration.findIndex(x=> x.id===currentID),20);
 			}
 		}
 		console.log(newGeneration);
@@ -130,6 +129,15 @@ function runBaselineEA(scores, config){
 /*
 This function handles the choosing of which Evolutionary algorithm to run and returns the new population to the simulation*/
 function nextGeneration(previousState, scores, config){
+	//--------------------------------------------------------- SET EVOLUTIONARY ALGORITHM OPERATORS HERE <---------------
+	var noElites = 3;//type the number of elites for the program to use
+	var crossoverType=0;//write 1 for one-point crossover anyother for two-point crossover
+	var noMateIncrease=0;//The number of cars that can mate twice producing 4 kids not 2
+	// selectionType for selection the two parents selectionTypeOne for the first slection, selectionTypeTwo for the second parent
+	var selectionTypeOne = 4;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
+	var selectionTypeTwo = 4;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
+	var mutationType =1;//0 for standard 1 mutation type 1 for multi-mutations
+	//--------------------------------------------------------------------------------------------------------------------
 	var generationSize=scores.length;
 	var newGeneration = new Array();
 	var count;
@@ -146,7 +154,7 @@ function nextGeneration(previousState, scores, config){
 		console.log("Log -- "+previousState.counter);
 		//console.log(scoresData);//test data
 		var eaType = 1;
-		newGeneration = (eaType===1)?runEA(scores, config, numberOfCars, previousState.stateAveragesArr):runBaselineEA(scores, config);
+		newGeneration = (eaType===1)?runEA(scores, config, numberOfCars, noElites, crossoverType, noMateIncrease, selectionTypeOne, selectionTypeTwo, mutationType):runBaselineEA(scores, config);
 		//console.log(newGeneration);//test data
 	if(previousState.counter>150){
 		count=0;

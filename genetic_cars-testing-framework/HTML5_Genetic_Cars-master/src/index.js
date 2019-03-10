@@ -1,6 +1,8 @@
 /* globals document performance localStorage alert confirm btoa HTMLDivElement */
 /* globals b2Vec2 */
 // Global Vars
+var testing = true;// job64, boolean if the program is used to output test data to local storage.
+
 
 var worldRun = require("./world/run.js");
 var carConstruct = require("./car-schema/construct.js");
@@ -326,15 +328,17 @@ function simulationStep() {
 }
 
 function gameLoop() {
-  /*loops = 0;
-  while (!cw_paused && (new Date).getTime() > nextGameTick && loops < maxFrameSkip) {   
-    nextGameTick += skipTicks;
-    loops++;
-  }
-  simulationStep();
-  cw_drawScreen();
-	*/
+  if(testing===false){
+	loops = 0;
+	while (!cw_paused && (new Date).getTime() > nextGameTick && loops < maxFrameSkip) {   
+		nextGameTick += skipTicks;
+		loops++;
+	}
+	simulationStep();
+	cw_drawScreen();
+  }else{
 	fastForward();//used for testing data
+  }
   if(!cw_paused) window.requestAnimationFrame(gameLoop);
 }
 
@@ -396,10 +400,9 @@ function cleanupRound(results){
 function cw_newRound(results) {
   camera.pos.x = camera.pos.y = 0;
   cw_setCameraTarget(-1);
-  generationState =manageRound.nextGeneration(
-    generationState, results, generationConfig());
+  generationState =manageRound.nextGeneration(generationState, results, generationConfig());
 	
-	if(generationState.counter===0){
+	if((generationState.counter===0) && (testing===true)){
 		var rounds = localStorage.getItem("round");
 		var newRounds = generationState.round+rounds;
 		localStorage.setItem("EA-A-"+newRounds, JSON.stringify(graphState.cw_graphAverage));
