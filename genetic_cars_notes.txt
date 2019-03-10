@@ -93,6 +93,7 @@ testing iterations -
 	EA7 - Roulette-wheel selection, 3 elites, Two-point crossover, Multi-Mutations (20 cars) - (10/03/2019)	
 	EA8 - Tournament selection, 3 elites, Two-point crossover, Multi-Mutations (20 cars) - (10/03/2019)	
 	EA9 - Uniform random selection, 3 elites, Two-point crossover, Multi-Mutations (20 cars) - (10/03/2019)	
+	EA10 - Roulette-wheel selection, 1 elites, Two-point crossover, 1 Mutations (20 cars) - (10/03/2019)	
 	
 current problems:
 	(19/02/2019) - The weaker cars are not improving over time there are spikes in improvement but it goes back down due to the mutation.
