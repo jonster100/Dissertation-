@@ -89,6 +89,7 @@ testing iterations -
 	!!!!- I'm only using population 20 cars now because previous tests shows little difference in perfromance on the two population sizes during the 150 generations
 	EA4 - Roulette-wheel selection, 3 elites, One-point crossover, 1 Mutation (20 cars) - (10/03/2019)
 	EA5 - Tournament selection, 3 elites, One-point crossover, 1 Mutation (20 cars) - (10/03/2019)
+	EA6 - Uniform random selection, 3 elites, One-point crossover, 1 Mutation (20 cars) - (10/03/2019)	
 current problems:
 	(19/02/2019) - The weaker cars are not improving over time there are spikes in improvement but it goes back down due to the mutation.
 	(19/02/2019) - I do not know how i'm going to make the EA's run side by side.
