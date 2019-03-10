@@ -52,7 +52,7 @@ function readFile(){
 @param increaseMate Boolean - Whether the current selection will include an elite where if true it wont be deleted from the Object array allowing it to be used again
 @return parentsScore int - returns the average score of the parents*/
 function selectParents(parents, scores, increaseMate, selectionTypeOne, selectionTypeTwo){
-	var parent1 = selection.runSelection(scores,(increaseMate===false)?()?selectionTypeOne:2);
+	var parent1 = selection.runSelection(scores,(increaseMate===false)?selectionTypeOne:2);
 	parents.push(parent1.def);
 	if(increaseMate===false){
 		scores.splice(scores.findIndex(x=> x.def.id===parents[0].id),1);
@@ -130,13 +130,13 @@ function runBaselineEA(scores, config){
 This function handles the choosing of which Evolutionary algorithm to run and returns the new population to the simulation*/
 function nextGeneration(previousState, scores, config){
 	//--------------------------------------------------------- SET EVOLUTIONARY ALGORITHM OPERATORS HERE <---------------
-	var noElites = 3;//type the number of elites for the program to use
+	var noElites = 1;//type the number of elites for the program to use
 	var crossoverType=0;//write 1 for one-point crossover anyother for two-point crossover
 	var noMateIncrease=0;//The number of cars that can mate twice producing 4 kids not 2
 	// selectionType for selection the two parents selectionTypeOne for the first slection, selectionTypeTwo for the second parent
-	var selectionTypeOne = 4;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
-	var selectionTypeTwo = 4;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
-	var mutationType =1;//0 for standard 1 mutation type 1 for multi-mutations
+	var selectionTypeOne = 3;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
+	var selectionTypeTwo = 3;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
+	var mutationType =0;//0 for standard 1 mutation type 1 for multi-mutations
 	//--------------------------------------------------------------------------------------------------------------------
 	var generationSize=scores.length;
 	var newGeneration = new Array();
