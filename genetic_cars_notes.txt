@@ -99,7 +99,8 @@ testing iterations -
 	!!!- Using elites does increase performance compared to the standard but at some point during the generations the performance will get stuck as show through all the run tests the performances vary but they stay near enough the same.
 	EA13 - Tournament selection Strong&Weak, 3 elites, Two-point crossover, 1 Mutations (20 cars) - (10/03/2019)
 	EA14 - Tournament selection Strong&Weak, 3 elites, One-point crossover, 1 Mutations (20 cars) - (10/03/2019)		
-	EA15 - Tournament selection Strong&Weak, 3 elites, Two-point crossover, Multi-Mutations (20 cars) - (10/03/2019)
+	EA15 - Tournament selection Strong&Weak, 3 elites, Two-point crossover, Multi-Mutations (20 cars) - (11/03/2019)
+	!!!- the performance still gets stuck
 	
 current problems:
 	(19/02/2019) - The weaker cars are not improving over time there are spikes in improvement but it goes back down due to the mutation.
