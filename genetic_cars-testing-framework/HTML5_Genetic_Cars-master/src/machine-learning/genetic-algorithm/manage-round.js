@@ -74,7 +74,6 @@ function runEA(scores, config, noCarsCreated, noElites, crossoverType, noMateInc
 	var newGeneration = new Array();
 	var maxNoMatesIncreases = noMateIncrease;
 	var currentNoMateIncreases = 0;
-	var randomMateIncrease = getRandomInt(0,maxNoMatesIncreases, new Array());
 	var noElites=noElites;
 	for(var i=0;i<noElites;i++){//add new elites to newGeneration
 		var newElite = scores[0].def;
@@ -84,8 +83,8 @@ function runEA(scores, config, noCarsCreated, noElites, crossoverType, noMateInc
 	for(var k = 0;k<generationSize/2;k++){
 		if(newGeneration.length!==generationSize){
 		var pickedParents = [];
-		var parentsScore = selectParents(pickedParents, scores, ((k===randomMateIncrease)&&(currentNoMateIncreases<maxNoMatesIncreases))?true:false, selectionTypeOne, selectionTypeTwo); 
-		if((k===randomMateIncrease)&&(currentNoMateIncreases<maxNoMatesIncreases)){currentNoMateIncreases++;}
+		var parentsScore = selectParents(pickedParents, scores, (currentNoMateIncreases<maxNoMatesIncreases)?true:false, selectionTypeOne, selectionTypeTwo); 
+		if(currentNoMateIncreases<maxNoMatesIncreases){currentNoMateIncreases++;}
 			var newCars = crossover.runCrossover(pickedParents, crossoverType,config.schema, parentsScore, noCarsCreated, (newGeneration.length===generationSize-1)?1:2);
 			for(var i=0;i<newCars.length;i++){
 				newCars[i].elite = false;
@@ -130,32 +129,32 @@ function runBaselineEA(scores, config){
 This function handles the choosing of which Evolutionary algorithm to run and returns the new population to the simulation*/
 function nextGeneration(previousState, scores, config){
 	//--------------------------------------------------------- SET EVOLUTIONARY ALGORITHM OPERATORS HERE <---------------
-	var noElites = 1;//type the number of elites for the program to use
+	var noElites = 3;//type the number of elites for the program to use
 	var crossoverType=0;//write 1 for one-point crossover anyother for two-point crossover
-	var noMateIncrease=1;//The number of cars that can mate twice producing 4 kids not 2
+	var noMateIncrease=0;//The number of cars that can mate twice producing 4 kids not 2
 	// selectionType for selection the two parents selectionTypeOne for the first slection, selectionTypeTwo for the second parent
-	var selectionTypeOne = 4;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
-	var selectionTypeTwo = 4;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
-	var mutationType =0;//0 for standard 1 mutation type 1 for multi-mutations
+	var selectionTypeOne = 1;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
+	var selectionTypeTwo = 2;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
+	var mutationType =1;//0 for standard 1 mutation type 1 for multi-mutations
 	//--------------------------------------------------------------------------------------------------------------------
 	var generationSize=scores.length;
 	var newGeneration = new Array();
 	var count;
 	var tempRound=0;
 	
-		tempRound=(typeof previousState.round ==="undefined")?0:previousState.round;
-		count = previousState.counter + 1;
-		//var clusterInt = (previousState.counter===0)?cluster.setup(scores,null,false):cluster.setup(scores,previousState.clust,true);
-		//cluster.reScoreCars(scores ,clusterInt);
-		scores.sort(function(a, b){return a.score.s - b.score.s;});
-		var numberOfCars = (previousState.counter===0)?generationSize:previousState.noCars+generationSize;
-		var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex"
+	tempRound=(typeof previousState.round ==="undefined")?0:previousState.round;
+	count = previousState.counter + 1;
+	//var clusterInt = (previousState.counter===0)?cluster.setup(scores,null,false):cluster.setup(scores,previousState.clust,true);
+	//cluster.reScoreCars(scores ,clusterInt);
+	scores.sort(function(a, b){return a.score.s - b.score.s;});
+	var numberOfCars = (previousState.counter===0)?generationSize:previousState.noCars+generationSize;
+	var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex"
 	
-		console.log("Log -- "+previousState.counter);
-		//console.log(scoresData);//test data
-		var eaType = 1;
-		newGeneration = (eaType===1)?runEA(scores, config, numberOfCars, noElites, crossoverType, noMateIncrease, selectionTypeOne, selectionTypeTwo, mutationType):runBaselineEA(scores, config);
-		//console.log(newGeneration);//test data
+	console.log("Log -- "+previousState.counter);
+	//console.log(scoresData);//test data
+	var eaType = 1;
+	newGeneration = (eaType===1)?runEA(scores, config, numberOfCars, noElites, crossoverType, noMateIncrease, selectionTypeOne, selectionTypeTwo, mutationType):runBaselineEA(scores, config);
+	//console.log(newGeneration);//test data
 	if(previousState.counter>150){
 		count=0;
 		tempRound++;
