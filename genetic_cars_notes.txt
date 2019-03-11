@@ -109,6 +109,7 @@ testing iterations -
 	EA20 - Roulette-wheel selection, 3 elites, Two-point crossover, Multi-Mutations, 1 mateIncrease (20 cars) - (11/03/2019)
 	EA21 - Tournament selection, 3 elites, Two-point crossover, Multi-Mutations, 1 mateIncrease (20 cars) - (11/03/2019)
 	EA22 -  Uniform random selection, 3 elites, Two-point crossover, Multi-Mutations, 1 mateIncrease (20 cars) - (11/03/2019)
+	EA23 - Roulette-wheel selection, 0 elites, Two-point crossover, 1 Mutations, 1 mateIncrease (20 cars) - (11/03/2019)
 	
 current problems:
 	(19/02/2019) - The weaker cars are not improving over time there are spikes in improvement but it goes back down due to the mutation.
