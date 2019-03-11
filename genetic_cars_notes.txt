@@ -101,6 +101,8 @@ testing iterations -
 	EA14 - Tournament selection Strong&Weak, 3 elites, One-point crossover, 1 Mutations (20 cars) - (10/03/2019)		
 	EA15 - Tournament selection Strong&Weak, 3 elites, Two-point crossover, Multi-Mutations (20 cars) - (11/03/2019)
 	!!!- the performance still gets stuck
+	EA16 - Roulette-wheel selection, 3 elites, Two-point crossover, 1 Mutation, 1 mateIncrease (20 cars) - (11/03/2019)
+	EA17 - Tournament selection, 3 elites, Two-point crossover, 1 Mutations (20 cars) - (11/03/2019)
 	
 current problems:
 	(19/02/2019) - The weaker cars are not improving over time there are spikes in improvement but it goes back down due to the mutation.
