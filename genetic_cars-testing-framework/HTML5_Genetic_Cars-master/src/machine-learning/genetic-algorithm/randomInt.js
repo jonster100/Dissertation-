@@ -2,7 +2,7 @@
 	getRandomInt: getRandomInt
  }
  
-/*This is a recursive function which returns whole ints between a minimum and maximum
+/*This function returns whole ints between a minimum and maximum
 @param min int - The minimum int that can be returned
 @param max int - The maximum int that can be returned
 @param notEqualsArr intArray - An array of the ints that the function should not return
@@ -14,7 +14,7 @@ function getRandomInt(min, max, notEqualsArr) {
 		min = Math.ceil(min);
 		max = Math.floor(max);
 		toReturn = Math.floor(Math.random() * (max - min + 1)) + min;
-		if(typeof findIfExists === "undefined"){
+		if(typeof notEqualsArr === "undefined"){
 			runLoop=false;
 		}
 		else if(notEqualsArr.find(function(value){return value===toReturn;})===false){

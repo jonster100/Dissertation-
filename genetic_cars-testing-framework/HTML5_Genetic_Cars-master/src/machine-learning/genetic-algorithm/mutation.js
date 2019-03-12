@@ -15,7 +15,7 @@ function getRandomInt(min, max, notEqualsArr) {
 		min = Math.ceil(min);
 		max = Math.floor(max);
 		toReturn = Math.floor(Math.random() * (max - min + 1)) + min;
-		if(typeof findIfExists === "undefined"){
+		if(typeof notEqualsArr === "undefined"){
 			runLoop=false;
 		}
 		else if(notEqualsArr.find(function(value){return value===toReturn;})===false){
