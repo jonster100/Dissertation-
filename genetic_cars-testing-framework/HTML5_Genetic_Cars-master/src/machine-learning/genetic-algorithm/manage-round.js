@@ -83,7 +83,7 @@ function runEA(scores, config, noCarsCreated, noElites, crossoverType, noMateInc
 	var currentNoMateIncreases = 0;
 	var noElites=noElites;
 	for(var i=0;i<noElites;i++){//add new elites to newGeneration
-		var newElite = scores[0].def;
+		var newElite = scores[i].def;
 		newElite.elite = true;
 		newGeneration.push(newElite);
 	}
@@ -139,11 +139,11 @@ function nextGeneration(previousState, scores, config){
 	var noElites = 3;//type the number of elites for the program to use
 	var crossoverType=0;//write 1 for one-point crossover anyother for two-point crossover
 	var noMateIncrease=0;//The number of cars that can mate twice producing 4 kids not 2
-	var mateIncreaseSelectionMethod = 1;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
+	var mateIncreaseSelectionMethod = 3;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
 	// selectionType for selection the two parents selectionTypeOne for the first slection, selectionTypeTwo for the second parent
-	var selectionTypeOne = 1;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
-	var selectionTypeTwo = 2;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
-	var mutationType =1;//0 for standard 1 mutation type 1 for multi-mutations
+	var selectionTypeOne = 3;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
+	var selectionTypeTwo = 3;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
+	var mutationType =0;//0 for standard 1 mutation type 1 for multi-mutations
 	//--------------------------------------------------------------------------------------------------------------------
 	var generationSize=scores.length;
 	var newGeneration = new Array();
