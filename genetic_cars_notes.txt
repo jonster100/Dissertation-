@@ -82,10 +82,10 @@ Design Iterations:
 testing iterations - 
 	//EA1 - Roulette-wheel selection, 3 elites, Two-point crossover, 1 Mutation (40 cars) - (09/03/2019)
 	//EA2	- Tournament selection, 3 elites, Two-point crossover, 1 Mutation (40 cars) - (09/03/2019)
-	->EA1-1 - Roulette-wheel selection, 3 elites, Two-point crossover, 1 Mutation (20 cars) - (09/03/2019)
-	->EA2-2 - Tournament selection, 3 elites, Two-point crossover, 1 Mutation (20 cars) - (09/03/2019)
+	EA1-1 - Roulette-wheel selection, 3 elites, Two-point crossover, 1 Mutation (20 cars) - (09/03/2019)
+	EA2-2 - Tournament selection, 3 elites, Two-point crossover, 1 Mutation (20 cars) - (09/03/2019)
 	//EA3 - Uniform random selection, 3 elites, Two-point crossover, 1 Mutation (40 cars) - (09/03/2019)
-	->EA3-3 - Uniform random selection, 3 elites, Two-point crossover, 1 Mutation (20 cars) - (09/03/2019)
+	EA3-3 - Uniform random selection, 3 elites, Two-point crossover, 1 Mutation (20 cars) - (09/03/2019)
 	!!!!- I'm only using population 20 cars now because previous tests shows little difference in perfromance on the two population sizes during the 150 generations
 	EA4 - Roulette-wheel selection, 3 elites, One-point crossover, 1 Mutation (20 cars) - (10/03/2019)
 	EA5 - Tournament selection, 3 elites, One-point crossover, 1 Mutation (20 cars) - (10/03/2019)
