@@ -91,7 +91,7 @@ function getRandomInt(min, max, notEqualsArr) {
 		if(typeof notEqualsArr === "undefined"){
 			runLoop=false;
 		}
-		else if(notEqualsArr.find(function(value){return value===toReturn;})===false){
+		else if(notEqualsArr.find(function(value){return value===toReturn;})!==toReturn){
 			runLoop=false;
 		}
 	}
