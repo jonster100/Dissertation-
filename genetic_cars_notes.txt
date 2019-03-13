@@ -113,7 +113,7 @@ testing iterations -
 	EA23 - Roulette-wheel selection, 3 elites, Two-point crossover, 1 Mutation, 1 mateIncrease-(Roulette-wheel selection) (20 cars) - (11/03/2019)
 	EA24 - Tournament selection, 3 elites, Two-point crossover, 1 Mutation, 1 mateIncrease-(Roulette-wheel selection) (20 cars) - (11/03/2019)
 	EA25 - Uniform random selection, 3 elites, Two-point crossover, 1 Mutation, 1 mateIncrease-(Roulette-wheel selection) (20 cars) - (11/03/2019)
-	->EA26 - Tournament selection Strong&Weak, 3 elites, Two-point crossover, 1 Mutations, 1 mateIncrease-(Roulette-wheel selection) (20 cars) - (11/03/2019)
+	EA26 - Tournament selection Strong&Weak, 3 elites, Two-point crossover, 1 Mutations, 1 mateIncrease-(Roulette-wheel selection) (20 cars) - (11/03/2019)
 	
 	EA30 - Roulette-wheel selection, 0 elites, Two-point crossover, 1 Mutation, 1 mateIncrease-(tournament selection) (20 cars) - (11/03/2019)
 	EA31 - Tournament selection, 0 elites, Two-point crossover, 1 Mutation, 1 mateIncrease-(tournament selection) (20 cars) - (11/03/2019)
