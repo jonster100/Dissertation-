@@ -73,9 +73,9 @@ function tournamentSelection(carsArr, strongest, subSetRange, useSubSet){
 	}
 	}
 	if(useSubSet===true){
-		subSet.sort(function(a,b){return (strongest===true)?b.score.s - a.score.s:a.score.s - a.score.b;});
+		subSet.sort(function(a,b){return (strongest===true)?b.score.s - a.score.s:a.score.s - b.score.s;});
 	} else {
-		carsArr.sort(function(a,b){return (strongest===true)?b.score.s - a.score.s:a.score.s - a.score.b;});
+		carsArr.sort(function(a,b){return (strongest===true)?b.score.s - a.score.s:a.score.s - b.score.s;});
 	}
 	return (useSubSet===true)?subSet[0]:carsArr[0];
 }
