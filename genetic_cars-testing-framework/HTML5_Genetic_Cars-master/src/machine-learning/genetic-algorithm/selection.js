@@ -72,7 +72,11 @@ function tournamentSelection(carsArr, strongest, subSetRange, useSubSet){
 		subSet.push(carsArr[chosenNo]);
 	}
 	}
-	(useSubSet===true)?subSet:carsArr.sort(function(a,b){return (strongest===true)?b.score.s - a.score.s:a.score.s - a.score.b;});
+	if(useSubSet===true){
+		subSet.sort(function(a,b){return (strongest===true)?b.score.s - a.score.s:a.score.s - a.score.b;});
+	} else {
+		carsArr.sort(function(a,b){return (strongest===true)?b.score.s - a.score.s:a.score.s - a.score.b;});
+	}
 	return (useSubSet===true)?subSet[0]:carsArr[0];
 }
 
