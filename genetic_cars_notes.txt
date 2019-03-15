@@ -115,15 +115,18 @@ testing iterations -
 	EA25 - Uniform random selection, 3 elites, Two-point crossover, 1 Mutation, 1 mateIncrease-(Roulette-wheel selection) (20 cars) - (13/03/2019)
 	EA26 - Tournament selection Strong&Weak, 3 elites, Two-point crossover, 1 Mutations, 1 mateIncrease-(Roulette-wheel selection) (20 cars) - (13/03/2019)
 	
-	->EA27 - Roulette-wheel selection, 3 elites, Two-point crossover, 1 Mutation, 1 mateIncrease-(Uniform random selection) (20 cars) - (15/03/2019)
-	->EA28 - Tournament selection, 3 elites, Two-point crossover, 1 Mutation, 1 mateIncrease-(Uniform random selection) (20 cars) - (15/03/2019)
-	->EA29 - Uniform random selection, 3 elites, Two-point crossover, 1 Mutation, 1 mateIncrease-(Uniform random selection) (20 cars) - (15/03/2019)
-	->EA30 - Tournament selection Strong&Weak, 3 elites, Two-point crossover, 1 Mutations, 1 mateIncrease-(Uniform random selection) (20 cars) - (15/03/2019)
+	EA27 - Roulette-wheel selection, 3 elites, Two-point crossover, 1 Mutation, 1 mateIncrease-(Uniform random selection) (20 cars) - (15/03/2019)
+	EA28 - Tournament selection, 3 elites, Two-point crossover, 1 Mutation, 1 mateIncrease-(Uniform random selection) (20 cars) - (15/03/2019)
+	EA29 - Uniform random selection, 3 elites, Two-point crossover, 1 Mutation, 1 mateIncrease-(Uniform random selection) (20 cars) - (15/03/2019)
+	EA30 - Tournament selection Strong&Weak, 3 elites, Two-point crossover, 1 Mutations, 1 mateIncrease-(Uniform random selection) (20 cars) - (15/03/2019)
 	
+	EA31 - Roulette-wheel selection, 0 elites, Two-point crossover, 1 Mutation (20 cars) - (15/03/2019)
+	EA32 - Tournament selection, 0 elites, Two-point crossover, 1 Mutation (20 cars) - (15/03/2019)
+	EA33 - Uniform random selection, 0 elites, Two-point crossover, 1 Mutation (20 cars) - (15/03/2019)
 	
-	->EA31 - Roulette-wheel selection, 0 elites, Two-point crossover, 1 Mutation, 1 mateIncrease-(tournament selection) (20 cars) - (15/03/2019)
-	->EA32 - Tournament selection, 0 elites, Two-point crossover, 1 Mutation, 1 mateIncrease-(tournament selection) (20 cars) - (15/03/2019)
-	->EA33 - Uniform random selection, 0 elites, Two-point crossover, 1 Mutation, 1 mateIncrease-(tournament selection) (20 cars) - (15/03/2019)
+	EA34 - Roulette-wheel selection, 0 elites, Two-point crossover, 1 Mutation, 1 mateIncrease-(tournament selection) (20 cars) - (15/03/2019)
+	EA35 - Tournament selection, 0 elites, Two-point crossover, 1 Mutation, 1 mateIncrease-(tournament selection) (20 cars) - (15/03/2019)
+	EA36 - Uniform random selection, 0 elites, Two-point crossover, 1 Mutation, 1 mateIncrease-(tournament selection) (20 cars) - (15/03/2019)
 	
 	
 current problems:
