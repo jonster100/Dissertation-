@@ -128,9 +128,13 @@ testing iterations -
 	EA35 - Tournament selection, 0 elites, Two-point crossover, 1 Mutation, 1 mateIncrease-(tournament selection) (20 cars) - (15/03/2019)
 	EA36 - Uniform random selection, 0 elites, Two-point crossover, 1 Mutation, 1 mateIncrease-(tournament selection) (20 cars) - (15/03/2019)
 	
-	EA37 - Roulette-wheel selection, 0 elites, Two-point crossover, 1 Mutation, 3 mateIncrease-(tournament selection) (20 cars) - (15/03/2019)
-	->EA38 - Tournament selection, 0 elites, Two-point crossover, 1 Mutation, 3 mateIncrease-(tournament selection) (20 cars) - (15/03/2019)
-	->EA39 - Uniform random selection, 0 elites, Two-point crossover, 1 Mutation, 3 mateIncrease-(tournament selection) (20 cars) - (15/03/2019)
+	EA37 - Roulette-wheel selection, 0 elites, Two-point crossover, 1 Mutation, 3 mateIncrease-(tournament selection) (20 cars) - (16/03/2019)
+	EA38 - Tournament selection, 0 elites, Two-point crossover, 1 Mutation, 3 mateIncrease-(tournament selection) (20 cars) - (16/03/2019)
+	EA39 - Uniform random selection, 0 elites, Two-point crossover, 1 Mutation, 3 mateIncrease-(tournament selection) (20 cars) - (16/03/2019)
+	!!!- the previous 3 tests show that increasing the mateIncreas increases selection pressure improving performance which shows in the results and this can also be show with the elitism using 3 instead of 1
+	->EA40 - Roulette-wheel selection, 0 elites, Two-point crossover, 1 Mutation, 3 mateIncrease-(Roulette-wheel selection) (20 cars) - (16/03/2019)
+	->EA41 - Tournament selection, 0 elites, Two-point crossover, 1 Mutation, 3 mateIncrease-(Roulette-wheel selection) (20 cars) - (16/03/2019)
+	->EA42 - Uniform random selection, 0 elites, Two-point crossover, 1 Mutation, 3 mateIncrease-(Roulette-wheel selection) (20 cars) - (16/03/2019)
 	
 	
 current problems:
