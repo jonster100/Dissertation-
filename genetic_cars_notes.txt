@@ -140,14 +140,15 @@ testing iterations -
 	EA42 - Roulette-wheel selection, 3 elites, Two-point crossover, 1 Mutation, 3 mateIncrease-(tournament selection) (20 cars) - (16/03/2019)
 	EA43 - Tournament selection, 3 elites, Two-point crossover, 1 Mutations, 3 mateIncrease-(tournament selection) (20 cars) - (16/03/2019)
 	EA44 - Uniform random selection, 3 elites, Two-point crossover, 1 Mutations, 3 mateIncrease-(tournament selection) (20 cars) - (16/03/2019)
+	!!!- no notable increase in performance compared to others
 	
 	EA45 - Roulette-wheel selection, 6 elites, Two-point crossover, 1 Mutations (20 cars) - (17/03/2019)
 	EA46 - Tournament selection, 6 elites, Two-point crossover, 1 Mutations (20 cars) - (17/03/2019)
 	EA47 - Uniform random selection, 6 elites, Two-point crossover, 1 Mutations (20 cars) - (17/03/2019)
 	!!!- there is a increase in the average performance with the increase of elites from 3 to 6
 	
-	->EA48 - Roulette-wheel selection, 9 elites, Two-point crossover, 1 Mutations (20 cars) - (17/03/2019)
-	->EA49 - Tournament selection, 9 elites, Two-point crossover, 1 Mutations (20 cars) - (17/03/2019)
+	EA48 - Roulette-wheel selection, 9 elites, Two-point crossover, 1 Mutations (20 cars) - (17/03/2019)
+	EA49 - Tournament selection, 9 elites, Two-point crossover, 1 Mutations (20 cars) - (17/03/2019)
 	->EA50 - Uniform random selection, 9 elites, Two-point crossover, 1 Mutations (20 cars) - (17/03/2019)
 	
 current problems:
