@@ -1,7 +1,7 @@
 /* globals document performance localStorage alert confirm btoa HTMLDivElement */
 /* globals b2Vec2 */
 // Global Vars
-var testing = true;// job64, boolean if the program is used to output test data to local storage.
+var testing = false;// job64, boolean if the program is used to output test data to local storage.
 
 
 var worldRun = require("./world/run.js");

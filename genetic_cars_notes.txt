@@ -1,36 +1,38 @@
 Testing: -
 Evolutionary algorithm
 	- Mutation
-		- Random Mutation = (11/02/2019) Done/Maybe
-		- Multi-mutations (16/02/2019) improving
+		- Random Mutation = (11/02/2019) Done/Maybe - week 2
+		- Multi-mutations (16/02/2019) improving - week 3
 			!! - I also need to change the range of the multi mutations and experiment to find the best one
 	- Selection
-		- Roulette Selection = (09/02/2019)Done/Maybe 
+		- Roulette Selection = (09/02/2019)Done/Maybe - week 3
 		- Uniform Random Selection (01/03/2019)
-		- Tournament Selection = (14/02/2019)Done/Maybe 
+		- Tournament Selection = (14/02/2019)Done/Maybe - week 3
 			!! - I need to change this selection to not use the entire population only a fraction which is to be determined (28/02/2019) Done
-		- Increase population pressure mechanism in the selection process where the top performing car can mate twice (25/02/2019) Done/Maybe
-		- Elitism has been added where the top ranked car is passed to the next generation (28/02/2019)
+		- Increase population pressure mechanism in the selection process where the top performing car can mate twice (25/02/2019) Done/Maybe - week 5
+		- Elitism has been added where the top ranked car is passed to the next generation (28/02/2019) - week 4
 	- Crossover
-		- One-Point = (14/02/2019)Done/Maybe 
-		- Two-Point = (21/02/2019)Done/Maybe - (24/02/2019)changed the crossover point to random from pre-fixed
+		- One-Point = (14/02/2019)Done/Maybe - week 2
+		- Two-Point = (21/02/2019)Done/Maybe - (24/02/2019)changed the crossover point to random from pre-fixed - week 4
 	
 Baseline Evolutionary algorithm = 
 	- Mutation = (11/02/2019)optimizing
 	
 Selection Clustering
-	- Clustering back-end = (14/02/2019)-(18/02/2019) Done/Maybe 
-	- Car fitness scoring (19/02/2019) - (21/02/2019) Testing
+	- Clustering back-end = (14/02/2019)-(18/02/2019) Done/Maybe - week 3
+	- Car fitness scoring (19/02/2019) - (21/02/2019) Testing - week 4
 		!! - I will test reducing the influence this scoring method has on the final score.
 	
 
-Initial population that can be read from a .json file and reused for different EA's (27/02/2019) - (01/03/2019)
+Initial population that can be read from a .json file and reused for different EA's (27/02/2019) - (01/03/2019) - week 5
 
 average generation performance can be added to local storage and then copied to excel
 
 In-Progress
-	- Unit testing = (01/03/2019)
+	- Unit testing = (01/03/2019) - week 5
 
+	Using the clustering for a mutation operator find a data point and using a version of pso to change the current data point (20/03/2019)
+	
 Allow for the weaker cars to have more mutations where the stronger cars have fewer. = (16/02/2019) improving
 		
 To Do: - 

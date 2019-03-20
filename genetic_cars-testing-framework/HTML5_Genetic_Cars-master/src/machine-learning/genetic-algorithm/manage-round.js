@@ -75,7 +75,7 @@ function selectParents(parents, scores, increaseMate, selectionTypeOne, selectio
 @param mutationType int - the type of mutation to be used either single mutation or multi-mutations
 @param mateIncreaseSelectionMethod int - the selection method for choosing the mateIncrease parent which will not be deleted
 @return newGeneration ObjectArray - is returned with all the newly created cars that will be in the simulation*/
-function runEA(scores, config, noCarsCreated, noElites, crossoverType, noMateIncrease, selectionTypeOne, selectionTypeTwo, mutationType, mateIncreaseSelectionMethod){
+function runEA(scores, config, noCarsCreated, noElites, crossoverType, noMateIncrease, selectionTypeOne, selectionTypeTwo, mutationType, mateIncreaseSelectionMethod, clust){
 	scores.sort(function(a, b){return b.score.s - a.score.s;});
 	var generationSize=scores.length;
 	var newGeneration = new Array();
@@ -105,7 +105,9 @@ function runEA(scores, config, noCarsCreated, noElites, crossoverType, noMateInc
 	for(var x = 0;x<newGeneration.length;x++){
 			var currentID = newGeneration[x].id;
 			if(newGeneration[x].elite===false){
-				newGeneration[x] = (mutationType===0)?mutation.mutate(newGeneration[x]):mutation.multiMutations(newGeneration[x],newGeneration.findIndex(x=> x.id===currentID),20);
+				var tempClust;
+				if(clust.arrayOfClusters[0].dataArray.length>2){tempClust=clust;}
+				newGeneration[x] = (mutationType===0)?mutation.mutate(newGeneration[x], tempClust):mutation.multiMutations(newGeneration[x],newGeneration.findIndex(x=> x.id===currentID),20);
 			}
 		}
 		console.log(newGeneration);
@@ -116,16 +118,19 @@ function runEA(scores, config, noCarsCreated, noElites, crossoverType, noMateInc
 @param scores Array - This parameter is an array of cars that holds the score statistics and car data such as id and "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex" and "wheel_density"
 @param config - This passes a file with functions that can be called.
 @return newGeneration - this is the new population that have had mutations applied to them.*/
-function runBaselineEA(scores, config){
+function runBaselineEA(scores, config, clust){
 	scores.sort(function(a, b){return a.score.s - b.score.s;});
 	var schema = config.schema;//list of car variables i.e "wheel_radius", "chassis_density", "vertex_list", "wheel_vertex" and "wheel_density"
 	var newGeneration = new Array();
 	var generationSize=scores.length;
 	console.log(scores);//test data
 	for (var k = 0; k < generationSize; k++) {
+		var tempClust;
+		if(clust.arrayOfClusters[0].dataArray.length>2){tempClust=clust;}
+		newGeneration.push(mutation.mutate(scores[k].def, tempClust));
 		//newGeneration.push(mutation.mutate(scores[k].def));
-		newGeneration.push(mutation.multiMutations(scores[k].def,scores.findIndex(x=> x.def.id===scores[k].def.id),20));
-		newGeneration[k].is_elite = false;
+		//newGeneration.push(mutation.multiMutations(scores[k].def,scores.findIndex(x=> x.def.id===scores[k].def.id),20));
+		newGeneration[k].elite = false;
 		newGeneration[k].index = k;
 	}
 	
@@ -136,13 +141,13 @@ function runBaselineEA(scores, config){
 This function handles the choosing of which Evolutionary algorithm to run and returns the new population to the simulation*/
 function nextGeneration(previousState, scores, config){
 	//--------------------------------------------------------- SET EVOLUTIONARY ALGORITHM OPERATORS HERE <---------------
-	var noElites = 3;//type the number of elites for the program to use
+	var noElites = 1;//type the number of elites for the program to use
 	var crossoverType=0;//write 1 for one-point crossover anyother for two-point crossover
 	var noMateIncrease=0;//The number of cars that can mate twice producing 4 kids not 2
-	var mateIncreaseSelectionMethod = 3;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
+	var mateIncreaseSelectionMethod = 1;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
 	// selectionType for selection the two parents selectionTypeOne for the first slection, selectionTypeTwo for the second parent
-	var selectionTypeOne = 3;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
-	var selectionTypeTwo = 3;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
+	var selectionTypeOne = 1;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
+	var selectionTypeTwo = 1;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
 	var mutationType =0;//0 for standard 1 mutation type 1 for multi-mutations
 	//--------------------------------------------------------------------------------------------------------------------
 	var generationSize=scores.length;
@@ -152,7 +157,7 @@ function nextGeneration(previousState, scores, config){
 	
 	tempRound=(typeof previousState.round ==="undefined")?0:previousState.round;
 	count = previousState.counter + 1;
-	//var clusterInt = (previousState.counter===0)?cluster.setup(scores,null,false):cluster.setup(scores,previousState.clust,true);
+	var clusterInt = (previousState.counter===0)?cluster.setup(scores,null,false):cluster.setup(scores,previousState.clust,true);
 	//cluster.reScoreCars(scores ,clusterInt);
 	scores.sort(function(a, b){return a.score.s - b.score.s;});
 	var numberOfCars = (previousState.counter===0)?generationSize:previousState.noCars+generationSize;
@@ -161,7 +166,7 @@ function nextGeneration(previousState, scores, config){
 	console.log("Log -- "+previousState.counter);
 	//console.log(scoresData);//test data
 	var eaType = 1;
-	newGeneration = (eaType===1)?runEA(scores, config, numberOfCars, noElites, crossoverType, noMateIncrease, selectionTypeOne, selectionTypeTwo, mutationType, mateIncreaseSelectionMethod):runBaselineEA(scores, config);
+	newGeneration = (eaType===1)?runEA(scores, config, numberOfCars, noElites, crossoverType, noMateIncrease, selectionTypeOne, selectionTypeTwo, mutationType, mateIncreaseSelectionMethod, clusterInt):runBaselineEA(scores, config,clusterInt);
 	//console.log(newGeneration);//test data
 	if(previousState.counter>150){
 		count=0;
@@ -173,7 +178,7 @@ function nextGeneration(previousState, scores, config){
   return {
     counter: count,
     generation: newGeneration,
-	//clust: clusterInt,
+	clust: clusterInt,
 	noCars: numberOfCars,
 	round: tempRound
   };

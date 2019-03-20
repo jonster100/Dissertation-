@@ -1,3 +1,5 @@
+var cluster = require("./clustering/clusterSetup.js/");
+
 module.exports = {
 	mutate: mutate,
 	multiMutations: multiMutations
@@ -26,42 +28,53 @@ function getRandomInt(min, max, notEqualsArr) {
 }
 
 
-function changeArrayValue(originalValue){
+function changeArrayValue(id, originalValue, clust, dataType){
 	for(var i=0;i<originalValue.length;i++){
-		var randomFloat = Math.random();
-		var mutationRate = 0.5*randomFloat;//Math.random();
-		var increaseOrDecrease = getRandomInt(0,1,[]);
-		newValue = (increaseOrDecrease===0)?originalValue[i]-mutationRate:originalValue[i]+mutationRate;
-		if(newValue<0){
-			newValue = originalValue[i]+mutationRate;
-		} else if(newValue>1){
-			newValue = originalValue[i]-mutationRate;
+		if(typeof clust === "undefined"){
+			var randomFloat = Math.random();
+			var mutationRate = 0.5*randomFloat;//Math.random();
+			var increaseOrDecrease = getRandomInt(0,1,[]);
+			newValue = (increaseOrDecrease===0)?originalValue[i]-mutationRate:originalValue[i]+mutationRate;
+			if(newValue<0){
+				newValue = originalValue[i]+mutationRate;
+			} else if(newValue>1){
+				newValue = originalValue[i]-mutationRate;
+			}
+			originalValue[i] = newValue;
+		} else {
+			var newClust;
+			for(var y=0;y<clust.arrayOfClusters.length;y++){
+				if(clust.arrayOfClusters[y].id===dataType){
+					newClust=clust.arrayOfClusters[y];
+				}
+			}
+			var newValue = (cluster.clusterMutate(id,newClust.dataArray[i].dataArray)-originalValue[i])*0.3;
+			originalValue[i]=orginalValue[i]+newValue;
 		}
-		originalValue[i] = newValue;
 	}
 	return originalValue;
 }
 
-function mutate(car){
-	return changeData(car,new Array(),1);
+function mutate(car, clust){
+	return changeData(car,new Array(),1, clust);
 }
 
-function changeData(car, multiMutations, noMutations){
-	var randomInt = getRandomInt(1,4, multiMutations);
+function changeData(car, multiMutations, noMutations, clust){
+	var randomInt = getRandomInt(0,4, multiMutations);
 	if(randomInt===1){
-		car.chassis_density=changeArrayValue(car.chassis_density);
+		car.chassis_density=changeArrayValue(car.id, car.chassis_density, clust, "chassis_density");
 	}
 	else if(randomInt===2){
-		car.vertex_list=changeArrayValue(car.vertex_list);
+		car.vertex_list=changeArrayValue(car.id, car.vertex_list, clust, "vertex_list");
 	}
 	else if(randomInt===3){
-		car.wheel_density=changeArrayValue(car.wheel_density);
+		car.wheel_density=changeArrayValue(car.id, car.wheel_density, clust, "wheel_density");
 	}
 	else if(randomInt===4){
-		car.wheel_radius=changeArrayValue(car.wheel_radius);
+		car.wheel_radius=changeArrayValue(car.id, car.wheel_radius, clust, "wheel_radius");
 	}
 	else {
-		car.wheel_vertex=changeArrayValue(car.wheel_vertex);
+		car.wheel_vertex=changeArrayValue(car.id, car.wheel_vertex, clust, "wheel_vertex");
 	}
 	multiMutations.push(randomInt);
 	noMutations--;

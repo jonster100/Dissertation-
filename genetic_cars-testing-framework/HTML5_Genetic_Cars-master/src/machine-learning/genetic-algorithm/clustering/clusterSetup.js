@@ -64,3 +64,9 @@ function reScoreCars(cars, clust){
 	}
 }
 
+function clusterMutate(id, clust){
+	var neighbors = cluster.findOjectNeighbors(id, cluster, ((clust.length/4)<40)?6:40);
+	neighbors.sort(function(a, b){return b.score.s - a.score.s;});
+	return neighbors[0].data;
+}
+
