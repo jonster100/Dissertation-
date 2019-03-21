@@ -169,9 +169,17 @@ testing iterations -
 	EA61 - Tournament selection, 0 elites, one-point crossover, 1 Mutation, 1 mateIncrease-(tournament selection) (20 cars) - (20/03/2019)
 	EA62 - Uniform random selection, 0 elites, one-point crossover, 1 Mutation, 1 mateIncrease-(tournament selection) (20 cars) - (20/03/2019)
 	
-	->EA63 - Roulette-wheel selection, 0 elites, one-point crossover, 1 Mutation, 3 mateIncrease-(tournament selection) (20 cars) - (16/03/2019)
-	->EA64 - Tournament selection, 0 elites, one-point crossover, 1 Mutation, 3 mateIncrease-(tournament selection) (20 cars) - (16/03/2019)
-	->EA65 - Uniform random selection, 0 elites, one-point crossover, 1 Mutation, 3 mateIncrease-(tournament selection) (20 cars) - (16/03/2019)
+	EA63 - Roulette-wheel selection, 0 elites, one-point crossover, 1 Mutation, 3 mateIncrease-(tournament selection) (20 cars) - (21/03/2019)
+	EA64 - Tournament selection, 0 elites, one-point crossover, 1 Mutation, 3 mateIncrease-(tournament selection) (20 cars) - (21/03/2019)
+	EA65 - Uniform random selection, 0 elites, one-point crossover, 1 Mutation, 3 mateIncrease-(tournament selection) (20 cars) - (21/03/2019)
+	
+	EA66 - Roulette-wheel selection, 0 elites, one-point crossover, 1 Mutation, 6 mateIncrease-(tournament selection) (20 cars) - (21/03/2019)
+	EA67 - Tournament selection, 0 elites, one-point crossover, 1 Mutation, 6 mateIncrease-(tournament selection) (20 cars) - (21/03/2019)
+	->EA68 - Uniform random selection, 0 elites, one-point crossover, 1 Mutation, 6 mateIncrease-(tournament selection) (20 cars) - (21/03/2019)
+	
+	->EA69 - Roulette-wheel selection, 0 elites, one-point crossover, 1 Mutation (20 cars) - (15/03/2019)
+	->EA70 - Tournament selection, 0 elites, one-point crossover, 1 Mutation (20 cars) - (15/03/2019)
+	->EA71 - Uniform random selection, 0 elites, one-point crossover, 1 Mutation (20 cars) - (15/03/2019)
 	
 	
 current problems:
