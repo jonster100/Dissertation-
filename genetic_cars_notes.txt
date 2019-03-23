@@ -178,9 +178,28 @@ testing iterations -
 	EA68 - Uniform random selection, 0 elites, one-point crossover, 1 Mutation, 6 mateIncrease-(tournament selection) (20 cars) - (21/03/2019)
 	
 	EA69 - Roulette-wheel selection, 0 elites, one-point crossover, 1 Mutation (20 cars) - (21/03/2019)
-	->EA70 - Tournament selection, 0 elites, one-point crossover, 1 Mutation (20 cars) - (21/03/2019)
-	->EA71 - Uniform random selection, 0 elites, one-point crossover, 1 Mutation (20 cars) - (21/03/2019)
+	EA70 - Tournament selection, 0 elites, one-point crossover, 1 Mutation (20 cars) - (22/03/2019)
+	EA71 - Uniform random selection, 0 elites, one-point crossover, 1 Mutation (20 cars) - (22/03/2019)
 	
+	EA72 - Roulette-wheel selection, 3 elites, one-point crossover, 1 Mutation, 1 mateIncrease-(tournament selection) (20 cars) - (22/03/2019)
+	EA73 - Tournament selection, 3 elites, one-point crossover, 1 Mutations, 1 mateIncrease-(tournament selection) (20 cars) - (22/03/2019)
+	EA74 - Uniform random selection, 3 elites, one-point crossover, 1 Mutations, 1 mateIncrease-(tournament selection) (20 cars) - (22/03/2019)
+	
+	EA75 - Roulette-wheel selection, 1 elites, two-point crossover, 1 Mutations, usingClusteringScore(20 cars) - (22/03/2019)
+	EA76 - Tournament selection, 1 elites, two-point crossover, 1 Mutations, usingClusteringScore(20 cars) - (22/03/2019)
+	EA77 - Uniform random selection, 1 elites, two-point crossover, 1 Mutations, usingClusteringScore(20 cars) - (22/03/2019)
+	
+	EA78 - Roulette-wheel selection, 3 elites, two-point crossover, 1 Mutations, usingClusteringScore(20 cars) - (22/03/2019)
+	EA79 - Tournament selection, 3 elites, two-point crossover, 1 Mutations, usingClusteringScore(20 cars) - (22/03/2019)
+	EA80 - Uniform random selection, 3 elites, two-point crossover, 1 Mutations, usingClusteringScore(20 cars) - (22/03/2019)
+	
+	EA81 - Roulette-wheel selection, 9 elites, two-point crossover, 1 Mutations, usingClusteringScore(20 cars) - (22/03/2019)
+	EA82 - Tournament selection, 9 elites, two-point crossover, 1 Mutations, usingClusteringScore(20 cars) - (22/03/2019)
+	EA83 - Uniform random selection, 9 elites, two-point crossover, 1 Mutations, usingClusteringScore(20 cars) - (22/03/2019)
+	
+	->EA84 - Roulette-wheel selection, 0 elites, two-point crossover, 1 Mutation, 1 mateIncrease, usingClusteringScore-(tournament selection) (20 cars) - (21/03/2019)
+	->EA85 - Tournament selection, 0 elites, two-point crossover, 1 Mutation, 1 mateIncrease, usingClusteringScore-(tournament selection) (20 cars) - (21/03/2019)
+	->EA86 - Uniform random selection, 0 elites, two-point crossover, 1 Mutation, 1 mateIncrease, usingClusteringScore-(tournament selection) (20 cars) - (21/03/2019)
 	
 current problems:
 	(19/02/2019) - The weaker cars are not improving over time there are spikes in improvement but it goes back down due to the mutation.
