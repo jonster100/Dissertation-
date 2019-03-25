@@ -217,9 +217,21 @@ testing iterations -
 	EA97 - Tournament selection, 3 elites, two-point crossover, Multi-Mutation (20 cars) - (24/03/2019)
 	EA98 - Roulette-wheel selection, 3 elites, two-point crossover, Multi-Mutation (20 cars) - (24/03/2019)
 	
-	->EA96 - Roulette-wheel selection, 9 elites, two-point crossover, Multi-Mutation (20 cars) - (24/03/2019)
-	->EA97 - Tournament selection, 9 elites, two-point crossover, Multi-Mutation (20 cars) - (24/03/2019)
-	->EA98 - Roulette-wheel selection, 9 elites, two-point crossover, Multi-Mutation (20 cars) - (24/03/2019)
+	EA99 - Roulette-wheel selection, 9 elites, two-point crossover, Multi-Mutation (20 cars) - (24/03/2019)
+	EA100 - Tournament selection, 9 elites, two-point crossover, Multi-Mutation (20 cars) - (24/03/2019)
+	EA101 - Roulette-wheel selection, 9 elites, two-point crossover, Multi-Mutation (20 cars) - (24/03/2019)
+	
+	EA102 - Roulette-wheel selection, 0 elites, two-point crossover, Multi-Mutation, 1 mateIncrease-(tournament selection) (20 cars) - (25/03/2019)
+	EA103 - Tournament selection, 0 elites, two-point crossover, Multi-Mutation, 1 mateIncrease-(tournament selection) (20 cars) - (25/03/2019)
+	EA104 - Uniform random selection, 0 elites, two-point crossover, Multi-Mutation, 1 mateIncrease-(tournament selection) (20 cars) - (25/03/2019)
+	
+	EA105 - Roulette-wheel selection, 0 elites, two-point crossover, Multi-Mutation, 3 mateIncrease-(tournament selection) (20 cars) - (25/03/2019)
+	EA106 - Tournament selection, 0 elites, two-point crossover, Multi-Mutation, 3 mateIncrease-(tournament selection) (20 cars) - (25/03/2019)
+	EA107 - Uniform random selection, 0 elites, two-point crossover, Multi-Mutation, 3 mateIncrease-(tournament selection) (20 cars) - (25/03/2019)
+	
+	EA108 - Roulette-wheel selection, 0 elites, two-point crossover, Multi-Mutation, 6 mateIncrease-(tournament selection) (20 cars) - (25/03/2019)
+	EA109 - Tournament selection, 0 elites, two-point crossover, Multi-Mutation, 6 mateIncrease-(tournament selection) (20 cars) - (25/03/2019)
+	EA110 - Uniform random selection, 0 elites, two-point crossover, Multi-Mutation, 6 mateIncrease-(tournament selection) (20 cars) - (25/03/2019)
 	
 current problems:
 	(19/02/2019) - The weaker cars are not improving over time there are spikes in improvement but it goes back down due to the mutation.
