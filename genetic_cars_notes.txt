@@ -233,11 +233,11 @@ testing iterations -
 	EA109 - Tournament selection, 0 elites, two-point crossover, Multi-Mutation, 6 mateIncrease-(tournament selection) (20 cars) - (25/03/2019)
 	EA110 - Uniform random selection, 0 elites, two-point crossover, Multi-Mutation, 6 mateIncrease-(tournament selection) (20 cars) - (25/03/2019)
 	-39
-	->EA111 - Roulette-wheel selection, 1 elites, two-point crossover, Cluster-Mutation (20 cars) - (26/03/2019)
-	->EA112 - Tournament selection, 1 elites, two-point crossover, Cluster-Mutation (20 cars) - (26/03/2019)
-	->EA113 - Uniform random selection, 1 elites, two-point crossover, Cluster-Mutation (20 cars) - (26/03/2019)
+	EA111 - Roulette-wheel selection, 1 elites, two-point crossover, Cluster-Mutation (20 cars) - (26/03/2019)
+	EA112 - Tournament selection, 1 elites, two-point crossover, Cluster-Mutation (20 cars) - (26/03/2019)
+	EA113 - Uniform random selection, 1 elites, two-point crossover, Cluster-Mutation (20 cars) - (26/03/2019)
 	
-	->EA114 - Roulette-wheel selection, 3 elites, two-point crossover, Cluster-Mutation (20 cars) - (26/03/2019)
+	EA114 - Roulette-wheel selection, 3 elites, two-point crossover, Cluster-Mutation (20 cars) - (26/03/2019)
 	->EA115 - Tournament selection, 3 elites, two-point crossover, Cluster-Mutation (20 cars) - (26/03/2019)
 	->EA116 - Uniform random selection, 3 elites, two-point crossover, Cluster-Mutation (20 cars) - (26/03/2019)
 	
