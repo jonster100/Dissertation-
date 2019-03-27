@@ -49,7 +49,7 @@ function changeArrayValue(id, originalValue, clust, dataType){
 				}
 			}
 			var newValue = (cluster.clusterMutate(id,newClust.dataArray[i].dataArray)-originalValue[i])*0.3;
-			originalValue[i]=orginalValue[i]+newValue;
+			originalValue[i]=originalValue[i]+newValue;
 		}
 	}
 	return originalValue;

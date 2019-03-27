@@ -84,7 +84,7 @@ function runEA(scores, config, noCarsCreated, noElites, crossoverType, noMateInc
 	var noElites=noElites;
 	var tempClust;
 	if(typeof clust !== "undefined"){
-		if(clust.arrayOfClusters[0].dataArray.length>2){tempClust=clust;}
+		if(clust.carsArray.length>20){tempClust=clust;}
 	}
 	for(var i=0;i<noElites;i++){//add new elites to newGeneration
 		var newElite = scores[i].def;
@@ -144,13 +144,13 @@ This function handles the choosing of which Evolutionary algorithm to run and re
 function nextGeneration(previousState, scores, config){
 	//--------------------------------------------------------- SET EVOLUTIONARY ALGORITHM OPERATORS HERE <---------------
 	var noElites = 0;//type the number of elites for the program to use
-	var crossoverType=1;//write 1 for one-point crossover anyother for two-point crossover
+	var crossoverType=0;//write 1 for one-point crossover anyother for two-point crossover
 	var noMateIncrease=3;//The number of cars that can mate twice producing 4 kids not 2
 	var mateIncreaseSelectionMethod = 1;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
 	// selectionType for selection the two parents selectionTypeOne for the first slection, selectionTypeTwo for the second parent
 	var selectionTypeOne = 3;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
 	var selectionTypeTwo = 3;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
-	var mutationType =0;//0 for standard 1 mutation type 1 for multi-mutations, 3 for cluster mutation
+	var mutationType =3;//0 for standard 1 mutation type 1 for multi-mutations, 3 for cluster mutation
 	var useClusteringScoring = false;
 	//--------------------------------------------------------------------------------------------------------------------
 	var generationSize=scores.length;

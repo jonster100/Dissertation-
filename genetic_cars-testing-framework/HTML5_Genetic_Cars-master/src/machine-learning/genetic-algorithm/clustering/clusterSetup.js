@@ -3,7 +3,8 @@ var cluster = require("./cluster.js/");
 
 module.exports = {
 	setup: setup,
-	reScoreCars: reScoreCars
+	reScoreCars: reScoreCars,
+	clusterMutate: clusterMutate
 }
 
 //"wheel_radius", "chassis_density", "vertex_list", "wheel_vertex" and "wheel_density"/
@@ -65,7 +66,7 @@ function reScoreCars(cars, clust){
 }
 
 function clusterMutate(id, clust){
-	var neighbors = cluster.findOjectNeighbors(id, cluster, ((clust.length/4)<40)?6:40);
+	var neighbors = cluster.findOjectNeighbors(id, clust, ((clust.length/4)<40)?6:40);
 	neighbors.sort(function(a, b){return b.score.s - a.score.s;});
 	return neighbors[0].data;
 }
