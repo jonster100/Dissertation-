@@ -251,7 +251,15 @@ testing iterations -
 	
 	EA123 - Roulette-wheel selection, 1 elites, two-point crossover, Cluster-Mutation(200n) (20 cars) - (29/03/2019)
 	EA124 - Tournament selection, 1 elites, two-point crossover, Cluster-Mutation(200n)(20 cars) - (29/03/2019)
-	->EA125 - Uniform random selection, 1 elites, two-point crossover, Cluster-Mutation(200n)(20 cars) - (29/03/2019)
+	EA125 - Uniform random selection, 1 elites, two-point crossover, Cluster-Mutation(200n)(20 cars) - (29/03/2019)
+	
+	EA126 - Roulette-wheel selection, 3 elites, two-point crossover, Cluster-Mutation(200n) (20 cars) - (29/03/2019)
+	EA127 - Tournament selection, 3 elites, two-point crossover, Cluster-Mutation(200n)(20 cars) - (29/03/2019)
+	EA128 - Uniform random selection, 3 elites, two-point crossover, Cluster-Mutation(200n)(20 cars) - (29/03/2019)
+	
+	EA127 - Roulette-wheel selection, 3 elites, two-point crossover, Cluster-Mutation(1000n) (20 cars) - (29/03/2019)
+	->EA128 - Tournament selection, 3 elites, two-point crossover, Cluster-Mutation(1000n)(20 cars) - (29/03/2019)
+	->EA129 - Uniform random selection, 3 elites, two-point crossover, Cluster-Mutation(1000n)(20 cars) - (29/03/2019)
 	
 current problems:
 	(19/02/2019) - The weaker cars are not improving over time there are spikes in improvement but it goes back down due to the mutation.
