@@ -21,3 +21,20 @@ https://www.researchgate.net/publication/221700557_A_Comparative_Study_of_Adapti
 https://pdfs.semanticscholar.org/3bda/cac99759ca1c71e241b815ea50226b05af70.pdf - crossover
 
 https://link.springer.com/book/10.1007/3-540-61723-X  - check out
+
+
+[1]A. Eiben and J. Smith, Introduction to evolutionary computing, 2nd ed. pp. 15-35.
+
+[3]"Crossover (genetic algorithm)", Academic Dictionaries and Encyclopedias. [Online]. Available: http://enacademic.com/dic.nsf/enwiki/302339#One-point_crossover. [Accessed: 07- Apr- 2019].
+
+[4]"Mutation (genetic algorithm)", Academic Dictionaries and Encyclopedias. [Online]. Available: http://enacademic.com/dic.nsf/enwiki/302648. [Accessed: 07- Apr- 2019].
+
+
+[1] A. Eiben and J. Smith, Introduction to evolutionary computing, 2nd ed. pp. 15-35.
+The common underlying idea among the various versions of Evolutionary algorithms is that given a population of individuals, operators are used to apply pressure to force evolution to these individuals over several generations.
+[2] J. Khalid, "Selection Methods for Genetic Algorithms", International Journal of Emerging Sciences, 2013. [Accessed 6 March 2019].
+Selection operators or parent selection operators (PSO) are aimed at exploiting the best characteristics of individuals of a given population. This type of operator chooses the most suitable individuals to have their recombined. Selection operators are varied in terms of how much selection is applied to the population, whether individuals are taken from the local or global population and the criteria in which an induvial is chosen
+ [3]"Crossover (genetic algorithm)", Academic Dictionaries and Encyclopedias. [Online]. Available: http://enacademic.com/dic.nsf/enwiki/302339#One-point_crossover. [Accessed: 07- Apr- 2019].
+Crossover operators within an Evolutionary algorithm are ways in which the algorithm takes more than one individual solution and recombines individual’s data based on a set of criteria to reproduce children for the next generation of individuals.
+[4]"Mutation (genetic algorithm)", Academic Dictionaries and Encyclopedias. [Online]. Available: http://enacademic.com/dic.nsf/enwiki/302648. [Accessed: 07- Apr- 2019].
+Mutation operators are used within Evolutionary algorithms to maintain genetic diversity from generation to generation. The basic principle of the operator is that there is that data within an individual would have a Random mutation which helps keeps genetic diversity within the population preventing individuals becoming too similar which helps avoid local minimum solutions.
