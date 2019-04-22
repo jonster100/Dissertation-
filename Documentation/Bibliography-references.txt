@@ -38,3 +38,8 @@ Selection operators or parent selection operators (PSO) are aimed at exploiting 
 Crossover operators within an Evolutionary algorithm are ways in which the algorithm takes more than one individual solution and recombines individual’s data based on a set of criteria to reproduce children for the next generation of individuals.
 [4]"Mutation (genetic algorithm)", Academic Dictionaries and Encyclopedias. [Online]. Available: http://enacademic.com/dic.nsf/enwiki/302648. [Accessed: 07- Apr- 2019].
 Mutation operators are used within Evolutionary algorithms to maintain genetic diversity from generation to generation. The basic principle of the operator is that there is that data within an individual would have a Random mutation which helps keeps genetic diversity within the population preventing individuals becoming too similar which helps avoid local minimum solutions.
+[5]"About npm | npm Documentation", Docs.npmjs.com, 2019. [Online]. Available: https://docs.npmjs.com/about-npm/. [Accessed: 10- Apr- 2019].
+[6]"Node.js Introduction", W3schools.com, 2019. [Online]. Available: https://www.w3schools.com/nodejs/nodejs_intro.asp. [Accessed: 10- Apr- 2019].
+[7]"chrome.storage - Google Chrome", Developer.chrome.com, 2019. [Online]. Available: https://developer.chrome.com/apps/storage. [Accessed: 11- Apr- 2019].
+[8]"Chrome DevTools  |  Tools for Web Developers  |  Google Developers", Google Developers, 2019. [Online]. Available: https://developers.google.com/web/tools/chrome-devtools/. [Accessed: 11- Apr- 2019].
+[9]D. Therens, Selection schemes, elitist recombination, and selection intensity. Utrecht University: Information and Computing Sciences, 1998, p. 2.
