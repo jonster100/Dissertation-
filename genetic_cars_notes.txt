@@ -261,6 +261,21 @@ testing iterations -
 	->EA128 - Tournament selection, 3 elites, two-point crossover, Cluster-Mutation(1000n)(20 cars) - (29/03/2019)
 	->EA129 - Uniform random selection, 3 elites, two-point crossover, Cluster-Mutation(1000n)(20 cars) - (29/03/2019)
 	
+	EA131 - Roulette-wheel selection, 0 elites,two-point crossover, Cluster-Mutation(40n), 1 ReproductionIncrease-(tournament selection) (20 cars) - (21/03/2019)
+	EA132 - Roulette-wheel selection, 0 elites, two-point crossover,  Cluster-Mutation(40n), 3 ReproductionIncrease-(tournament selection) (20 cars) - (21/03/2019)
+	EA133 - Roulette-wheel selection, 0 elites, two-point crossover, Cluster-Mutation(40n), 6 ReproductionIncrease-(tournament selection) (20 cars) - (21/03/2019)
+	
+	
+	EA000 - Roulette-wheel selection, 1 elites, two-point crossover, Cluster-Mutation(40n) (20 cars) - (23/04/2019)
+	EA001 - Roulette-wheel selection, 1 elites, two-point crossover, Cluster-Mutation(200n) (20 cars) - (23/04/2019)
+	EA003 - Roulette-wheel selection, 1 elites, two-point crossover, Cluster-Mutation(700) (20 cars) - (23/04/2019)
+	
+	->EA004 - Roulette-wheel selection, 0 elites,two-point crossover, Cluster-Mutation(40n), 3 ReproductionIncrease-(tournament selection) (20 cars) - (21/03/2019)
+	->EA005 - Roulette-wheel selection, 0 elites, two-point crossover,  Cluster-Mutation(200n), 3 ReproductionIncrease-(tournament selection) (20 cars) - (21/03/2019)
+	->EA006 - Roulette-wheel selection, 0 elites, two-point crossover, Cluster-Mutation(700), 3 ReproductionIncrease-(tournament selection) (20 cars) - (21/03/2019)
+	
+	->EA007 - Tournament selection(subSet size 10), 1 elites, Two-point crossover, 1 Mutations (20 cars) - (10/03/2019)
+	
 current problems:
 	(19/02/2019) - The weaker cars are not improving over time there are spikes in improvement but it goes back down due to the mutation.
 	(19/02/2019) - I do not know how i'm going to make the EA's run side by side.
