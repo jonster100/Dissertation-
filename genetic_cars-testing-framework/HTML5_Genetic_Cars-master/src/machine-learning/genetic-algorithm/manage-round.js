@@ -143,15 +143,15 @@ function runBaselineEA(scores, config, clust){
 This function handles the choosing of which Evolutionary algorithm to run and returns the new population to the simulation*/
 function nextGeneration(previousState, scores, config){
 	//--------------------------------------------------------- SET EVOLUTIONARY ALGORITHM OPERATORS HERE <---------------
-	var noElites = 0;//type the number of elites for the program to use
+	var noElites = 1;//type the number of elites for the program to use
 	var crossoverType=0;//write 1 for one-point crossover anyother for two-point crossover
-	var noMateIncrease=3;//The number of cars that can mate twice producing 4 kids not 2
+	var noMateIncrease=0;//The number of cars that can mate twice producing 4 kids not 2
 	var mateIncreaseSelectionMethod = 1;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
 	// selectionType for selection the two parents selectionTypeOne for the first slection, selectionTypeTwo for the second parent
-	var selectionTypeOne = 3;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
-	var selectionTypeTwo = 3;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
-	var mutationType =3;//0 for standard 1 mutation type 1 for multi-mutations, 3 for cluster mutation
-	var useClusteringScoring = false;
+	var selectionTypeOne = 1;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
+	var selectionTypeTwo = 1;// 1 for tournament selection using sub-arrays/ 2 for tournament selection to get weakest car/3 for roulette-selection/ 4 for uniform random selection
+	var mutationType =0;//0 for standard 1 mutation, type 1 for multi-mutations, type 3 for cluster mutation
+	var useClusteringScoring = false;//type true if you want to use the Scoring mechanism which uses the clustering
 	//--------------------------------------------------------------------------------------------------------------------
 	var generationSize=scores.length;
 	var newGeneration = new Array();

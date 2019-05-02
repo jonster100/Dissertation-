@@ -42,4 +42,8 @@ Mutation operators are used within Evolutionary algorithms to maintain genetic d
 [6]"Node.js Introduction", W3schools.com, 2019. [Online]. Available: https://www.w3schools.com/nodejs/nodejs_intro.asp. [Accessed: 10- Apr- 2019].
 [7]"chrome.storage - Google Chrome", Developer.chrome.com, 2019. [Online]. Available: https://developer.chrome.com/apps/storage. [Accessed: 11- Apr- 2019].
 [8]"Chrome DevTools  |  Tools for Web Developers  |  Google Developers", Google Developers, 2019. [Online]. Available: https://developers.google.com/web/tools/chrome-devtools/. [Accessed: 11- Apr- 2019].
-[9]D. Therens, Selection schemes, elitist recombination, and selection intensity. Utrecht University: Information and Computing Sciences, 1998, p. 2.
+[9]Pencheva, Tania & Atanassov, K & Shannon, A. (2009). Modelling of a Roulette Wheel Selection Operator in Genetic Algorithms Using Generalized Nets. International Journal Bioautomation. 13. 
+[10]Hassanat, Ahmad & Alkafaween, Esra'A & Alnawaiseh, Nedal & Abbadi, Mohammad & Alkasassbeh, Mouhammd & Alhasanat, Mahmoud. (2016). Enhancing Genetic Algorithms using Multi Mutations: Experimental Results on the Travelling Salesman Problem. International Journal of Computer Science and Information Security. 14. 785-801. 
+[11]A. Chehouri, R. Younes, J. Khoder, J. Perron and A. Ilinca, "A Selection Process for Genetic Algorithm Using Clustering Analysis", Algorithms, vol. 10, no. 4, p. 123, 2017. Available: 10.3390/a10040123.
+
+[-]D. Therens, Selection schemes, elitist recombination, and selection intensity. Utrecht University: Information and Computing Sciences, 1998, p. 2.
