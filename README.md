@@ -7,14 +7,20 @@ This is just a guide though the technical work explaining which part of the proj
 NOTE - Third party code/original framework is used where the original can be gotten from https://github.com/red42/HTML5_Genetic_Cars
 
 The final solution whhich is the Evolutionay algorithm consist of the following fles:
+
 	\HTML5_Genetic_Cars-master\src\machine-learning\genetic-algorithm\crossover.js - all the code in this file is my own written code
 	\HTML5_Genetic_Cars-master\src\machine-learning\genetic-algorithm\mutation.js - all the code in this file is my own written code
+	
 	\HTML5_Genetic_Cars-master\src\machine-learning\genetic-algorithm\randomInt.js - all the code in this file is my own written code
+	
 	\HTML5_Genetic_Cars-master\src\machine-learning\genetic-algorithm\selecton.js - all the code in this file is my own written code
+	
 	\HTML5_Genetic_Cars-master\src\machine-learning\genetic-algorithm\clustering\cluster.js - all the code in this file is my own written code
+	
 	\HTML5_Genetic_Cars-master\src\machine-learning\genetic-algorithm\clustering\clusterSetup.js - all the code in this file is my own written code
 	
 	\HTML5_Genetic_Cars-master\src\machine-learning\genetic-algorithm\manage-round.js - the code that is mine within this program is between line 37-200
+	
 	\HTML5_Genetic_Cars-master\src\index.js - the code that is mine is line 4 and line 405-414
 	
 the following are the unit test files -
